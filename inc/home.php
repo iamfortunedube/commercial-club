@@ -57,7 +57,7 @@
                     <div class="col-md-12">
                             <div class="welcomeWrapper">
                                     <div class="welcomeTitle">
-                                            <h6><span style="color:green;font-size:15pt;">Table</span></h6>
+                                            <h6><span style="color:rgb(218,165,32);font-size:15pt;">Table</span></h6>
                                     </div>
                                     <p class="welcomeContent">
                                             <table class="table table-hover table-dark">
