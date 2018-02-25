@@ -99,21 +99,13 @@ header{
     left:0;
     margin-top:5px;
     margin-left: 10px;
-<<<<<<< HEAD
-    position: absolute;
-=======
     position:fixed;
->>>>>>> 86cac67f50a8dd9d8e88f94eceb30fc3111a3474
 }
 
 .rightHeader{
     top:0;
     right:0;
-<<<<<<< HEAD
     margin-top:25px;
-=======
-    margin-top:15px;
->>>>>>> 86cac67f50a8dd9d8e88f94eceb30fc3111a3474
     margin-right: 10px;
     float: right;
     position: absolute;
@@ -195,9 +187,6 @@ margin-top:-35px;
     background: #000;
     color: #f1f1f1;
     border: solid 2px rgb(218,165,32);
-<<<<<<< HEAD
-}
-=======
 }
 
 input.form-control{
@@ -267,4 +256,3 @@ input.form-control{
 #namelogo{
     width:30%;
 }
->>>>>>> 86cac67f50a8dd9d8e88f94eceb30fc3111a3474
