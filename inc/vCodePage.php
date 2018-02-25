@@ -18,10 +18,9 @@
 						<?php echo @$errMessage;?>
                         </div>  
                     </div>
-                   
-                    
                 </form>
-
+    </div>
+    <?php include("server/register.php");?> 
 							
         </div>
     </div>
@@ -47,4 +46,4 @@
         </div>
     </div>
 </div>
-<!--second row ends-->
+
