@@ -1,6 +1,6 @@
 <div class="sidebar-menu">
     <ul>
-        <li>
+        <li hidden>
             <div class="userProfile">
                 <div class="imageLeft">
                         <img src="assets/avatar.png" width="70" height="70" alt="image" />
@@ -10,12 +10,13 @@
                         <p class="messageTrans">Kindly login to start Transacting</p>
                 </div>
             </div>
-        </li>
+        </li> <b>
         <li><a id="home" class="active" href="index.php"> <i class="fas fa-home"></i> Home</a></li>
         <li><a id="login" href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
         <li><a id="register" href="register.php"><i class="fas fa-edit"></i> Register</a></li>
         <li><a id="donations" href="donate.php"><i class="fas fa-money-bill-alt"></i> Donations</a></li>
         <li><a id="claims" href="claims.php"><i class="fas fa-credit-card"></i> Claims</a></li>
+            </b>
         <li style="position:fixed;bottom:0;left:0;"><img src="assets/logoCC.png" width="200" height="200" alt="logo"/></li>
     </ul>    
 </div>
