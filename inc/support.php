@@ -5,7 +5,7 @@
                 <textarea placeholder="Comment" class="form-control" row="10" type="text" name="comment" style="resize: none;"></textarea>
             </div>
             <div class="form-group">
-                    <input id="send" class="btn btn-success" type="submit" name="submit" value="Send">
+                    <input id="send" class="btn button-gold" type="submit" name="submit" value="Send">
             </div>
         </form>
 </div>
