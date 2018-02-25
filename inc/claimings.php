@@ -17,16 +17,18 @@
     <div class="col-md-12">
             <div class="welcomeWrapper">
                 <div class="welcomeTitle">
-                    <h6><span style="color:rgb(218,165,32);font-size:15pt;">Donations awaiting allocations</span></h6>
+                    <h6><span style="color:rgb(218,165,32);font-size:15pt;">Claim Donation</span></h6>
                 </div>
                 <p class="welcomeContent">
                     <table class="table table-hover table-dark">
                         <thead>
                             <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Date</th>
                             <th scope="col">Amount</th>
+                            <th scope="col">Growth</th>
+                            <th scope="col">Count</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,17 +37,24 @@
                             <td>Mark</td>
                             <td>Otto</td>
                             <td>@mdo</td>
+                            <td>Ready</td>
+                            <td><input type="button" class="btn" value="Claim"/></td>
                             </tr>
                             <tr>
                             <th scope="row">2</th>
                             <td>Jacob</td>
                             <td>Thornton</td>
                             <td>@fat</td>
+                            <td>Ready</td>
+                            <td><input type="button" class="btn" value="Claim"/></td>
                             </tr>
                             <tr>
                             <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td>Larry the Bird</td>
+                            <td>Green</td>
                             <td>@twitter</td>
+                            <td>Ready</td>
+                            <td><input type="button" class="btn" value="Claim"/></td>
                             </tr>
                         </tbody>
                     </table>
