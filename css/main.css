@@ -22,7 +22,7 @@ li a {
 }
 
 li a.active {
-    background-color: #4CAF50;
+    background-color:rgb(218,165,32);
     color: white;
     text-decoration: none;
 }
@@ -43,7 +43,7 @@ li a:hover:not(.active) {
     bottom:0;
     width:300px;
     color:white;
-    background-color: #4CAF50;
+    background-color: rgb(218,165,32);
     border: 2px solid black;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -79,7 +79,7 @@ li a:hover:not(.active) {
 
 header{
     height: 70px;
-    border-bottom: 7px solid rgb(25, 128, 25);
+    border-bottom: 7px solid rgb(218,165,32);
     text-align: center;
     position: fixed;
     margin-bottom:15%;
@@ -145,7 +145,7 @@ header{
 
 .welcomeTitle{
     background-color: rgb(17, 16, 16);
-    border-bottom:5px solid  rgb(25, 128, 25);
+    border-bottom:5px solid  rgb(218,165,32);
     color:white;
     padding:7px 10px;
     box-shadow: 5px 5px 5px rgba(17, 16, 16, 0.356);
