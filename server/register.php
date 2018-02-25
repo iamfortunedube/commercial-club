@@ -36,6 +36,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				  
 				$errCpassword="Re-Enter your password *";  
 			  }
+
+			  if(empty($_POST["refferalNo"])){
+				  
+				$errRefferal="Enter your Refferal Number *";  
+			  }
 			 
 			  if(empty($_POST["sname"]) || empty($_POST["fname"]) && empty($_POST["cellNumber"]) && empty($_POST["cellNumber2"]) || empty($_POST["password"]) || empty($_POST["password2"])){
 

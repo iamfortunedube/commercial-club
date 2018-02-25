@@ -26,7 +26,12 @@
                     <input class="form-control" require type="password" name="password" placeholder="Password"/>
                      <?php echo "<span style='color:red'>".@$errPassword."</span>";?>
                     <input class="form-control" require type="password" name="password2" placeholder="Confirm Password"/>
-					<?php echo "<span style='color:red'>".@$errCpassword."</span>";?>
+                    <?php echo "<span style='color:red'>".@$errCpassword."</span>";?>
+                    
+                    <input class="form-control" require type="text" name="refferalNo" placeholder="Refferal Number"/>
+					<?php echo "<span style='color:red'>".@$errRefferal."</span>";?>
+
+
                     <input style="width:100%;" class="btn button-gold" require type="submit" name="submit"value="Register"/>
                     <?php echo "<span style='color:red'>".@$errMessage."</span>";?>
                     <?php echo "<span style='color:green'>".@$succMessage."</span>";?>
