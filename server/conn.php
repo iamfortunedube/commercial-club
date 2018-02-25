@@ -8,4 +8,6 @@ echo" not connected";
 }else{
 //echo"connected";	
 }
+
+session_start();
 ?>

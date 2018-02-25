@@ -37,17 +37,19 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				$errCpassword="Re-Enter your password *";  
 			  }
 			 
-			  if(empty($_POST["sname"]) && empty($_POST["fname"]) &&empty($_POST["cellNumber"]) && empty($_POST["cellNumber2"]) && empty($_POST["password"]) && empty($_POST["password2"])){
+			  if(empty($_POST["sname"]) || empty($_POST["fname"]) && empty($_POST["cellNumber"]) && empty($_POST["cellNumber2"]) || empty($_POST["password"]) || empty($_POST["password2"])){
+
+				$errMessage = "Please make sure there are no empty feilds";
 
 			  }else{
-				
-					$surname=$_POST["sname"];
-					$firstname=$_POST["fname"];    
+				$rCode=$vCode=$status=$bank_name=$uniCode=$account_holder=$accNum="";
+					@$surname=$_POST["sname"];
+					@$firstname=$_POST["fname"];    
 					//$vCode=$_POST["vCode"];
-					$cellNo=$_POST["cellNumber"];
-					$cellNo2=$_POST["cellNumber2"];
-					$password=$_POST["password"];
-					$password2=$_POST["password2"];
+					@$cellNo=$_POST["cellNumber"];
+					@$cellNo2=$_POST["cellNumber2"];
+					@$password=$_POST["password"];
+					@$password2=$_POST["password2"];
 		
 					if($cellNo!=$cellNo2)
 					{
@@ -55,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 					}
 				   if($password!=$password2)
 				   {
-					$errMessage="Passwords does not metch";
+					$errMessage="Passwords does not match";
 				   }
 				   if($password==$password2 && $cellNo==$cellNo2 ){
 					$sql="select p_number from users where  p_number=\"$cellNo\";";
@@ -63,24 +65,22 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 					$result=$conn->query($sql);
 					if($result->num_rows>0)
 					{
+						$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
 						$errMessage="user already have an account.Please <a href='login.php'> Login </a> or change number";
 					}else{
-						$sql="insert into users (fname,lname,p_number,password,ref_code,vCode,status,bank_name,universal_code,account_holder,account_number)values(\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$rCode\",\"$vCode\",\"$status\",\"$bank_name\",\"$uniCode\",\"$account_holder\",\"$accNum\");";
-						if($conn->query($sql))
-						 {
-						$ssMessage="Next step come"; 
+						$vCode = mt_rand(100000, 999999);
+						$sql="insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$rCode\",\"$vCode\",\"$status\",\"$bank_name\",\"$uniCode\",\"$account_holder\",\"$accNum\");";
+						if($conn->query($sql)){
+							$succMessage="Next step come"; 
 
-						$vCode=mt_rand();
-						$message = "Your varification code is ".$vCode;
-                      $to = $_REQUEST['cellNumber'];
-                       $result = @mail( $to, '', $message );
-					   print 'Message was sent to ' . $to;
-					   
-
-						   header("location:vCode.php");
-						  }else{
-					   echo" Not Inserted".$conn->error; 
-						 }
+							$message = "Your verification code is ".$vCode;
+							$to = $_REQUEST['cellNumber'];
+							$result = @mail( $to, '', $message );
+							print 'Message was sent to ' . $to;					
+							header("location:vCode.php");
+							}else{
+							echo" Not Inserted".$conn->error; 
+							}
 
 					}
 				}
