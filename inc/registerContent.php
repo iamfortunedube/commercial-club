@@ -1,11 +1,10 @@
-<div class="row">   
+<div class="row">
     <div class="col-md-6">
-
-<?php include("server/register.php");?>
-    
+        <?php include("server/register.php");?>
+        
         <div class="welcomeWrapper">
                 <div class="welcomeTitle">
-                        <h6>Registration</h6>
+                    <h6>Registration</h6>
                 </div>
                 <form id="reg" class="welcomeContent" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
                     <div class="row">
@@ -17,7 +16,7 @@
                         <div class="col-md-6">
                             <input class="form-control" require type="text" name="sname" placeholder="Surame" value="<?php echo @$firstname;?>"/>
                       
-                        <?php echo "<span style='color:red'>".@$errSurname."</span>";?>
+                            <?php echo "<span style='color:red'>".@$errSurname."</span>";?>
                         </div>  
                     </div>
                     <input class="form-control" require type="text" name="cellNumber" value="<?php echo @$cellNo;?>" placeholder="Phone Number"/>
