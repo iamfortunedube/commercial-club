@@ -29,7 +29,17 @@
                     <input class="form-control" require type="password" name="password" value="<?php echo @$password;?>" placeholder="Password"/>
                      <?php echo "<span style='color:red'>".@$errPassword."</span>";?>
                     <input class="form-control" require type="password" name="password2" value="<?php echo @$password2;?>" placeholder="Confirm Password"/>
-					<?php echo "<span style='color:red'>".@$errCpassword."</span>";?>
+                    <?php echo "<span style='color:red'>".@$errCpassword."</span>";?>
+                    
+                    <div class="form-control" style="border:none">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator" style="background-color:#ffc107;outline:none"></span>
+                        <span class="custom-control-description">Tick to accept the Commercial Club <a href="#">T&C </a> </span>
+                    </label>
+                    </div>
+
+
                     <input style="width:100%;" class="btn button-gold" require type="submit" name="submit"value="Register"/>
 					<?php echo "<span style='color:red'>".@$errMessage."</span>";?>
                 </form>				
