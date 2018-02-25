@@ -14,5 +14,7 @@
                     <li><a id="home" class="active" href="index.php">Home</a></li>
                     <li><a id="login" href="login.php">Login</a></li>
                     <li><a id="register" href="register.php">Register</a></li>
+
+                     <li style="position:fixed;bottom:0;"><img src="assets/logoCC.png" width="200" height="200" alt="logo"/></li>
                 </ul>    
             </div>

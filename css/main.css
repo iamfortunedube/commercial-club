@@ -96,21 +96,21 @@ header{
     left:0;
     margin-top:10px;
     margin-left: 10px;
-    border:1px solid #000;
-    width:300px;
+    position: absolute;
 }
 
 .rightHeader{
     top:0;
     right:0;
-    margin-top:10px;
+    margin-top:25px;
     margin-right: 10px;
-    border:1px solid #000;
-    width:100px;
     float: right;
     position: absolute;
 }
 
+#namelogo{
+    width:30%;
+}
 
 
 /* end header */
