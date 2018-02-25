@@ -166,3 +166,12 @@ margin-top:-35px;
 /* Welcome content end */
 
 /*--------------------- main-content ends--------------------*/
+
+/*----------------------Registration Content starts--------------------*/
+
+.form-control,.btn{
+    margin-top:5px;
+}
+
+
+/*----------------------Registration Content ends--------------------*/
