@@ -7,6 +7,7 @@
                             <form class="welcomeContent">
                                 <input class="form-control" type="text" name="cellNumber" placeholder="Phone Number"/>
                                 <input class="form-control" type="password" name="password" placeholder="Password"/>
+                                <a href="#">forgot password?</a>
                                 <input style="width:100%;" class="btn btn-success" type="submit" name="submit" value="Login"/>
                             </form>
                         </div>
