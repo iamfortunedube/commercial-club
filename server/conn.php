@@ -9,5 +9,4 @@ echo" not connected";
 //echo"connected";	
 }
 
-session_start();
 ?>

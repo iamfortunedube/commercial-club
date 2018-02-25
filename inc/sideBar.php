@@ -19,7 +19,7 @@
             <li><a id="profile-edit" href="#"><i class="fas fa-user"></i> Profile</a></li>
             <li><a id="donations" href="donate.php"><i class="fas fa-money-bill-alt"></i> Donations</a></li>
             <li><a id="claims" href="claims.php"><i class="fas fa-credit-card"></i> Claims</a></li>
-            <li><a id="sign-out" href="#"><i class="fas fa-sign-out-alt"></i> Sign out</a></li>
+            <li><a id="sign-out" href="server/logOut.php"><i class="fas fa-sign-out-alt"></i> Sign out</a></li>
             ';
          }else{
              echo '
