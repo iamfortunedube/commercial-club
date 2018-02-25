@@ -2,13 +2,15 @@
                     <div class="col-md-6">
                         <div class="welcomeWrapper">
                                 <div class="welcomeTitle">
-                                        <h6>Login</h6>
+                                        <h6>Reset Password</h6>
                                 </div>
                             <form class="welcomeContent">
                                 <input class="form-control" type="text" name="cellNumber" placeholder="Phone Number"/>
-                                <input class="form-control" type="password" name="password" placeholder="Password"/>
-                                <a href="forgotP.php" style="color: black; font-size:18px;" class="float-right">forgot password?</a>
-                                <input style="width:100%;" class="btn button-gold" type="submit" name="submit" value="Login"/>
+                                <input style="width:100%;" class="btn button-gold" type="submit" name="submit" value="Request"/>
+                            </form>
+                            <form class="welcomeContent">
+                                <input class="form-control" type="text" name="verCode" placeholder="Verification Code"/>
+                                <input style="width:100%;" class="btn button-gold" type="submit" name="submit" value="Verify"/>
                             </form>
                         </div>
                     </div>

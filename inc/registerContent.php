@@ -27,7 +27,7 @@
                     <input class="form-control" type="password" name="password2" placeholder="Confirm Password"/>
 					<?php echo @$errMessage;?>
                     <input style="width:100%;" class="btn button-gold" type="submit" name="submit"value="Register"/>
-
+					<?php echo @$errMessage;?>
                 </form>
 
 							

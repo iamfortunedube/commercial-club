@@ -7,10 +7,6 @@
                     $("#form").slideToggle();
                 });
 
-				
-				
-
-
                 $('.switch').click(function(){
                     if(document.body.style.background == "black"){
                         document.body.style.background = "white";
@@ -19,7 +15,6 @@
                         document.body.style.background = "black";
                     }
                 });
-
             });
 			
 			
