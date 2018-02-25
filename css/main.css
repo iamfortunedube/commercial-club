@@ -123,8 +123,12 @@ header{
     width:70px;
     height:90px;
     margin-right:5px;
+    margin-top:6px;
 }
 
+.userWelcome{
+    margin-top:5px;
+}
 .userProfile{
     padding:10px;
     border:2px solid rgb(218,165,32);
