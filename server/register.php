@@ -1,6 +1,6 @@
 <?php
 
-require "conn.php";
+include("conn.php");
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
     {
@@ -69,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 						$errMessage="user already have an account.Please <a href='login.php'> Login </a> or change number";
 					}else{
 						$vCode = mt_rand(100000, 999999);
-						$sql="insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$rCode\",\"$vCode\",\"$status\",\"$bank_name\",\"$uniCode\",\"$account_holder\",\"$accNum\");";
+						$sql="insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$cellNo\",\"$vCode\",\"$status\",\"$bank_name\",\"$uniCode\",\"$account_holder\",\"$accNum\");";
 						if($conn->query($sql)){
 							$succMessage="Next step come"; 
 
@@ -89,5 +89,4 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         }
     }
 
-$conn->close();	
 ?>
