@@ -26,13 +26,8 @@
                      <?php echo @$errMessage;?>
                     <input class="form-control" type="password" name="password2" placeholder="Confirm Password"/>
 					<?php echo @$errMessage;?>
-<<<<<<< HEAD
-                    <input style="width:100%;" class="btn button-gold" type="submit" name="submit"value="Register" id="hideReg"/>
-
-=======
                     <input style="width:100%;" class="btn button-gold" type="submit" name="submit"value="Register"/>
 					<?php echo @$errMessage;?>
->>>>>>> 86cac67f50a8dd9d8e88f94eceb30fc3111a3474
                 </form>
 
 							
