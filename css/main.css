@@ -3,7 +3,7 @@ body {
     font-size:9pt;
 }
 
-ul {
+.sidebar-menu ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -33,6 +33,47 @@ li a:hover:not(.active) {
     text-decoration: none;
     padding-left:50px;
 }
+
+/* support */
+
+.support{
+    position: fixed;
+    padding: 10px;
+    right:30px;
+    bottom:0;
+    width:300px;
+    color:white;
+    background-color: #4CAF50;
+    border: 2px solid black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom:none;
+    font-weight: bolder;
+    z-index: 5;
+    text-align: center;
+}
+
+#send{
+    width:100%;
+}
+
+.support a{
+    color:white;
+}
+
+.support a:hover{
+    color:rgb(7, 76, 165);
+    text-decoration: none;
+}
+
+#form{
+    display: none;
+}
+
+
+/* support ends*/
+
+
 /*---------------------------Navigation------------------------------------*/
 /*header*/
 
@@ -47,6 +88,7 @@ header{
     width:100%;
     background: rgb(36, 35, 35);
     color:white;
+    z-index:1;
 }
 
 .leftHeader{
@@ -80,8 +122,6 @@ header{
     float: left;
     width:70px;
     height:90px;
-    margin-bottom:2px;
-    border:1px dotted black;
     margin-right:5px;
 }
 
@@ -94,10 +134,35 @@ header{
 /* side bar end*/
 
 
-/* main-content */
+/*---------------------- main-content ------------------------*/
 
 .main-content{
     margin-top:6%;
 }
 
-/* main-content ends*/
+/* Welcome content */
+
+
+.welcomeTitle{
+    background-color: rgb(17, 16, 16);
+    border-bottom:5px solid  rgb(25, 128, 25);
+    color:white;
+    padding:7px 10px;
+    box-shadow: 5px 5px 5px rgba(17, 16, 16, 0.356);
+}
+
+.welcomeContent{
+    padding:20px;
+    margin-top:-10px;
+}
+
+.list{
+margin-top:-35px;
+}
+
+.table{
+    margin-top: -47px;
+}
+/* Welcome content end */
+
+/*--------------------- main-content ends--------------------*/
