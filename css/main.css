@@ -99,21 +99,25 @@ header{
     left:0;
     margin-top:10px;
     margin-left: 10px;
-    position: absolute;
+    border:1px solid #000;
+    width:300px;
 }
 
 .rightHeader{
     top:0;
     right:0;
+<<<<<<< HEAD
     margin-top:15px;
+=======
+    margin-top:10px;
+>>>>>>> 7c2b70ee512b3a494f11c2a4982fb1ac71c490d0
     margin-right: 10px;
+    border:1px solid #000;
+    width:100px;
     float: right;
     position: absolute;
 }
 
-#namelogo{
-    width:30%;
-}
 
 
 /* end header */
@@ -177,6 +181,7 @@ margin-top:-35px;
 }
 
 
+<<<<<<< HEAD
 /*----------------------Registration Content ends--------------------*/
 
 /*-----------------------Button Gold --------------------------------*/
@@ -249,3 +254,6 @@ input.form-control{
   }
 
 /*-----------------switch button ends----------------*/
+=======
+/*----------------------Registration Content ends--------------------*/
+>>>>>>> 7c2b70ee512b3a494f11c2a4982fb1ac71c490d0
