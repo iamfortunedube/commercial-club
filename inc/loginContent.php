@@ -2,12 +2,12 @@
                     <div class="col-md-6">
                         <div class="welcomeWrapper">
                                 <div class="welcomeTitle">
-                                        <h6>Registration & Login</h6>
+                                        <h6>Login</h6>
                                 </div>
                             <form class="welcomeContent">
                                 <input class="form-control" type="text" name="cellNumber" placeholder="Phone Number"/>
                                 <input class="form-control" type="password" name="password" placeholder="Password"/>
-                                <a href="#">forgot password?</a>
+                                <a href="#" style="color: black; font-size:18px;" class="float-right">forgot password?</a>
                                 <input style="width:100%;" class="btn button-gold" type="submit" name="submit" value="Login"/>
                             </form>
                         </div>

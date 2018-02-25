@@ -10,7 +10,7 @@
                             <input class="form-control" type="text" name="fname" placeholder="Name"/>
                         </div>
                         <div class="col-md-6">
-                            <input class="form-control" type="text" name="sname" placeholder="Surame"/>
+                            <input class="form-control" type="text" name="sname" placeholder="Surname"/>
                         </div>  
                     </div>
                     <input class="form-control" type="text" name="cellNumber" placeholder="Phone Number"/>
