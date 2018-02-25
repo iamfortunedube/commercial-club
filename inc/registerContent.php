@@ -14,7 +14,7 @@
 
                         </div>
                         <div class="col-md-6">
-                            <input class="form-control" require type="text" name="sname" placeholder="Surame" value="<?php echo @$firstname;?>"/>
+                            <input class="form-control" require type="text" name="sname" placeholder="Surname" value="<?php echo @$firstname;?>"/>
                       
                             <?php echo "<span style='color:red'>".@$errSurname."</span>";?>
                         </div>  
@@ -31,9 +31,7 @@
 					<?php echo "<span style='color:red'>".@$errCpassword."</span>";?>
                     <input style="width:100%;" class="btn button-gold" require type="submit" name="submit"value="Register"/>
 					<?php echo "<span style='color:red'>".@$errMessage."</span>";?>
-                </form>
-
-							
+                </form>				
         </div>
     </div>
 	
