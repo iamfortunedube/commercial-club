@@ -11,10 +11,10 @@
                             </div>
                         </div>
                     </li>
-                    <li><a id="home" class="active" href="index.php">Home</a></li>
-                    <li><a id="login" href="login.php">Login</a></li>
-                    <li><a id="register" href="register.php">Register</a></li>
+                    <li><a id="home" class="active" href="index.php"> <i class="fas fa-home"></i> Home</a></li>
+                    <li><a id="login" href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                    <li><a id="register" href="register.php"><i class="fas fa-edit"></i> Register</a></li>
 
-                     <li style="position:fixed;bottom:0;"><img src="assets/logoCC.png" width="200" height="200" alt="logo"/></li>
+                     <li style="position:fixed;bottom:0;left:0;"><img src="assets/logoCC.png" width="200" height="200" alt="logo"/></li>
                 </ul>    
             </div>
