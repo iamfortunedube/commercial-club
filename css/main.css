@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-size:9pt;
+    font: 400 13.3333px Arial;
 }
 
 .sidebar-menu ul {

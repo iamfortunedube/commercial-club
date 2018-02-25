@@ -1,47 +1,35 @@
-<div class="row">   
+<div class="row">
     <div class="col-md-6">
-
-<?php include("server/register.php");?>
-    
+        <?php include("server/register.php");?>
+        
         <div class="welcomeWrapper">
                 <div class="welcomeTitle">
-                        <h6>Registration</h6>
+                    <h6>Registration</h6>
                 </div>
                 <form id="reg" class="welcomeContent" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
                     <div class="row">
                         <div class="col-md-6">
-                            <input class="form-control" require type="text" name="fname" placeholder="Name" value="<?php echo @$surname;?>" />
+                            <input class="form-control" require type="text" name="fname" placeholder="Name" value="<?php echo @$firstname;?>" />
                             <?php echo "<span style='color:red'>".@$errName."</span>";?>
 
                         </div>
                         <div class="col-md-6">
-                            <input class="form-control" require type="text" name="sname" placeholder="Surname" value="<?php echo @$firstname;?>"/>
+                            <input class="form-control" require type="text" name="sname" placeholder="Surname" value="<?php echo @$surname;?>"/>
                       
-                        <?php echo "<span style='color:red'>".@$errSurname."</span>";?>
+                            <?php echo "<span style='color:red'>".@$errSurname."</span>";?>
                         </div>  
                     </div>
                     <input class="form-control" require type="text" name="cellNumber" value="<?php echo @$cellNo;?>" placeholder="Phone Number"/>
                     <?php echo "<span style='color:red'>".@$errCellNumber."</span>";?>
                     <input class="form-control" require type="text" name="cellNumber2" value="<?php echo @$cellNo2;?>" placeholder="Confirm Phone Number"/>
                     <?php echo "<span style='color:red'>".@$errCnumber."</span>";?>
-                    
-
-                    <input class="form-control" require type="password" name="password" value="<?php echo @$password;?>" placeholder="Password"/>
+                    <input class="form-control" require type="password" name="password" placeholder="Password"/>
                      <?php echo "<span style='color:red'>".@$errPassword."</span>";?>
-                    <input class="form-control" require type="password" name="password2" value="<?php echo @$password2;?>" placeholder="Confirm Password"/>
-                    <?php echo "<span style='color:red'>".@$errCpassword."</span>";?>
-                    
-                    <div class="form-control" style="border:none">
-                    <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator" style="background-color:#ffc107;outline:none"></span>
-                        <span class="custom-control-description">Tick to accept the Commercial Club <a href="#">T&C </a> </span>
-                    </label>
-                    </div>
-
-
+                    <input class="form-control" require type="password" name="password2" placeholder="Confirm Password"/>
+					<?php echo "<span style='color:red'>".@$errCpassword."</span>";?>
                     <input style="width:100%;" class="btn button-gold" require type="submit" name="submit"value="Register"/>
-					<?php echo "<span style='color:red'>".@$errMessage."</span>";?>
+                    <?php echo "<span style='color:red'>".@$errMessage."</span>";?>
+                    <?php echo "<span style='color:green'>".@$succMessage."</span>";?>
                 </form>				
         </div>
     </div>
