@@ -1,12 +1,13 @@
 body {
     margin: 0;
+    font-size:9pt;
 }
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 25%;
+    width: 15%;
     background-color: #f1f1f1;
     position: fixed;
     height: 100%;
@@ -23,9 +24,80 @@ li a {
 li a.active {
     background-color: #4CAF50;
     color: white;
+    text-decoration: none;
 }
 
 li a:hover:not(.active) {
     background-color: #555;
     color: white;
+    text-decoration: none;
+    padding-left:50px;
 }
+/*---------------------------Navigation------------------------------------*/
+/*header*/
+
+header{
+    height: 70px;
+    border-bottom: 7px solid rgb(25, 128, 25);
+    text-align: center;
+    position: fixed;
+    margin-bottom:15%;
+    top:0;
+    left:0;
+    width:100%;
+    background: rgb(36, 35, 35);
+    color:white;
+}
+
+.leftHeader{
+    top:0;
+    left:0;
+    margin-top:10px;
+    margin-left: 10px;
+    border:1px solid #000;
+    width:300px;
+}
+
+.rightHeader{
+    top:0;
+    right:0;
+    margin-top:10px;
+    margin-right: 10px;
+    border:1px solid #000;
+    width:100px;
+    float: right;
+    position: absolute;
+}
+
+
+
+/* end header */
+/*---------------------------------------------------------------*/
+
+/* side bar */
+
+.imageLeft{
+    float: left;
+    width:70px;
+    height:90px;
+    margin-bottom:2px;
+    border:1px dotted black;
+    margin-right:5px;
+}
+
+.userProfile{
+    padding:10px;
+    border:2px solid greenyellow;
+    margin-bottom:5px;
+}
+
+/* side bar end*/
+
+
+/* main-content */
+
+.main-content{
+    margin-top:6%;
+}
+
+/* main-content ends*/
