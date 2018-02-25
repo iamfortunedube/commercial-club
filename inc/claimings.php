@@ -6,7 +6,7 @@
                 </div>
                 <div>
                     <form class="form-control">
-                        Claim amount
+                        Your donation information
                     </form>
                 </div>
         </div>
