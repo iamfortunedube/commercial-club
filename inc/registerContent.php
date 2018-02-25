@@ -17,7 +17,7 @@
                     <input class="form-control" type="text" name="cellNumber" placeholder="Confirm Phone Number"/>
                     <input class="form-control" type="password" name="password" placeholder="Password"/>
                     <input class="form-control" type="password" name="password" placeholder="Confirm Password"/>
-                    <input style="width:100%;" class="btn btn-success" type="submit" name="submit"value="Register"/>
+                    <input style="width:100%;" class="btn button-gold" type="submit" name="submit"value="Register"/>
                 </form>
         </div>
     </div>

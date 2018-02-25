@@ -1,7 +1,7 @@
               <!--first row starts-->
               <div class="welcomeWrapper">
                     <div class="welcomeTitle">
-                            <h6>Weclome to <span class="">Commercial<span style="color:green;font-size:15pt;"> Club</span></span></h6>
+                            <h6>Weclome to <span class="">Commercial<span style="color:rgb(218,165,32);font-size:15pt;"> Club</span></span></h6>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -62,7 +62,7 @@
                     <div class="col-md-12">
                             <div class="welcomeWrapper">
                                     <div class="welcomeTitle">
-                                            <h6><span style="color:green;font-size:15pt;">Table</span></h6>
+                                            <h6><span style="color:rgb(218,165,32);font-size:15pt;">Table</span></h6>
                                     </div>
                                     <p class="welcomeContent">
                                             <table class="table table-hover table-dark">

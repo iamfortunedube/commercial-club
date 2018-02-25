@@ -175,3 +175,10 @@ margin-top:-35px;
 
 
 /*----------------------Registration Content ends--------------------*/
+
+/*-----------------------Button Gold --------------------------------*/
+.button-gold{
+    background: #000;
+    color: #f1f1f1;
+    border: solid 2px rgb(218,165,32);
+}
