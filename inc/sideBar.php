@@ -16,6 +16,7 @@
         <li><a id="register" href="register.php"><i class="fas fa-edit"></i> Register</a></li>
         <li><a id="donations" href="donate.php"><i class="fas fa-money-bill-alt"></i> Donations</a></li>
         <li><a id="claims" href="claims.php"><i class="fas fa-credit-card"></i> Claims</a></li>
+        <li><a id="sign-out" href="#"><i class="fas fa-sign-out-alt"></i> Sign out</a></li>
         <li style="position:fixed;bottom:0;left:0;"><img src="assets/logoCC.png" width="200" height="200" alt="logo"/></li>
     </ul>    
 </div>
