@@ -6,17 +6,18 @@ body {
 .sidebar-menu ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 5px;
     width: 15%;
-    background-color: #f1f1f1;
     position: fixed;
     height: 100%;
     overflow: auto;
+    border-right: 3px solid rgb(218,165,32);
+
 }
 
 li a {
     display: block;
-    color: #000;
+    color: black;
     padding: 8px 16px;
     text-decoration: none;
 }
@@ -42,8 +43,7 @@ li a:hover:not(.active) {
     right:30px;
     bottom:0;
     width:300px;
-    color:white;
-    background-color: rgb(218,165,32);
+    color:black;
     border: 2px solid black;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -51,6 +51,7 @@ li a:hover:not(.active) {
     font-weight: bolder;
     z-index: 5;
     text-align: center;
+    background-color: rgb(218,165,32);
 }
 
 #send{
@@ -58,7 +59,9 @@ li a:hover:not(.active) {
 }
 
 .support a{
-    color:white;
+    color:black;
+    font-weight: bolder;
+    width:100%;
 }
 
 .support a:hover{
@@ -94,15 +97,23 @@ header{
 .leftHeader{
     top:0;
     left:0;
-    margin-top:10px;
+    margin-top:5px;
     margin-left: 10px;
+<<<<<<< HEAD
     position: absolute;
+=======
+    position:fixed;
+>>>>>>> 86cac67f50a8dd9d8e88f94eceb30fc3111a3474
 }
 
 .rightHeader{
     top:0;
     right:0;
+<<<<<<< HEAD
     margin-top:25px;
+=======
+    margin-top:15px;
+>>>>>>> 86cac67f50a8dd9d8e88f94eceb30fc3111a3474
     margin-right: 10px;
     float: right;
     position: absolute;
@@ -111,7 +122,6 @@ header{
 #namelogo{
     width:30%;
 }
-
 
 /* end header */
 /*---------------------------------------------------------------*/
@@ -185,4 +195,76 @@ margin-top:-35px;
     background: #000;
     color: #f1f1f1;
     border: solid 2px rgb(218,165,32);
+<<<<<<< HEAD
 }
+=======
+}
+
+input.form-control{
+    background: transparent;
+    border: 2px solid rgb(218,165,32);
+}
+
+/*-----------------switch button  start---------------*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input {display:none;}
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(87, 65, 10);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: rgb(233, 193, 93);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color:rgb(218,165,32);
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px rgb(218,165,32);
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+/*-----------------switch button ends----------------*/
+
+#namelogo{
+    width:30%;
+}
+>>>>>>> 86cac67f50a8dd9d8e88f94eceb30fc3111a3474
