@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                         $_SESSION["u_id"] = $userDetails["id"];
                         $_SESSION["u_fname"] = $userDetails["fname"];
                         $_SESSION["u_lname"] = $userDetails["lname"];
-                        $_SESSION["u_pnumber"] = $userDetails["p_number"];
+                        $_SESSION["u_username"] = $userDetails["p_number"];
                         $_SESSION["u_bankName"] = $userDetails["bank_name"];
                         $_SESSION["u_uniCode"] = $userDetails["universal_code"];
                         $_SESSION["u_accHolder"] = $userDetails["account_holder"];
