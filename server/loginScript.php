@@ -11,15 +11,14 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 			
 			  if(empty($_POST["cellNumber"])){
 
-				  $errCellNumber="Enter your cell Number *";  
+				 $errCellNumber="Enter your cell Number *";  
 
 			  }
 			  if(empty($_POST["password"])){
 
 				  $errPassword="Enter your password *";  
+              }
 
-			  }
-			 
 			  if(empty($_POST["cellNumber"]) || empty($_POST["password"])){
 
 				$errMessage = "Please make sure there are no empty feilds";

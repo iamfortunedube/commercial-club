@@ -42,6 +42,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				$errRefferal="Enter your Refferal Number *";  
 				}
 
+				if(strlen($_POST['password'] <7)){
+					$errPassword="Password legth is short (must be 8 and above charecters) *";  
+			} 
+
 			//	if(empty($_POST["agreeCheckb"])){
 				  
 				//	$errAgree="You must agree terms and conditonsa first *";  
