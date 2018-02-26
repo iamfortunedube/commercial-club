@@ -53,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                         $_SESSION["u_accHolder"] = $userDetails["account_holder"];
                         $_SESSION["u_accNumber"] = $userDetails["account_number"];
 
-                        echo "<script>window.location.href = './claims.php';alert(".$_SESSION['u_id'].")</script>";
+                        echo "<script>window.location.href = './claims.php';</script>";
 				    }
 			  }
 

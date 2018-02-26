@@ -11,7 +11,7 @@
                                  <?php echo "<span style='color:red'>".@$errCellNumber."</span>";?>
                                 <input class="form-control" type="password" name="password" placeholder="Password" />
                                  <?php echo "<span style='color:red'>".@$errPassword."</span>";?>
-                                <a href="forgotP.php" style="color: black; font-size:18px;" class="float-right">forgot password?</a>
+                                <a href="forgotP.php" style="color: black; font-size:18px;padding:10px;" class="float-right">forgot password?</a>
                                 <input style="width:100%;" class="btn button-gold" type="submit" name="submit" value="Login"/>
                                 <?php echo "<span style='color:red'>".@$errMessage."</span>";?>
                                  <?php echo "<span style='color:green'>".@$succMessage."</span>";?>

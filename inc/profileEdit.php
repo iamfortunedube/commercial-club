@@ -8,28 +8,30 @@
                 <form id="reg" class="welcomeContent" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
                     <div class="row">
                         <div class="col-md-6">
-                            <input class="form-control" require type="text" name="fname" placeholder="Name" value="<?php echo @$surname;?>" disabled/>
-                            <?php echo "<span style='color:red'>".@$errName."</span>";?>
-
+                            <label>Firstname</label>
+                            <input class="form-control" require type="text" name="fname" placeholder="Name" value="<?php echo @$_SESSION['u_fname'];?>" disabled/>
                         </div>
                         <div class="col-md-6">
-                            <input class="form-control" require type="text" name="sname" placeholder="Surname" value="<?php echo @$firstname;?>" disabled/>
-                      
-                            <?php echo "<span style='color:red'>".@$errSurname."</span>";?>
+                            <label>Lastname</label>
+                            <input class="form-control" require type="text" name="sname" placeholder="Surname" value="<?php echo @$_SESSION['u_lname'];?>" disabled/>
                         </div>  
                     </div>
-                    <input class="form-control" require type="text" name="cellNumber" value="<?php echo @$cellNo;?>" placeholder="Phone Number" disabled/>
-                    <?php echo "<span style='color:red'>".@$errCellNumber."</span>";?>
-                    <input class="form-control" require type="text" name="cellNumber2" value="<?php echo @$cellNo2;?>" placeholder="Confirm Phone Number" disabled/>
-                    <?php echo "<span style='color:red'>".@$errCnumber."</span>";?>
+                    <div class="form-group">
+                        <input class="form-control" require type="text" name="cellNumber" value="<?php echo @$_SESSION['u_username'];?>" disabled/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" require type="text" name="backName" value="<?php echo @$_SESSION['u_bankName'];?>" disabled/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" require type="text" name="uniCode" value="<?php echo @$_SESSION['u_uniCode'];?>" disabled/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" require type="text" name="accHolder" value="<?php echo @$_SESSION['u_accHolder'];?>" disabled/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" require type="text" name="accNumber" value="<?php echo @$_SESSION['u_accNumber'];?>" disabled/>
+					</div>
                     
-
-                    <input class="form-control" require type="password" name="password" value="<?php echo @$password;?>" placeholder="Password" disabled/>
-                     <?php echo "<span style='color:red'>".@$errPassword."</span>";?>
-                    <input class="form-control" require type="password" name="password2" value="<?php echo @$password2;?>" placeholder="Confirm Password" disabled/>
-					<?php echo "<span style='color:red'>".@$errCpassword."</span>";?>
-                    <input style="width:100%;" class="btn button-gold" require type="submit" name="submit" value="Save"/>
-					<?php echo "<span style='color:red'>".@$errMessage."</span>";?>
                 </form>				
         </div>
     </div>
