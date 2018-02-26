@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				}
 
 				if(strlen($_POST['password'] <7)){
-					$errPassword="Password legth is short (must be 8 and above charecters) *";  
+					$errPassword="Password legth is short (must be 8 or more charecters but less than 16) *";  
 			} 
 
 			//	if(empty($_POST["agreeCheckb"])){

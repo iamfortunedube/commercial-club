@@ -23,9 +23,9 @@
                     <?php echo "<span style='color:red'>".@$errCellNumber."</span>";?>
                     <input class="form-control" require type="text" name="cellNumber2" value="<?php echo @$cellNo2;?>" placeholder="Confirm Phone Number"/>
                     <?php echo "<span style='color:red'>".@$errCnumber."</span>";?>
-                    <input class="form-control" require type="password" name="password" placeholder="Password"/>
+                    <input class="form-control" require type="password" name="password" placeholder="Password -more than 8 charecters" maxlength="15"/>
                      <?php echo "<span style='color:red'>".@$errPassword."</span>";?>
-                    <input class="form-control" require type="password" name="password2" placeholder="Confirm Password"/>
+                    <input class="form-control" require type="password" name="password2" placeholder="Confirm Password" maxlength="15"/>
                     <?php echo "<span style='color:red'>".@$errCpassword."</span>";?>
                     
                     <input class="form-control" require type="text" name="refferalNo" placeholder="Refferal Number"/>
