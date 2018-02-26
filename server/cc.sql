@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 26, 2018 at 05:18 PM
+-- Generation Time: Feb 26, 2018 at 06:47 PM
 -- Server version: 5.1.53
 -- PHP Version: 5.3.4
 
@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS `donation` (
   `cellDonator` varchar(13) NOT NULL COMMENT 'cell number of donator',
   `amount` decimal(65,0) NOT NULL,
   `donDate` date NOT NULL,
+  `status` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -134,11 +135,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `account_holder` varchar(100) NOT NULL,
   `account_number` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `p_number`, `password`, `ref_code`, `vCode`, `status`, `bank_name`, `universal_code`, `account_holder`, `account_number`) VALUES
-(1, 'khaye', 'kunene', 'admin', 'admin', 'admin', '234567', 1, 'CAPITEC BANK', 470010, 'Khayelihle', '1425364738');
+(1, 'khaye', 'kunene', 'admin', 'admin', 'admin', '234567', 1, 'CAPITEC BANK', 470010, 'Khayelihle', '1425364738'),
+(4, 'a', 'a', 'a', 'c', 'a', '190506', 0, '', 0, '', '');
