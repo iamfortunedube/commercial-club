@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 26, 2018 at 04:11 PM
+-- Generation Time: Feb 26, 2018 at 05:18 PM
 -- Server version: 5.1.53
 -- PHP Version: 5.3.4
 
@@ -59,11 +59,8 @@ INSERT INTO `bank` (`id`, `bank_name`, `universal_code`, `key`) VALUES
 CREATE TABLE IF NOT EXISTS `donation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cellDonator` varchar(13) NOT NULL COMMENT 'cell number of donator',
-  `cellReciever` varchar(13) NOT NULL COMMENT 'cell number of reciever',
   `amount` decimal(65,0) NOT NULL,
-  `status` varchar(25) NOT NULL COMMENT 'claimed or unclaimed',
   `donDate` date NOT NULL,
-  `conformationDate` date NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -137,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `account_holder` varchar(100) NOT NULL,
   `account_number` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `users`
