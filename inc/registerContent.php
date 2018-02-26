@@ -29,8 +29,19 @@
                     <?php echo "<span style='color:red'>".@$errCpassword."</span>";?>
                     
                     <input class="form-control" require type="text" name="refferalNo" placeholder="Refferal Number"/>
-					<?php echo "<span style='color:red'>".@$errRefferal."</span>";?>
-
+					<?php echo "<span style='color:red'>".@$errRefferal."</span>";?></br>
+                    
+                    <div class="form-group" class="form-control">
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required <style="background-color: rgb(218,165,32);";>
+                <label class="form-check-label" for="invalidCheck">
+                     Agree to terms and conditions
+                  </label>
+                   <div class="invalid-feedback">
+                    You must agree before submitting.
+              </div>
+             </div>
+             </div>
 
                     <input style="width:100%;" class="btn button-gold" require type="submit" name="submit"value="Register"/>
                     <?php echo "<span style='color:red'>".@$errMessage."</span>";?>
