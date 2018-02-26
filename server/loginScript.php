@@ -7,7 +7,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 		
         if(isset($_POST["submit"]))
         {
-			     
+            @$cellNo=$_POST["cellNumber"];
+            @$password=$_POST["password"];
 			
 			  if(empty($_POST["cellNumber"])){
 
