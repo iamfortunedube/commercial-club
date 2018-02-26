@@ -7,7 +7,7 @@
 
                                 <?php include("server/loginScript.php");?>
                             <form id="login" class="welcomeContent" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
-                                <input class="form-control" type="text" name="cellNumber" placeholder="Phone Number" value="<?php echo @$cellNo;?>"/>
+                                <input id="username" class="form-control" type="text" name="cellNumber" placeholder="Phone Number" value="<?php echo @$cellNo;?>"/>
                                  <?php echo "<span style='color:red'>".@$errCellNumber."</span>";?>
                                 <input class="form-control" type="password" name="password" placeholder="Password" />
                                  <?php echo "<span style='color:red'>".@$errPassword."</span>";?>

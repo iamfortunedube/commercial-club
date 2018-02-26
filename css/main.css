@@ -62,8 +62,9 @@ label{
     vertical-align: text-top;
     width: 20px;
     height: 20px;
-    background: rgba(0, 0, 0, 0.404);
+    background: rgba(255, 255, 255, 0);
     border-radius: 50%; 
+    border:3px solid rgb(218,165,32);
   }
   .styled-checkbox:hover + label:before {
     background: rgb(218,165,32);
@@ -157,7 +158,7 @@ header{
     width:100%;
     background: rgb(36, 35, 35);
     color:white;
-    z-index:1;
+    z-index:5;
 }
 
 .leftHeader{
