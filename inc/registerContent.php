@@ -33,7 +33,7 @@
                     
                     <div class="form-group" class="form-control">
                     <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required <style="background-color: rgb(218,165,32);";>
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" name="agreeCheckb" required <style="background-color: rgb(218,165,32);";>
                 <label class="form-check-label" for="invalidCheck">
                      Agree to terms and conditions
                   </label>
@@ -42,7 +42,8 @@
               </div>
              </div>
              </div>
-
+            	<?php echo "<span style='color:red'>".@$errAgree."</span>";?></br>
+                    
                     <input style="width:100%;" class="btn button-gold" require type="submit" name="submit"value="Register"/>
                     <?php echo "<span style='color:red'>".@$errMessage."</span>";?>
                     <?php echo "<span style='color:green'>".@$succMessage."</span>";?>
