@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 26, 2018 at 03:36 PM
+-- Generation Time: Feb 26, 2018 at 03:46 PM
 -- Server version: 5.1.53
 -- PHP Version: 5.3.4
 
@@ -137,13 +137,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `account_holder` varchar(100) NOT NULL,
   `account_number` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `p_number`, `password`, `ref_code`, `vCode`, `status`, `bank_name`, `universal_code`, `account_holder`, `account_number`) VALUES
-(1, 'kk', 'll', '11', '22', 12, '23', 1, 'fnb', 345, 'kk', 123),
-(19, 'w', 'w', '33', '33', 0, '167467', 0, '', 0, '', 0),
-(20, 'w', 'w', 'w', 'w', 0, '827793', 0, '', 0, '', 0);
+(1, 'admin', 'admin', '0710731712', '12345', 710731712, '234567', 1, 'CAPITEC BANK', 470010, 'Khayelihle', 1425364738);
