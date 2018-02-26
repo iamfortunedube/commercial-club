@@ -40,7 +40,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                     
                     }else{
                         @$userDetails = $result->fetch_assoc();
-<<<<<<< HEAD
                         if($userDetails["password"] == $password){
                             $errMessage=$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
                             $succMessage="SuccessFul";
@@ -60,21 +59,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                         }
                        
                         
-=======
-                        $errMessage=$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
-                        $succMessage="SuccessFul";
-                    
-                        $_SESSION["u_id"] = $userDetails["id"];
-                        $_SESSION["u_fname"] = $userDetails["fname"];
-                        $_SESSION["u_lname"] = $userDetails["lname"];
-                        $_SESSION["u_username"] = $userDetails["p_number"];
-                        $_SESSION["u_bankName"] = $userDetails["bank_name"];
-                        $_SESSION["u_uniCode"] = $userDetails["universal_code"];
-                        $_SESSION["u_accHolder"] = $userDetails["account_holder"];
-                        $_SESSION["u_accNumber"] = $userDetails["account_number"];
-
-                        echo "<script>window.location.href = './claims.php';</script>";
->>>>>>> b1c0a5dab32e5565d0e625d765fed7be356df594
 				    }
 			  }
 
