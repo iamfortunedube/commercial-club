@@ -31,19 +31,11 @@
                     <input class="form-control" require type="text" name="refferalNo" placeholder="Refferal Number"/>
 					<?php echo "<span style='color:red'>".@$errRefferal."</span>";?></br>
                     
-                    <div class="form-group" class="form-control">
-                    <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" name="agreeCheckb" required <style="background-color: rgb(218,165,32);";>
-                <label class="form-check-label" for="invalidCheck">
-                     Agree to terms and conditions
-                  </label>
-                   <div class="invalid-feedback">
-                    You must agree before submitting.
-              </div>
-             </div>
-             </div>
+                    <span class="form-group">
+                        <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
+                        <label for="styled-checkbox-1">Tick to agree to CC Ts & Cs</label>
+                    </span>
             	<?php echo "<span style='color:red'>".@$errAgree."</span>";?></br>
-                    
                     <input style="width:100%;" class="btn button-gold" require type="submit" name="submit"value="Register"/>
                     <?php echo "<span style='color:red'>".@$errMessage."</span>";?>
                     <?php echo "<span style='color:green'>".@$succMessage."</span>";?>

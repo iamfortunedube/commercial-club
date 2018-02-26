@@ -37,6 +37,70 @@ li a:hover:not(.active) {
     transition: all 600ms ease-in-out; 
 }
 
+label{
+    font-size:12pt;
+    font-weight: bolder;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.301);
+}
+
+/*------------------------check-box --------------------------*/
+
+
+.styled-checkbox {
+    position: absolute;
+    opacity: 0;
+  }
+  .styled-checkbox + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+  }
+  .styled-checkbox + label:before {
+    content: "";
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.404);
+    border-radius: 50%; 
+  }
+  .styled-checkbox:hover + label:before {
+    background: rgb(218,165,32);
+  }
+  .styled-checkbox:focus + label:before {
+    -webkit-box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+  }
+  .styled-checkbox:checked + label:before {
+    background: rgb(218,165,32);
+  }
+  .styled-checkbox:disabled + label {
+    color: #000000;
+    cursor: auto;
+  }
+  .styled-checkbox:disabled + label:before {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    background: rgb(0, 0, 0);
+  }
+  .styled-checkbox:checked + label:after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    background: rgb(255, 255, 255);
+    width: 2px;
+    height: 2px;
+    -webkit-box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+            box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  
+  
+/*------------------------ check-box end ---------------------*/
+
 /* support */
 
 .support{
