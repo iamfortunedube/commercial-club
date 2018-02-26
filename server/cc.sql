@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 26, 2018 at 03:46 PM
+-- Generation Time: Feb 26, 2018 at 04:11 PM
 -- Server version: 5.1.53
 -- PHP Version: 5.3.4
 
@@ -28,7 +28,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 CREATE TABLE IF NOT EXISTS `bank` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bank_name` varchar(100) NOT NULL,
-  `universal_code` int(11) NOT NULL,
+  `universal_code` varchar(11) NOT NULL,
   `key` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
@@ -38,17 +38,17 @@ CREATE TABLE IF NOT EXISTS `bank` (
 --
 
 INSERT INTO `bank` (`id`, `bank_name`, `universal_code`, `key`) VALUES
-(1, 'ABSA BANK', 632, 'ABS'),
-(2, 'BANK OF ATHENS', 410, 'BOA'),
-(3, 'ABSA BANK', 632005, 'ABS'),
-(4, 'BANK OF ATHENS', 410506, 'BOA'),
-(5, 'BIDVEST BANK', 462005, 'BID'),
-(6, 'CAPITEC BANK', 470010, 'CAP'),
-(7, 'FIRST NATIONAL BANK', 250655, 'FNB'),
-(8, 'INVESTEC', 580105, 'INV'),
-(9, 'NEDBANK', 198765, 'NED'),
-(10, 'SA POST BANK (POST OFFICE)', 460005, 'SAP'),
-(11, 'STANDARD BANK', 51001, 'STA');
+(1, 'ABSA BANK', '632005', 'ABS'),
+(2, 'BANK OF ATHENS', '410506', 'BOA'),
+(3, 'ABSA BANK', '632005', 'ABS'),
+(4, 'BANK OF ATHENS', '410506', 'BOA'),
+(5, 'BIDVEST BANK', '462005', 'BID'),
+(6, 'CAPITEC BANK', '470010', 'CAP'),
+(7, 'FIRST NATIONAL BANK', '250655', 'FNB'),
+(8, 'INVESTEC', '580105', 'INV'),
+(9, 'NEDBANK', '198765', 'NED'),
+(10, 'SA POST BANK (POST OFFICE)', '460005', 'SAP'),
+(11, 'STANDARD BANK', '051001', 'STA');
 
 -- --------------------------------------------------------
 
@@ -129,13 +129,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lname` varchar(255) NOT NULL,
   `p_number` varchar(15) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `ref_code` int(11) NOT NULL,
+  `ref_code` varchar(11) NOT NULL,
   `vCode` varchar(20) NOT NULL,
   `status` int(11) NOT NULL,
   `bank_name` varchar(100) NOT NULL,
   `universal_code` int(11) NOT NULL,
   `account_holder` varchar(100) NOT NULL,
-  `account_number` int(11) NOT NULL,
+  `account_number` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -144,4 +144,4 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `p_number`, `password`, `ref_code`, `vCode`, `status`, `bank_name`, `universal_code`, `account_holder`, `account_number`) VALUES
-(1, 'admin', 'admin', '0710731712', '12345', 710731712, '234567', 1, 'CAPITEC BANK', 470010, 'Khayelihle', 1425364738);
+(1, 'khaye', 'kunene', 'admin', 'admin', 'admin', '234567', 1, 'CAPITEC BANK', 470010, 'Khayelihle', '1425364738');
