@@ -39,21 +39,26 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 						$errMessage="Phone number was not found.Please check your number or <a href='register.php'> Register </a> to create account";
                     
                     }else{
-
                         @$userDetails = $result->fetch_assoc();
-                        $errMessage=$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
-                        $succMessage="SuccessFul";
-                    
-                        $_SESSION["u_id"] = $userDetails["id"];
-                        $_SESSION["u_fname"] = $userDetails["fname"];
-                        $_SESSION["u_lname"] = $userDetails["lname"];
-                        $_SESSION["u_pnumber"] = $userDetails["p_number"];
-                        $_SESSION["u_bankName"] = $userDetails["bank_name"];
-                        $_SESSION["u_uniCode"] = $userDetails["universal_code"];
-                        $_SESSION["u_accHolder"] = $userDetails["account_holder"];
-                        $_SESSION["u_accNumber"] = $userDetails["account_number"];
-
-                        echo "<script>window.location.href = './claims.php';</script>";
+                        if($userDetails["password"] == $password){
+                            $errMessage=$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
+                            $succMessage="SuccessFul";
+                        
+                            $_SESSION["u_id"] = $userDetails["id"];
+                            $_SESSION["u_fname"] = $userDetails["fname"];
+                            $_SESSION["u_lname"] = $userDetails["lname"];
+                            $_SESSION["u_username"] = $userDetails["p_number"];
+                            $_SESSION["u_bankName"] = $userDetails["bank_name"];
+                            $_SESSION["u_uniCode"] = $userDetails["universal_code"];
+                            $_SESSION["u_accHolder"] = $userDetails["account_holder"];
+                            $_SESSION["u_accNumber"] = $userDetails["account_number"];
+    
+                            echo "<script>window.location.href = './claims.php';</script>";
+                        }else{
+                            $errMessage= "Password invalid";
+                        }
+                       
+                        
 				    }
 			  }
 
