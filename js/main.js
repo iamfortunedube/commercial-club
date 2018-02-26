@@ -13,5 +13,19 @@ $(document).ready(function() {
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
             e.preventDefault();
         }
+
+        $("#show").click(function(){
+            $("#form").slideToggle();
+        });
+
+        $('#switch').click(function(){
+            if(document.body.style.background == "black"){
+                document.body.style.background = "white";
+                document.body.style.color = "black";
+            }else{
+                document.body.style.background = "black";
+            }
+
+        });
     });
 });

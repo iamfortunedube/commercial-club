@@ -8,7 +8,7 @@
         </center>
         <div class="rightHeader" hidden>
             Light
-            <label class="switch" onclick="switch()">
+            <label class="switch" id="switch" onclick="switch()">
                 <input type="checkbox" >
                 <span class="slider round"></span>
             </label>

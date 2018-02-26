@@ -22,10 +22,19 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				  $errCellNumber="Enter your cell Number *";  
 
 			  }
+			  if(empty($_POST["cellNumber2"])){
+
+				 $errCnumber="Re-Enter your cell Number *";  
+
+			  }
 			  if(empty($_POST["password"])){
 
 				  $errPassword="Enter your password *";  
 
+			  }
+			  if(empty($_POST["password2"])){
+				  
+				$errCpassword="Re-Enter your password *";  
 			  }
 
 			  if(empty($_POST["refferalNo"])){
@@ -33,16 +42,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				$errRefferal="Enter your Refferal Number *";  
 				}
 
-				if(strlen($_POST['password'] <7)){
-					$errPassword="Password legth is short (must be 8 or more charecters but less than 16) *";  
-			} 
-
 			//	if(empty($_POST["agreeCheckb"])){
 				  
 				//	$errAgree="You must agree terms and conditonsa first *";  
 				//	}
 			 
-			  if(empty($_POST["sname"]) || empty($_POST["fname"]) && empty($_POST["cellNumber"]) || empty($_POST["password"])){
+			  if(empty($_POST["sname"]) || empty($_POST["fname"]) && empty($_POST["cellNumber"]) && empty($_POST["cellNumber2"]) || empty($_POST["password"]) || empty($_POST["password2"])){
 
 				$errMessage = "Please make sure there are no empty feilds";
 
@@ -51,10 +56,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 					@$surname=$_POST["sname"];
 					@$firstname=$_POST["fname"];    
 					//$vCode=$_POST["vCode"];
-					@$cellNo = $_POST["cellNumber"];
-					@$cellNo2 = @$cellNo;
-					@$password = $_POST["password"];
-					@$password2 = @$password;
+					@$cellNo=$_POST["cellNumber"];
+					@$cellNo2=$_POST["cellNumber2"];
+					@$password=$_POST["password"];
+					@$password2=$_POST["password2"];
 		
 					if($cellNo!=$cellNo2)
 					{
