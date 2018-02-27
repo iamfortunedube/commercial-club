@@ -11,6 +11,7 @@
                         <input type="button" class="btn button-gold" value="Donate">
                     </form>
                 </div>
+                
         </div>
     </div>
     <div class="col-md-6">
