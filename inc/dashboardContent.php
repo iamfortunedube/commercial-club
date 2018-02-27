@@ -4,52 +4,10 @@
                 <div class="welcomeTitle">
                     <h6>Make Donation</h6>
                 </div>
-                <div>
-                    <?php
-                        @$dAmount = "XXX";
-                        if($_SERVER["REQUEST_METHOD"]=="POST")
-                        {
-                            
-                            if(isset($_POST["submit"]))
-                            {   @$errDonation = "";
-
-                                @$dAmount = @$_POST["donateAmount"];
-                                    @$date1= date("Y-m-d");
-                                    @$date2=date("Y-m-d", time() + 24 * 60 * 60);
-                                    @$diff= @$date1 - @$date2;
-                                    @$newDates = $diff;
-
-                                    $str1 = @$dAmount;
-                                    $lengthh = strlen($str1); 
-                                    echo "<br>";
-                                    $lastDigit = substr($str1, $lengthh-1,$lengthh);
-                                    $newNumber = substr($str1, 0,$lengthh-1);
-
-                                    $int = (int)@$dAmount;
-                                    $lastDigitInt = (int)$lastDigit;
-
-                                    $ready = true;
-
-                                    if($int > 10000 || $int < 500){
-                                        @$errDonation = "The required donation is between R500 - R10000";
-                                        $ready = false;
-                                    }else
-                                    if($lastDigitInt > 0){
-                                        @$errDonation = "Kindly round off the amount to the nearest 10s e.g (R". @$newNumber."0)";
-                                        $ready = false;
-                                    }
-                                    
-                                    if($ready)
-                                    {
-                                        @$_SESSION['don'] = @$_POST["donateAmount"];
-                                    }        
-
-                            }
-                        }
-
-                           // "insert into donation values('','".$_SESSION['u_username']."','".$dAmount."','".$cDate."',	xDate	status)";
-                               
-                    ?>
+                <div>  
+                
+                
+                <?php include("server/donateScript.php");?>
                     <form class="form-control" method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
                        
                     <?php if(!isset($_SESSION['don'])){ echo '
@@ -90,12 +48,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                    <?php
-                    
-                    
-                    
-                    ?>
                         <tr>
                         <th scope="row">1</th>
                         <td>R1500</td>
@@ -131,33 +83,104 @@
                     <table class="table table-hover table-dark">
                         <thead>
                             <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Expected Amount</th>
-                            <th scope="col">Timer</th>
-                            <th scope="col">Status</th>
+                                <th scope="col">Account Holder</th>
+                                <th scope="col">Bank & Branch Code</th>
+                                <th scope="col">Account Number</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">CellNo</th>
+                                <th scope="col">Timer</th>
+                                <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <th scope="row">Jacob</th>
+                            <td>FNB 456879</td>
+                            <td>65161645</td>
+                            <td>R10 000</td>
+                            <td>0123456789</td>
+                            <td>24 hours</td>
+                            <td><input type="button" class="btn button-sm-gold" value="Claim"></td>
                             </tr>
                             <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
+                            <th scope="row">Cyrill</th>
+                            <td>CAPITEC BANK 470010</td>
+                            <td>1896189</td>
+                            <td>R5000</td>
+                            <td>0896849841</td>
+                            <td>10 hours</td>
+                            <td><input type="button" class="btn button-sm-gold" value="Claim"></td>
                             </tr>
                             <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
+                            <th scope="row">Bheki</th>
+                            <td>ABSA 465874</td>
+                            <td>1468164891</td>
+                            <td>R500</td>
+                            <td>071546115</td>
+                            <td>5 hours</td>
+                            <td>Pending</td>
                             </tr>
                         </tbody>
                     </table>
                 </p>
         </div>
     </div>
+</div>
+<div class="row">
+<div class="col-md-6">
+        <div class="welcomeTitle">
+            <h6>List of Referals</h6>
+        </div>
+        <form>
+            <p class="welcomeContent">
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Surname</th>
+                        <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">1</th>
+                        <td>Lionel</td>
+                        <td>Messi</td>
+                        <td>Inactive</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">2</th>
+                        <td>Paul</td>
+                        <td>Pogba</td>
+                        <td>Active</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">3</th>
+                        <td>Eden</td>
+                        <td>Hazard</td>
+                        <td>Active</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </p>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="welcomeWrapper">
+                <div class="welcomeTitle">
+                    <h6>Referal Commission</h6>
+                </div>
+                <div>
+                 <?php ?>
+                    <form class="form-control" method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
+                        <p style="padding:5px;margin:5px;">
+                             Total referral amount due to you is R XXX <input type="button" class="btn button-sm-gold" value="Claim">
+                        </p>
+                    </form>
+                </div>
+                
+        </div>
+    </div>
+
 </div>

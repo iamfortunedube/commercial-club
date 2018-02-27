@@ -24,6 +24,31 @@
                         <label>Username</label>
                         <input class="form-control" require type="text" name="username" value="<?php echo @$_SESSION['u_username'];?>" disabled/>
                     </div>
+                  
+                </form>				
+        </div>
+        <div class="welcomeWrapper">
+                <div class="welcomeTitle">
+                    <h6>Password</h6>
+                </div>
+                <form id="reg" class="welcomeContent" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
+                   <div class="form-group">
+                        <input class="form-control" require type="text" name="username" placeholder="Old Password"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                         <div class="form-group">
+                            <input class="form-control" require type="text" name="fname" placeholder="New Password"/>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                         <div class="form-group">
+                            <input class="form-control" require type="text" name="sname" placeholder="Verify New Password" />
+                         </div>
+                        </div>  
+                        
+                    </div>
+                    <input style="width:100%;" class="btn button-gold" type="submit" name="submit"value="Update Password"/>
                     
                 </form>				
         </div>
