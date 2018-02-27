@@ -11,10 +11,9 @@
                         {
                             
                             if(isset($_POST["submit"]))
-                            {
-                                @$_SESSION['don'] = @$_POST["donateAmount"];
-                                    
-                                    @$dAmount = @$_POST["donateAmount"];
+                            {   @$errDonation = "";
+
+                                @$dAmount = @$_POST["donateAmount"];
                                     @$date1= date("Y-m-d");
                                     @$date2=date("Y-m-d", time() + 24 * 60 * 60);
                                     @$diff= @$date1 - @$date2;
@@ -23,10 +22,27 @@
                                     $str1 = @$dAmount;
                                     $lengthh = strlen($str1); 
                                     echo "<br>";
-                                    
                                     $lastDigit = substr($str1, $lengthh-1,$lengthh);
                                     $newNumber = substr($str1, 0,$lengthh-1);
-                                    @$errDonation = "Kindly roung off the amount to the nearest 10s e.g (R". @$newNumber."0)";
+
+                                    $int = (int)@$dAmount;
+                                    $lastDigitInt = (int)$lastDigit;
+
+                                    $ready = true;
+
+                                    if($int > 10000 || $int < 500){
+                                        @$errDonation = "The required donation is between R500 - R10000";
+                                        $ready = false;
+                                    }else
+                                    if($lastDigitInt > 0){
+                                        @$errDonation = "Kindly round off the amount to the nearest 10s e.g (R". @$newNumber."0)";
+                                        $ready = false;
+                                    }
+                                    
+                                    if($ready)
+                                    {
+                                        @$_SESSION['don'] = @$_POST["donateAmount"];
+                                    }        
 
                             }
                         }
@@ -36,11 +52,11 @@
                     ?>
                     <form class="form-control" method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
                        
-                    <?php if(1 == 1){ echo '
+                    <?php if(!isset($_SESSION['don'])){ echo '
                         <p>Make your donation here:</p>
                         <div class="row">
                             <div class="col-md-9">
-                                <input class="form-control" type="number" name="donateAmount" placeholder="Enter amount to donate"/>
+                                <input class="form-control" maxlength="5" id="donate" type="text" name="donateAmount" placeholder="Enter amount to donate" value="'.@$str1.'"/>
                             </div>
                             <div class="col-md-3">
                                 <input type="submit" name="submit" class="btn button-gold" value="Donate">
