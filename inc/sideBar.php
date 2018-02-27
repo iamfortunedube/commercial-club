@@ -16,6 +16,7 @@
         <?php
          if(isset($_SESSION['u_id']))
            { echo '
+            <li><a id="dashboard" href="dashboard.php"><i class="fas fa-credit-card"></i> Dashboard</a></li>
             <li><a id="claims" href="claims.php"><i class="fas fa-credit-card"></i> Claims</a></li>
             <li><a id="donations" href="donate.php"><i class="fas fa-money-bill-alt"></i> Donations</a></li>
             <li><a id="profile-edit" href="profile.php"><i class="fas fa-user"></i> Profile</a></li>
