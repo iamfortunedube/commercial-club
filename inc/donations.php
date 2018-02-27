@@ -1,4 +1,7 @@
+
 <div class="row">
+    
+<?php include("server/donateScript.php");?>
     <div class="col-md-6">
         <div class="welcomeWrapper">
                 <div class="welcomeTitle">
@@ -8,7 +11,7 @@
                     <form class="form-control">
                         <p>Make your donation here:</p>
                         <input class="form-control" type="number" name="donate" placeholder="Enter amount to donate"/>
-                        <input type="button" class="btn button-gold" value="Donate">
+                        <input type="submit" name="submit" class="btn button-gold" value="Donate">
                     </form>
                 </div>
         </div>
