@@ -23,7 +23,7 @@
                     <?php echo "<span style='color:red'>".@$errCellNumber."</span>";?>
                     <input class="form-control" required type="password" name="password" placeholder="Password"/>
                      <?php echo "<span style='color:red'>".@$errPassword."</span>";?>
-                    <input id="rNumber" class="form-control" required type="text" name="refferalNo" placeholder="Refferal Number"/>
+                    <input id="rNumber" class="form-control" required type="text" name="refferalNo" placeholder="Refferal Number" value="<?php echo @$refferalNo;?>"/>
 					<?php echo "<span style='color:red'>".@$errRefferal."</span>";?></br>
                     
                     <span class="form-group">
