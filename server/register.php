@@ -25,12 +25,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 			  if(empty($_POST["password"])){
 
 				  $errPassword="Enter your password *";  
-
 			  }
-<<<<<<< HEAD
-	
-=======
->>>>>>> ca46c16d99d3f0e030bda99ae6aa1125811fa24d
 
 			  if(empty($_POST["refferalNo"])){
 				  
@@ -42,11 +37,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				//	$errAgree="You must agree terms and conditonsa first *";  
 				//	}
 			 
-<<<<<<< HEAD
-			  if(empty($_POST["sname"]) || empty($_POST["fname"]) && empty($_POST["cellNumber"])  || empty($_POST["password"])){
-=======
 			  if(empty($_POST["sname"]) || empty($_POST["fname"]) && empty($_POST["cellNumber"]) || empty($_POST["password"]) || empty($_POST["refferalNo"])){
->>>>>>> ca46c16d99d3f0e030bda99ae6aa1125811fa24d
 
 					$errMessage = "Please make sure there are no empty feilds";
 
@@ -56,23 +47,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 					@$firstname=$_POST["fname"];    
 					//$vCode=$_POST["vCode"];
 					@$cellNo=$_POST["cellNumber"];
-<<<<<<< HEAD
-					@$password=$_POST["password"];
-			
-	
-				
-					$sql="select p_number from users where  p_number=\"$cellNo\";";
-		
-					$result=$conn->query($sql);
-					if($result->num_rows>0)
-					{
-						$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
-						$errMessage="user already have an account.Please <a href='login.php'> Login </a> or change number";
-					}else{
-
-
-
-=======
 					@$cellNo2=$cellNo;
 					@$password=$_POST["password"];
 					@$password2=$password;
@@ -91,18 +65,23 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 						$sql="select p_number from users where p_number=\"$cellNo\";";
 						$sqlCheck="select p_number from users where p_number=\"$refferalNo\" AND status = 1;";
 			
+                       $sqlCheckStatus="select p_number from users where p_number=\"$refferalNo\";";
+ 
 						$result=$conn->query($sql);
 						$resultCheck = $conn->query($sqlCheck);
 
-						if($resultCheck->num_rows>0){
+						$resultCheckStatus=$conn->query($sqlCheckStatus);
+						@$userDetails = $result->fetch_assoc();
+
+						if($userDetails["status"] == 0){
+							@$errMessage="The refferal is not active";
+						}else if($resultCheck->num_rows<=0){
 							$errMessage = "Referal number doesn't exist";
 						}else if($result->num_rows>0){
 							$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
 							$errMessage="user already have an account.Please <a href='login.php'> Login </a> or change number";
 						}else{
 							$errMessage="next";
-						
->>>>>>> ca46c16d99d3f0e030bda99ae6aa1125811fa24d
 						$vCode = mt_rand(100000, 999999);
 						$sql="insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$cellNo\",\"$vCode\",\"$status\",\"$bank_name\",\"$uniCode\",\"$account_holder\",\"$accNum\");";
 						$_SESSION['pswd'] = $password;
@@ -115,7 +94,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 							}
 	
 					}
-				
+				   }
 			  }
 
         }
