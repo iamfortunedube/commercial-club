@@ -32,10 +32,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				$errRefferal="Enter your Refferal Number *";  
 				}
 
-			//	if(empty($_POST["agreeCheckb"])){
-				  
-				//	$errAgree="You must agree terms and conditonsa first *";  
-				//	}
 			 
 			  if(empty($_POST["sname"]) || empty($_POST["fname"]) && empty($_POST["cellNumber"]) || empty($_POST["password"]) || empty($_POST["refferalNo"])){
 
@@ -44,8 +40,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 			  }else{
 					$rCode=$vCode=$status=$bank_name=$uniCode=$account_holder=$accNum="";
 					@$surname=$_POST["sname"];
-					@$firstname=$_POST["fname"];    
-					//$vCode=$_POST["vCode"];
+					@$firstname=$_POST["fname"];   
 					@$cellNo=$_POST["cellNumber"];
 					@$cellNo2=$cellNo;
 					@$password=$_POST["password"];
@@ -73,9 +68,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 						$resultCheckStatus=$conn->query($sqlCheckStatus);
 						@$userDetails = $result->fetch_assoc();
 
-						if($userDetails["status"] == 0){
-							@$errMessage="The refferal is not active";
-						}else if($resultCheck->num_rows<=0){
+						if($resultCheck->num_rows<=0){
 							$errMessage = "Referal number doesn't exist";
 						}else if($result->num_rows>0){
 							$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
