@@ -222,6 +222,12 @@ header{
     color:white;
     padding:7px 10px;
     box-shadow: 5px 5px 5px rgba(17, 16, 16, 0.356);
+    
+}
+
+.border-shape{
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
 }
 
 .welcomeContent{

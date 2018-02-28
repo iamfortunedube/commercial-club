@@ -1,7 +1,7 @@
 <div class="row">   
                     <div class="col-md-6">
-                        <div class="welcomeWrapper">
-                                <div class="welcomeTitle">
+                        <div class="welcomeWrapper ">
+                                <div class="welcomeTitle border-shape">
                                         <h6>Login</h6>
                                 </div>
 
@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="welcomeWrapper">
-                                <div class="welcomeTitle">
+                                <div class="welcomeTitle border-shape">
                                         <h6>Password Reset</h6>
                                 </div>
                                 <p class="welcomeContent">

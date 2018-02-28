@@ -58,7 +58,7 @@
                         <th scope="row">2</th>
                         <td>R1000</td>
                         <td>1mins</td>
-                        <td><input type="button" class="btn button-sm-gold" value="Claim"></td>
+                        <td><input type="button" class="btn button-sm-gold" value="Send"></td>
                         </tr>
                         <tr>
                         <th scope="row">3</th>
