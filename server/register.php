@@ -22,20 +22,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				  $errCellNumber="Enter your cell Number *";  
 
 			  }
-			  if(empty($_POST["cellNumber2"])){
-
-				 $errCnumber="Re-Enter your cell Number *";  
-
-			  }
 			  if(empty($_POST["password"])){
 
 				  $errPassword="Enter your password *";  
 
 			  }
-			  if(empty($_POST["password2"])){
-				  
-				$errCpassword="Re-Enter your password *";  
-			  }
+	
 
 			  if(empty($_POST["refferalNo"])){
 				  
@@ -47,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				//	$errAgree="You must agree terms and conditonsa first *";  
 				//	}
 			 
-			  if(empty($_POST["sname"]) || empty($_POST["fname"]) && empty($_POST["cellNumber"]) && empty($_POST["cellNumber2"]) || empty($_POST["password"]) || empty($_POST["password2"])){
+			  if(empty($_POST["sname"]) || empty($_POST["fname"]) && empty($_POST["cellNumber"])  || empty($_POST["password"])){
 
 				$errMessage = "Please make sure there are no empty feilds";
 
@@ -57,19 +49,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 					@$firstname=$_POST["fname"];    
 					//$vCode=$_POST["vCode"];
 					@$cellNo=$_POST["cellNumber"];
-					@$cellNo2=$_POST["cellNumber2"];
 					@$password=$_POST["password"];
-					@$password2=$_POST["password2"];
-		
-					if($cellNo!=$cellNo2)
-					{
-						$errMessage="Phone Number does not metch"; 
-					}
-				   if($password!=$password2)
-				   {
-					$errMessage="Passwords does not match";
-				   }
-				   if($password==$password2 && $cellNo==$cellNo2 ){
+			
+	
+				
 					$sql="select p_number from users where  p_number=\"$cellNo\";";
 		
 					$result=$conn->query($sql);
@@ -78,6 +61,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 						$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
 						$errMessage="user already have an account.Please <a href='login.php'> Login </a> or change number";
 					}else{
+
+
+
 						$vCode = mt_rand(100000, 999999);
 						$sql="insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$cellNo\",\"$vCode\",\"$status\",\"$bank_name\",\"$uniCode\",\"$account_holder\",\"$accNum\");";
 						if($conn->query($sql)){
@@ -93,10 +79,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 							}
 
 					}
-				}
+				
 			  }
 
         }
     }
-
 ?>
