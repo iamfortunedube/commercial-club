@@ -20,11 +20,14 @@
         @$errMessage = "invalid code";
     }
     if(@$_SESSION["userVCode"] == @$_SESSION['r_vCode'] && @$_SESSION['btn'] == "Finish"){
-        $errMessageBankDetails = "";
+        
         $bank_name =  $_POST['bankName'];
         $bank_branch = $_POST['accBranch'];
         $account_holder = $_POST['accHolder'];
         $accNum = $_POST['accNumber'];
+        $getUniCode = "select * from bankss where bank_name = '".$bank_name."' LIMIT 1;";
+
+        $getResults = $conn->query($getUniCode);
 
         if(empty($bank_branch)){
             $errBranch = "Enter Bank branch code";
@@ -38,28 +41,25 @@
             $errAccNumber = "Enter account number";
         }
 
-        if($bank_name == "--SELECT YOUR BANK--"){
+        if(!($getResults->num_rows > 0)){
             $errbankName = "Please select Bank";
         }
 
         
-        if(empty($bank_branch) || empty($account_holder) || empty($accNum)){
+        if(empty($bank_branch) || empty($account_holder) || empty($accNum) || ($bank_name == "--SELECT YOUR BANK--")){
             $errMessageBankDetails = "Please make sure all fields are not empty";
         }else{
-            $getUniCode = "select * from bankss where bank_name = '".$bank_name."' LIMIT 1;";
-
-            $getResults = $conn->query($getUniCode);
-
-            if($getResults->num_rows > 0){
-            $row = $getResults->fetch_assoc();
             
-            $uniCode = $row['universal_code'];
-            $sql = "insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$cellNo\",\"$vCode\",0,\"$bank_name\",\"$uniCode\",\"$account_holder\",\"$accNum\");"; 
+            if($getResults->num_rows > 0){
+                $row = $getResults->fetch_assoc();
+                
+                $uniCode = $row['universal_code'];
+                $sql = "insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$cellNo\",\"$vCode\",0,\"$bank_name\",\"$uniCode\",\"$bank_branch\",\"$account_holder\",\"$accNum\");"; 
 
                 if($conn->query($sql)){
 
-                    echo "inserted";
-                    /*$url = "https://www.winsms.co.za/api/batchmessage.asp?";
+                    @$errMessageBankDetails =  "insert";
+                    $url = "https://www.winsms.co.za/api/batchmessage.asp?";
                             
                                     $userp = "user=";
                             
@@ -86,12 +86,29 @@
                                     echo "<br>";
                                     print($line);
                                     echo "<br>";
-                                    }
-                                    fclose($fp);*/
+                            }
+                        fclose($fp);
+                        
+                        $sql="select * from users where  p_number=\"$cellNo\";";
+		
+                        $result=$conn->query($sql);
+                        @$userDetails = $result->fetch_assoc();
+                        $_SESSION["u_id"] = $userDetails["id"];
+                        $_SESSION["u_fname"] = $userDetails["fname"];
+                        $_SESSION["u_lname"] = $userDetails["lname"];
+                        $_SESSION["u_username"] = $userDetails["p_number"];
+                        $_SESSION["u_bankName"] = $userDetails["bank_name"];
+                        $_SESSION["u_uniCode"] = $userDetails["universal_code"];
+                        $_SESSION["u_accHolder"] = $userDetails["account_holder"];
+                        $_SESSION["u_accNumber"] = $userDetails["account_number"];
+                        $_SESSION["u_pswd"] = $userDetails["password"];
+                        echo "<script>window.location.href = './dashboard.php';</script>";
                 }
                 else{
                     @$errMessageBankDetails = "Sorry but we could not create your account. Make sure all your information is valid. Try again";
                 }
+        }else{
+            $errbankName = "Please select Bank";
         }
         
         
