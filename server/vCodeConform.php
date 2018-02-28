@@ -71,7 +71,7 @@
                             
                                     $username = "qinisozwane11@gmail.com";
                                     $password = "Mangethe91";
-                                    $message = "Hi ".$firstname." ".$surname."\n\nWelcome to Commercial Club\nYour Login Details are as follows:\nUsername : ".$cellNo."\nPassword : ".$_SESSION['pswd']." \nThank you for joining us.\n-----------------------------\nFrom Commercial Club.\nFor more info. Check <a href='www.google.com'>Commercial Club</a>";
+                                    $message = "Hi ".$firstname." ".$surname."\n\nWelcome to Commercial Club\nYour Login Details are as follows:\n\nUsername : ".$cellNo."\nPassword : ".$_SESSION['pswd']." \nThank you for joining us.\n-----------------------------\nFrom Commercial Club.";
                                     $numbers = $cellNo;
                             
                                     $encmessage = urlencode(utf8_encode($message));
