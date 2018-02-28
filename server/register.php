@@ -75,18 +75,47 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 							$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
 							$errMessage="user already have an account.Please <a href='login.php'> Login </a> or change number";
 						}else{
-							$errMessage="next";
 						
-						$vCode = mt_rand(100000, 999999);
-						$sql="insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$cellNo\",\"$vCode\",\"$status\",\"$bank_name\",\"$uniCode\",\"$account_holder\",\"$accNum\");";
-						$_SESSION['pswd'] = $password;
-						if($conn->query($sql)){
-						include("sendMsg.php");
-								header("location:vCode.php");
-							
-							}else{
-							echo" Not Inserted".$conn->error; 
+					  	$vCode = mt_rand(100000, 999999);
+								
+							$_SESSION['r_fname'] = $firstname;
+							$_SESSION['r_lname'] = $surname;
+							$_SESSION['r_cell'] = $cellNo;
+							$_SESSION['pswd'] = $password;
+							$_SESSION['r_ref'] = $refferalNo;
+							$_SESSION['r_vCode'] = $vCode;
+							$username = $password = $message = $numbers = "";
+
+							$url = "https://www.winsms.co.za/api/batchmessage.asp?";
+					
+							$userp = "user=";
+					
+							$passwordp = "&password=";
+					
+							$messagep = "&message=";
+					
+							$numbersp = "&Numbers=";
+					
+							$username = "qinisozwane11@gmail.com";
+							$password = "Mangethe91";
+							$message = "Activation code : ".$vCode."\n-----------------------------\nFrom Commercial Club.";
+							$numbers = $cellNo;
+					
+							$encmessage = urlencode(utf8_encode($message));
+					
+							$all = $url.$userp.$username.$passwordp.$password.$messagep.$encmessage.$numbersp.$numbers;
+					
+							$fp = fopen($all, 'r');
+							while(!feof($fp)){
+							$line = fgets($fp, 4000);
+							echo "<br>";
+							echo "Responce";
+							echo "<br>";
+							print($line);
+							echo "<br>";
 							}
+							fclose($fp);
+						  header("location:vCode.php");
 	
 					}
 				}
