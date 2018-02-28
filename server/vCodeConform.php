@@ -16,7 +16,8 @@
     if(@$_SESSION['btn'] == "Confirm" && @$_SESSION["userVCode"] == @$_SESSION['r_vCode']){
         $show = false;
         unset($_SESSION['r_vCode']);
-    }else{
+    }
+    if(@$_SESSION['btn'] == "Confirm" && @$_SESSION["userVCode"] != @$_SESSION['r_vCode']){
         @$errMessage = "invalid code";
     }
     if(@$_SESSION["userVCode"] == @$_SESSION['r_vCode'] && @$_SESSION['btn'] == "Finish"){
