@@ -27,7 +27,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				  $errPassword="Enter your password *";  
 
 			  }
+<<<<<<< HEAD
 	
+=======
+>>>>>>> ca46c16d99d3f0e030bda99ae6aa1125811fa24d
 
 			  if(empty($_POST["refferalNo"])){
 				  
@@ -39,16 +42,21 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				//	$errAgree="You must agree terms and conditonsa first *";  
 				//	}
 			 
+<<<<<<< HEAD
 			  if(empty($_POST["sname"]) || empty($_POST["fname"]) && empty($_POST["cellNumber"])  || empty($_POST["password"])){
+=======
+			  if(empty($_POST["sname"]) || empty($_POST["fname"]) && empty($_POST["cellNumber"]) || empty($_POST["password"]) || empty($_POST["refferalNo"])){
+>>>>>>> ca46c16d99d3f0e030bda99ae6aa1125811fa24d
 
-				$errMessage = "Please make sure there are no empty feilds";
+					$errMessage = "Please make sure there are no empty feilds";
 
 			  }else{
-				$rCode=$vCode=$status=$bank_name=$uniCode=$account_holder=$accNum="";
+					$rCode=$vCode=$status=$bank_name=$uniCode=$account_holder=$accNum="";
 					@$surname=$_POST["sname"];
 					@$firstname=$_POST["fname"];    
 					//$vCode=$_POST["vCode"];
 					@$cellNo=$_POST["cellNumber"];
+<<<<<<< HEAD
 					@$password=$_POST["password"];
 			
 	
@@ -64,20 +72,48 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
 
 
+=======
+					@$cellNo2=$cellNo;
+					@$password=$_POST["password"];
+					@$password2=$password;
+					@$refferalNo = $_POST["refferalNo"];
+		
+					if($cellNo!=$cellNo2)
+					{
+						$errMessage="Phone Number does not match"; 
+					}
+				   if($password!=$password2)
+				   {
+					$errMessage="Passwords does not match";
+				   }
+				   if($password==$password2 && $cellNo==$cellNo2 ){
+
+						$sql="select p_number from users where p_number=\"$cellNo\";";
+						$sqlCheck="select p_number from users where p_number=\"$refferalNo\" AND status = 1;";
+			
+						$result=$conn->query($sql);
+						$resultCheck = $conn->query($sqlCheck);
+
+						if($resultCheck->num_rows>0){
+							$errMessage = "Referal number doesn't exist";
+						}else if($result->num_rows>0){
+							$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
+							$errMessage="user already have an account.Please <a href='login.php'> Login </a> or change number";
+						}else{
+							$errMessage="next";
+						
+>>>>>>> ca46c16d99d3f0e030bda99ae6aa1125811fa24d
 						$vCode = mt_rand(100000, 999999);
 						$sql="insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$cellNo\",\"$vCode\",\"$status\",\"$bank_name\",\"$uniCode\",\"$account_holder\",\"$accNum\");";
+						$_SESSION['pswd'] = $password;
 						if($conn->query($sql)){
-							$succMessage="Next step come"; 
-
-							$message = "Your verification code is ".$vCode;
-							$to = $_REQUEST['cellNumber'];
-							$result = @mail( $to, '', $message );
-							print 'Message was sent to ' . $to;					
-							header("location:vCode.php");
+						include("sendMsg.php");
+								header("location:vCode.php");
+							
 							}else{
 							echo" Not Inserted".$conn->error; 
 							}
-
+	
 					}
 				
 			  }

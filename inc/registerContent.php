@@ -3,7 +3,7 @@
         <?php include("server/register.php");?>
         
         <div class="welcomeWrapper">
-                <div class="welcomeTitle">
+                <div class="welcomeTitle border-shape">
                     <h6>Registration</h6>
                 </div>
                 <form id="reg" class="welcomeContent" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
@@ -23,7 +23,7 @@
                     <?php echo "<span style='color:red'>".@$errCellNumber."</span>";?>
                     <input class="form-control" required type="password" name="password" min="8" maxlength="15"  placeholder="Password"/>
                      <?php echo "<span style='color:red'>".@$errPassword."</span>";?>
-                    <input id="rNumber" class="form-control" required type="text" name="refferalNo" placeholder="Refferal Number"/>
+                    <input id="rNumber" class="form-control" required type="text" name="refferalNo" placeholder="Refferal Number" value="<?php echo @$refferalNo;?>"/>
 					<?php echo "<span style='color:red'>".@$errRefferal."</span>";?></br>
                     
                     <span class="form-group">
@@ -41,7 +41,7 @@
 
     <div class="col-md-6">
         <div class="welcomeWrapper">
-                <div class="welcomeTitle">
+                <div class="welcomeTitle border-shape">
                         <h6>Password Reset</h6>
                 </div>
                 <p class="welcomeContent">

@@ -20,11 +20,8 @@
                     </div>
                 </form>
     </div>
-    <?php include("server/register.php");?> 
 							
         </div>
-    </div>
-	<?php include("server/register.php");?> 
 
     <div class="col-md-6">
         <div class="welcomeWrapper">
