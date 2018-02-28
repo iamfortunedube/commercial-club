@@ -25,7 +25,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 			  if(empty($_POST["password"])){
 
 				  $errPassword="Enter your password *";  
-
 			  }
 
 			  if(empty($_POST["refferalNo"])){
@@ -66,10 +65,17 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 						$sql="select p_number from users where p_number=\"$cellNo\";";
 						$sqlCheck="select p_number from users where p_number=\"$refferalNo\" AND status = 1;";
 			
+                       $sqlCheckStatus="select p_number from users where p_number=\"$refferalNo\";";
+ 
 						$result=$conn->query($sql);
 						$resultCheck = $conn->query($sqlCheck);
 
-						if($resultCheck->num_rows>0){
+						$resultCheckStatus=$conn->query($sqlCheckStatus);
+						@$userDetails = $result->fetch_assoc();
+
+						if($userDetails["status"] == 0){
+							@$errMessage="The refferal is not active";
+						}else if($resultCheck->num_rows<=0){
 							$errMessage = "Referal number doesn't exist";
 						}else if($result->num_rows>0){
 							$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
@@ -118,10 +124,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 						  header("location:vCode.php");
 	
 					}
-				}
+				   }
 			  }
 
         }
     }
-
 ?>

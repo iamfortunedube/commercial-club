@@ -27,29 +27,29 @@
                   
                 </form>				
         </div>
+        <?php include("server/updatePassword.php");?>
         <div class="welcomeWrapper">
                 <div class="welcomeTitle">
                     <h6>Password</h6>
                 </div>
                 <form id="reg" class="welcomeContent" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
                    <div class="form-group">
-                        <input class="form-control" require type="text" name="username" placeholder="Old Password"/>
+                        <input class="form-control" required type="text" name="oldPassword" placeholder="Old Password" maxlength="15"/>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                          <div class="form-group">
-                            <input class="form-control" require type="text" name="fname" placeholder="New Password"/>
+                            <input class="form-control" required type="text" name="newPassword" placeholder="New Password" maxlength="15"/>
                           </div>
                         </div>
                         <div class="col-md-6">
                          <div class="form-group">
-                            <input class="form-control" require type="text" name="sname" placeholder="Verify New Password" />
+                            <input class="form-control" required type="text" name="varNewPassword" placeholder="Verify New Password" maxlength="15"/>
                          </div>
                         </div>  
-                        
                     </div>
                     <input style="width:100%;" class="btn button-gold" type="submit" name="submit"value="Update Password"/>
-                    
+                    <?php echo "<span style='color:red'>".@$errMessage."</span>";?>
                 </form>				
         </div>
     </div>

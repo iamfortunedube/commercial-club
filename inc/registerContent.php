@@ -19,9 +19,9 @@
                             <?php echo "<span style='color:red'>".@$errSurname."</span>";?>
                         </div>  
                     </div>
-                    <input id="pNumber" size="10" class="form-control" required type="text" name="cellNumber" value="<?php echo @$cellNo;?>" placeholder="Phone Number"/>
+                    <input id="pNumber" size="10" class="form-control" required type="text"  maxlength="10" name="cellNumber" value="<?php echo @$cellNo;?>" placeholder="Phone Number"/>
                     <?php echo "<span style='color:red'>".@$errCellNumber."</span>";?>
-                    <input class="form-control" required type="password" name="password" placeholder="Password"/>
+                    <input class="form-control" required type="password" name="password" min="8" maxlength="15"  placeholder="Password"/>
                      <?php echo "<span style='color:red'>".@$errPassword."</span>";?>
                     <input id="rNumber" class="form-control" required type="text" name="refferalNo" placeholder="Refferal Number" value="<?php echo @$refferalNo;?>"/>
 					<?php echo "<span style='color:red'>".@$errRefferal."</span>";?></br>

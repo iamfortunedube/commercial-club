@@ -7,9 +7,9 @@
 
                                 <?php include("server/loginScript.php");?>
                             <form id="login" class="welcomeContent" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
-                                <input id="username" class="form-control" type="text" name="cellNumber" placeholder="Phone Number" value="<?php echo @$cellNo;?>"/>
+                                <input id="username" class="form-control" type="text" maxlength="10" name="cellNumber" placeholder="Phone Number" value="<?php echo @$cellNo;?>" required />
                                  <?php echo "<span style='color:red'>".@$errCellNumber."</span>";?>
-                                <input class="form-control" type="password" name="password" placeholder="Password" />
+                                <input class="form-control" type="password" min="8" maxlength="15" name="password" placeholder="Password" required  />
                                  <?php echo "<span style='color:red'>".@$errPassword."</span>";?>
                                 <a href="forgotP.php" style="color: black; font-size:18px;padding:10px;" class="float-right">forgot password?</a>
                                 <input style="width:100%;" class="btn button-gold" type="submit" name="submit" value="Login"/>
