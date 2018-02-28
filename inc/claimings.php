@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="welcomeWrapper">
-                <div class="welcomeTitle">
+                <div class="welcomeTitle border-shape">
                         <h6>Claims</h6>
                 </div>
                 <div>

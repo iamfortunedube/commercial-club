@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#pNumber,#rNumber,#username,#donate,#branch,#accNumber").keydown(function (e) {
+    $("#pNumber,#rNumber,#username,#donate,#branch,#accNumber,#forgotPField").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .
         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
              // Allow: Ctrl+A, Command+A

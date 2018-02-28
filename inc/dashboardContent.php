@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="welcomeWrapper">
-                <div class="welcomeTitle">
+                <div class="welcomeTitle border-shape">
                     <h6>Make Donation</h6>
                 </div>
                 <div>  
@@ -168,7 +168,7 @@
     </div>
     <div class="col-md-6">
         <div class="welcomeWrapper">
-                <div class="welcomeTitle">
+                <div class="welcomeTitle border-shape">
                     <h6>Referal Commission</h6>
                 </div>
                 <div>

@@ -9,7 +9,7 @@
                 <?php
                     if(@$show && isset($_SESSION['r_vCode'])){
                         echo'
-                        <div class="welcomeTitle">
+                        <div class="welcomeTitle border-shape">
                             <h6>Verification</h6>
                         </div>
                         <form id="vCode" class="welcomeContent" method="post" action="">
@@ -28,7 +28,7 @@
                     } else{
                         echo '
                   
-                        <div class="welcomeTitle">
+                        <div class="welcomeTitle border-shape">
                             <h6>Bank Details</h6>
                         </div>
                             <form id="vCode" class="welcomeContent" method="post" action="">
@@ -89,7 +89,7 @@
 
     <div class="col-md-6">
         <div class="welcomeWrapper">
-                <div class="welcomeTitle">
+                <div class="welcomeTitle border-shape">
                         <h6>Password Reset</h6>
                 </div>
                 <p class="welcomeContent">

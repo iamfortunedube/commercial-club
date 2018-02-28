@@ -4,7 +4,7 @@
 <?php include("server/donateScript.php");?>
     <div class="col-md-6">
         <div class="welcomeWrapper">
-                <div class="welcomeTitle">
+                <div class="welcomeTitle border-shape">
                         <h6>Make Donation</h6>
                 </div>
                 <div>
@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="welcomeTitle">
+        <div class="welcomeTitle border-shape">
             <h6>Terms and Coditions</h6>
         </div>
         <form class="form-control">
