@@ -58,7 +58,6 @@ include("conn.php");
                     $newDate=Date('Y-m-d', strtotime("+1 days")) ." ". date('h:m:s');
                     $countD = date('Y-m-d H:i:s');
 
-                   
                     $sql = "insert into donation values('','".$_SESSION['u_username']."','".$dAmount."','".$countD."','".$newDate."',0)";
                 
                     $results = $conn->query($sql);
