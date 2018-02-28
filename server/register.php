@@ -67,19 +67,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
 						$resultCheckStatus=$conn->query($sqlCheckStatus);
 						@$userDetails = $result->fetch_assoc();
-<<<<<<< HEAD
 						@$userDetailss = $resultCheckStatus->fetch_assoc();
 						
-						if($refferalNo==$cellNo)
-						{
-                            @$errMessage="You can't make yourself as a referal";
-						} else if(@$userDetailss["status"] == 0){
-							@$errMessage="The refferal is not active";
-						}else if($resultCheck->num_rows<=0){
-=======
+						// if($refferalNo==$cellNo)
+						// {
+                        //     @$errMessage="You can't make yourself as a referal";
+						// } else if(@$userDetailss["status"] == 0){
+						// 	@$errMessage="The refferal is not active";
+						// }else if($resultCheck->num_rows<=0){
 
 						if($resultCheck->num_rows<=0){
->>>>>>> 20a0a006b63e8d3227e2619d338463bc4b6d82f0
 							$errMessage = "Referal number doesn't exist";
 						}else if($result->num_rows>0){
 							$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
