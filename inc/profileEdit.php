@@ -2,7 +2,7 @@
     <div class="col-md-6">
         
         <div class="welcomeWrapper">
-                <div class="welcomeTitle">
+                <div class="welcomeTitle border-shape">
                     <h6>Profile</h6>
                 </div>
                 <form id="reg" class="welcomeContent" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
@@ -29,7 +29,7 @@
         </div>
         <?php include("server/updatePassword.php");?>
         <div class="welcomeWrapper">
-                <div class="welcomeTitle">
+                <div class="welcomeTitle border-shape">
                     <h6>Password</h6>
                 </div>
                 <form id="reg" class="welcomeContent" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
@@ -55,7 +55,7 @@
     </div>
     <div class="col-md-6">
         <div class="welcomeWrapper">
-                <div class="welcomeTitle">
+                <div class="welcomeTitle border-shape">
                         <h6>Bank Details</h6>
                 </div>
                 <span class="welcomeContent">
