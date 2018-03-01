@@ -8,7 +8,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
           @$oldPassword=$_POST["oldPassword"];
           @$newPassword=$_POST["newPassword"];
           @$varnewPassword=$_POST["varNewPassword"];
-                @$username=$_SESSION["u_username"];
+          @$username=$_SESSION["u_username"];
                
           if($_SESSION["u_pswd"] != @$oldPassword)
           {
@@ -24,10 +24,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                 
             }else{
              $sql="update users set password= \"$newPassword\" where p_number=\"$username\";"; //where p_number=\"$_SESSION["u_username"]\";";
-             $result=$conn->query($sql);
+            
              if($conn->query($sql)){
-                    @$errMessage="Password updated";
-                        
+                    @$errMessage="";
+                    @$succMessage="Password updated";
+                    $_SESSION["u_pswd"] = $newPassword;
                     }else{
                         @$errMessage="Password NOT updated";
                        

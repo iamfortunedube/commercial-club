@@ -50,6 +50,7 @@
                     </div>
                     <input style="width:100%;" class="btn button-gold" type="submit" name="submit"value="Update Password"/>
                     <?php echo "<span style='color:red'>".@$errMessage."</span>";?>
+                    <?php echo "<span style='color:green'>".@$succMessage."</span>";?>
                 </form>				
         </div>
     </div>
