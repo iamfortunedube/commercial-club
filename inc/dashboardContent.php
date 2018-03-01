@@ -5,7 +5,7 @@
                     <h6>Make Donation</h6>
                 </div>
                 <div>  
-                
+
                 
                 <?php include("server/donateScript.php");?>
                     <form class="form-control" method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">

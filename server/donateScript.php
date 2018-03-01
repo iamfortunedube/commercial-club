@@ -10,12 +10,13 @@ include("conn.php");
         $donateDetails = $results->fetch_assoc();
         $expDate = $donateDetails['expDate'];
         $currDate = $countD = date('Y-m-d H:i:s');
-
+        $countDown = $donateDetails['donDate'];
         if($expDate == $currDate){
             unset($_SESSION["don"]);
         }
         else{
             $_SESSION['don'] = $donateDetails['amount'];
+            echo "<span id='dateDon' hidden>".$countDown."</span>";
         }
 
         if(isset($_POST["submit"]) == "Donate") 
