@@ -29,7 +29,6 @@ $(document).ready(function() {
         }
     });
 
-setInterval(alert("hello") , 2000);
     $(function(){
 
         var str = document.getElementById("dateDon").innerHTML;

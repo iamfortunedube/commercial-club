@@ -17,7 +17,7 @@ include("conn.php");
         }
         else{
             $_SESSION['don'] = $donateDetails['amount'];
-            
+            echo "<span id='dateDon' hidden>".$countDown."</span>";
         }
 
         if(isset($_POST["submit"]) == "Donate") 
