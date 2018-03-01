@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                 @$errMessage="Enter different password from the old password";
                 
             }else{
-             $sql="update users set password= \"$newPassword\" where p_number=\"$username\";"; //where p_number=\"$_SESSION["u_username"]\";";
+             $sql="update users set password= \"$newPassword\" where p_number=\"$username\";"; 
              $result=$conn->query($sql);
              if($conn->query($sql)){
                     @$errMessage="Password updated";
