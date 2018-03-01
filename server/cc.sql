@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2018 at 06:29 PM
+-- Generation Time: Mar 01, 2018 at 06:04 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -32,9 +32,15 @@ CREATE TABLE `allocation` (
   `id` int(11) NOT NULL,
   `cellDonator` varchar(13) NOT NULL,
   `cellReciever` varchar(13) NOT NULL,
-  `don_id` int(11) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `allocation`
+--
+
+INSERT INTO `allocation` (`id`, `cellDonator`, `cellReciever`, `status`) VALUES
+(1, '12345', '0711983349', 1);
 
 -- --------------------------------------------------------
 
@@ -81,6 +87,13 @@ CREATE TABLE `claims` (
   `states` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `claims`
+--
+
+INSERT INTO `claims` (`id`, `cellClaim`, `amount`, `donDate`, `expDate`, `states`) VALUES
+(1, '0711983349', 500, '2018-03-01 15:12:07', '0000-00-00 00:00:00', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -101,7 +114,30 @@ CREATE TABLE `donation` (
 --
 
 INSERT INTO `donation` (`id`, `cellDonator`, `amount`, `donDate`, `expDate`, `status`) VALUES
-(10, '12345', 1050, '2018-02-27 16:48:31', '2018-02-28 04:02:31', 0);
+(23, '12345', 500, '2018-03-01 15:06:10', '2018-03-02 03:03:10', 0),
+(22, '0623503096', 500, '2018-03-01 14:45:35', '2018-03-02 02:03:35', 0),
+(17, '12345', 500, '2018-03-01 15:07:41', '0000-00-00 00:00:00', 4),
+(24, '0711983349', 500, '2018-03-01 16:28:12', '0000-00-00 00:00:00', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `referals`
+--
+
+CREATE TABLE `referals` (
+  `id` int(11) NOT NULL,
+  `refere` varchar(13) NOT NULL,
+  `redered` varchar(13) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `referals`
+--
+
+INSERT INTO `referals` (`id`, `refere`, `redered`) VALUES
+(5, '12345', '0623503096'),
+(6, '12345', '0711983349');
 
 -- --------------------------------------------------------
 
@@ -160,11 +196,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `p_number`, `password`, `ref_code`, `vCode`, `status`, `bank_name`, `universal_code`, `bank_branch`, `account_holder`, `account_number`) VALUES
-(1, 'khaye', 'kunene', '12345', 'admin', 'admin', '234567', 1, 'CAPITEC BANK', 470010, 0, 'Khayelihle', '1425364738');
+(1, 'khaye', 'kunene', '12345', 'admin', 'admin', '234567', 1, 'CAPITEC BANK', 470010, 0, 'Khayelihle', '1425364738'),
+(12, 'Melusi', 'Maphumulo', '0623503096', '1234', '12345', '', 0, 'CAPITEC BANK', 470010, 147010, 'MR MB MAPHUMULO', '14765159'),
+(13, 'Nhlanhla', 'Dube', '0711983349', '12345', '12345', '', 1, 'NEDBANK', 198765, 145236, 'MR SNF DUBE', '1059536524');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `allocation`
+--
+ALTER TABLE `allocation`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `bankss`
@@ -182,6 +226,13 @@ ALTER TABLE `claims`
 -- Indexes for table `donation`
 --
 ALTER TABLE `donation`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `referals`
+--
+ALTER TABLE `referals`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`);
 
@@ -210,6 +261,11 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `allocation`
+--
+ALTER TABLE `allocation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `bankss`
 --
 ALTER TABLE `bankss`
@@ -218,12 +274,17 @@ ALTER TABLE `bankss`
 -- AUTO_INCREMENT for table `claims`
 --
 ALTER TABLE `claims`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `donation`
 --
 ALTER TABLE `donation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+--
+-- AUTO_INCREMENT for table `referals`
+--
+ALTER TABLE `referals`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `support`
 --
@@ -238,7 +299,7 @@ ALTER TABLE `transactionhistory`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

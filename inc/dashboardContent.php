@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="welcomeWrapper">
-                <div class="welcomeTitle">
+                <div class="welcomeTitle border-shape">
                     <h6>Make Donation</h6>
                 </div>
                 <div>  
@@ -145,13 +145,18 @@
                         <th scope="col">Surname</th>
                         <th scope="col">Cell Number</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Commsion amount</th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
-                        $sql = "select * from referals LIMIT 6";
-                        $result = $conn->query($sql);
 
+                        $sql = "select * from referals r, users u,donation d where r.refere = '".$_SESSION['u_username']."' 
+                                                                               AND r.redered = u.p_number 
+                                                                               AND r.redered = d.cellDonator;";
+                        $result = $conn->query($sql);
+                        @$numRef = $result->num_rows;
+                        @$totCom = 0; 
                         if($result->num_rows > 0){
                             $count = 0;
                             while($row = $result ->fetch_assoc()){
@@ -160,14 +165,23 @@
 
                                 <tr>
                                 <td scope="row">'.$count.'</td>
-                                <td>'.$row['name'].'</td>
-                                <td>'.$row['surname'].'</td>
-                                <td>'.$row['c_phone'].'</td>
-                                <td>'; if($row['status'] == 0 ){ echo "Innactive";}else{ echo "Active";} echo ' </td>
+                                <td>'.$row['fname'].'</td>
+                                <td>'.$row['lname'].'</td>
+                                <td>'.$row['p_number'].'</td>
+                                <td>'; if($row['status'] == 0 ){ echo "Innactive"; @$com = 0;}else{ echo "Active"; @$amount = (int)$row['amount']; $com = @$amount * 0.1;  } echo ' </td>
+                                <td>'.@$com.'</td>
                                 </tr>
                                 
                                 ';
+                                @$totCom = $totCom + $com;
                             }
+                        }
+                        else{
+                            echo '
+                            <tr>
+                                 <td scope="row" colspan="5">You have no referals at the moment. Invite people with your number as a referal number to get your comission</td>
+                            </tr>
+                            ';
                         }
                     ?>
                         
@@ -178,15 +192,43 @@
     </div>
     <div class="col-md-6">
         <div class="welcomeWrapper">
-                <div class="welcomeTitle">
+                <div class="welcomeTitle border-shape">
                     <h6>Referal Commission</h6>
                 </div>
                 <div>
                  <?php ?>
                     <form class="form-control" method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
-                        <p style="padding:5px;margin:5px;">
-                             Total referral amount due to you is R XXX <input type="button" class="btn button-sm-gold" value="Claim">
-                        </p>
+                       <?php 
+                        if(!(@$numRef > 0)){
+                            echo '
+                                    <p style="padding:5px;margin:5px;">
+                                         Total referral amount due to you is not available in the moment until you have referals and they are active users!
+                                    </p>
+                                 ';
+                        }else{
+
+                            if(@$totCom < 500){
+                                echo '
+                                        <p style="padding:5px;margin:5px;">
+                                                Total referral amount due to you is <b>R '.@$totCom.' 
+                                        </b>
+
+                                        <hr/>
+                                        You will be able to claim this amount once it is <span style="color:green;font-weight:bolder;">R 500</span>
+                                        </p>
+                                     ';
+                            }else{
+                                echo '
+                                        <p style="padding:5px;margin:5px;">
+                                                Total referral amount due to you is R '.@$totCom.' <input type="button" class="btn button-sm-gold" value="Claim">
+                                        </p>
+                                     ';
+                            }
+                           
+                        }
+                        
+                       ?>
+                        
                     </form>
                 </div>
                 

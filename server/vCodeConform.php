@@ -55,8 +55,9 @@
                 $row = $getResults->fetch_assoc();
                 
                 $uniCode = $row['universal_code'];
-                $sql = "insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$cellNo\",\"$vCode\",0,\"$bank_name\",\"$uniCode\",\"$bank_branch\",\"$account_holder\",\"$accNum\");"; 
-
+                $sql = "insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$refferalNo\",\"$vCode\",0,\"$bank_name\",\"$uniCode\",\"$bank_branch\",\"$account_holder\",\"$accNum\");"; 
+                $sqlRef = "insert into referals values('';\"$cellNo\","\$refferalNo"\)";
+                $conn->query($sqlRef);
                 if($conn->query($sql)){
 
                     @$errMessageBankDetails =  "insert";

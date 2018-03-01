@@ -28,9 +28,8 @@ $(document).ready(function() {
             document.body.style.background = "black";
         }
     });
-
     $(function(){
-
+       
         var str = document.getElementById("dateDon").innerHTML;
         var date = new Date(str); 
         var milliseconds = date.getTime(); 
