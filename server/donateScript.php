@@ -10,8 +10,9 @@ include("conn.php");
         $donateDetails = $results->fetch_assoc();
         $expDate = $donateDetails['expDate'];
         $currDate = $countD = date('Y-m-d H:i:s');
+        
         $countDown = $donateDetails['donDate'];
-        if($expDate == $currDate){
+        if($expDate == $currDate || $donateDetails['status'] == 1){
             unset($_SESSION["don"]);
         }
         else{
@@ -25,7 +26,6 @@ include("conn.php");
                 @$errDonation = ""; 
 
                 @$dAmount = @$_POST["donateAmount"]; 
-
                 $str1 = @$dAmount; 
                 $lengthh = strlen($str1);  
                 echo "<br>"; 
@@ -52,13 +52,15 @@ include("conn.php");
                     echo "<script>alert('your order is already placed. Please wait for it to be allocated');</script>";
                     $ready = false; 
                 }
-                    
+                echo "<span id='dateDon' hidden>".$countDown."</span>";
                 if($ready) 
                 { 
                     @$_SESSION['don'] = @$_POST["donateAmount"]; 
+                   
                     $newDate=Date('Y-m-d', strtotime("+1 days")) ." ". date('h:m:s');
                     $countD = date('Y-m-d H:i:s');
-
+                    $countDown = $countD;
+                    echo "<span id='dateDon' hidden>".$countDown."</span>";
                     $sql = "insert into donation values('','".$_SESSION['u_username']."','".$dAmount."','".$countD."','".$newDate."',0)";
                 
                     $results = $conn->query($sql);
