@@ -215,11 +215,15 @@ header{
 
 /* Welcome content */
 
+th{
+    color:rgb(218,165,32);
+}
 
 .welcomeTitle{
     background-color: rgb(17, 16, 16);
     border-bottom:5px solid  rgb(218,165,32);
-    color:white;
+    color:rgb(218,165,32);
+    font-weight: bolder;
     padding:7px 10px;
     box-shadow: 5px 5px 5px rgba(17, 16, 16, 0.356);
     
@@ -347,7 +351,7 @@ input.form-control,select.form-control{
 }
 
 #note{
-	color: #666666;
+	color: #000000;
 	font-size: 12px;
 	margin: 0 auto;
 	padding: 4px;
@@ -377,28 +381,29 @@ input.form-control,select.form-control{
 	position:absolute;
 	display:block;
 	width:1em;
-	background-color:#444;
+	background-color:rgb(0, 0, 0);
 	border-radius:0.2em;
 	text-align:center;
-	color:#fff;
-	letter-spacing:-1px;
+	color:rgb(218,165,32);
+    letter-spacing:-1px;
+    font-weight:bolder;
 }
 
 .digit.static{
 	box-shadow:1px 1px 1px rgba(4, 4, 4, 0.35);
 	
-	background-image: linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
-	background-image: -o-linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
-	background-image: -moz-linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
-	background-image: -webkit-linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
-	background-image: -ms-linear-gradient(bottom, #3A3A3A 50%, #444444 50%);
+	background-image: linear-gradient(bottom, black 50%, black 50%);
+	background-image: -o-linear-gradient(bottom, black 50%, black 50%);
+	background-image: -moz-linear-gradient(bottom, black 50%, black 50%);
+	background-image: -webkit-linear-gradient(bottom, black 50%, black 50%);
+	background-image: -ms-linear-gradient(bottom, black 50%, black 50%);
 	
 	background-image: -webkit-gradient(
 		linear,
 		left bottom,
 		left top,
-		color-stop(0.5, #3A3A3A),
-		color-stop(0.5, #444444)
+		color-stop(0.5, rgb(0, 0, 0)),
+		color-stop(0.5, #000000)
 	);
 }
 
