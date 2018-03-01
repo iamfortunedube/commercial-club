@@ -27,6 +27,33 @@ $(document).ready(function() {
         }else{
             document.body.style.background = "black";
         }
-
     });
+    $(function(){
+	
+        var note = $('#note'),
+        
+    
+         ts = 1519886869166 + 24*60*60*1000;
+    
+            
+        $('#countdown').countdown({
+            timestamp	: ts,
+            callback	: function(days, hours, minutes, seconds){
+                
+                var message = "";
+                
+                message += days + " day" + ( days < 2 ? "":"s" ) + ", ";
+                message += hours + " hour" + ( hours < 2 ? "":"s" ) + ", ";
+                message += minutes + " minute" + ( minutes < 2 ? "":"s" ) + " and ";
+                message += seconds + " second" + ( seconds < 2 ? "":"s" ) + " <br />";
+                
+                
+                note.html(message);
+            }
+        });
+        
+    });
+
+    
+    
 });
