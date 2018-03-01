@@ -53,19 +53,19 @@
                     </thead>
                     <tbody>
                         <tr>
-                        <th scope="row">1</th>
+                        <td scope="row">1</td>
                         <td>R1500</td>
                         <td>23mins</td>
                         <td>Pending</td>
                         </tr>
                         <tr>
-                        <th scope="row">2</th>
+                        <td scope="row">2</td>
                         <td>R1000</td>
                         <td>1mins</td>
                         <td><input type="button" class="btn button-sm-gold" value="Send"></td>
                         </tr>
                         <tr>
-                        <th scope="row">3</th>
+                        <td scope="row">3</td>
                         <td>R10 000</td>
                         <td>10mins</td>
                         <td><input type="button" class="btn button-sm-gold" value="Claim"></td>
@@ -98,7 +98,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                            <th scope="row">Jacob</th>
+                            <td scope="row">Jacob</td>
                             <td>FNB 456879</td>
                             <td>65161645</td>
                             <td>R10 000</td>
@@ -107,7 +107,7 @@
                             <td><input type="button" class="btn button-sm-gold" value="Claim"></td>
                             </tr>
                             <tr>
-                            <th scope="row">Cyrill</th>
+                            <td scope="row">Cyrill</td>
                             <td>CAPITEC BANK 470010</td>
                             <td>1896189</td>
                             <td>R5000</td>
@@ -116,7 +116,7 @@
                             <td><input type="button" class="btn button-sm-gold" value="Claim"></td>
                             </tr>
                             <tr>
-                            <th scope="row">Bheki</th>
+                            <td scope="row">Bheki</td>
                             <td>ABSA 465874</td>
                             <td>1468164891</td>
                             <td>R500</td>
