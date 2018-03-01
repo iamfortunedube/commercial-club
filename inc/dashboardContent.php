@@ -25,7 +25,12 @@
                             echo'
                         <p style="padding:5px;margin:5px;">
                           Your order will be allocated within 24 hours - <b>R  '.@$_SESSION['don'].'<br><center> '.@$newDates.'</b><center>
-                        </p>';}
+                        </p>
+                        <div id="countdown"></div>
+
+		                <p id="note"></p>
+                        
+                        ';}
                         ?>
                     </form>
                 </div>
