@@ -17,7 +17,7 @@ include("conn.php");
         }
         else{
             $_SESSION['don'] = $donateDetails['amount'];
-            echo "<span id='dateDon' hidden>".$countDown."</span>";
+            
         }
 
         if(isset($_POST["submit"]) == "Donate") 
@@ -52,7 +52,7 @@ include("conn.php");
                     echo "<script>alert('your order is already placed. Please wait for it to be allocated');</script>";
                     $ready = false; 
                 }
-                echo "<span id='dateDon' hidden>".$countDown."</span>";
+                
                 if($ready) 
                 { 
                     @$_SESSION['don'] = @$_POST["donateAmount"]; 
@@ -60,9 +60,9 @@ include("conn.php");
                     $newDate=Date('Y-m-d', strtotime("+1 days")) ." ". date('h:m:s');
                     $countD = date('Y-m-d H:i:s');
                     $countDown = $countD;
-                    echo "<span id='dateDon' hidden>".$countDown."</span>";
+                    
                     $sql = "insert into donation values('','".$_SESSION['u_username']."','".$dAmount."','".$countD."','".$newDate."',0)";
-                
+                    echo "<span id='dateDon' hidden>".$countDown."</span>";
                     $results = $conn->query($sql);
                     
                 }       
