@@ -131,8 +131,18 @@
         </div>
     </div>
 </div>
-<div class="row">
-<?php include("server/referals.php");?>
+
+<?php
+include("conn.php");
+@$sql="select * from referals";
+$result=$conn->query($sql);
+
+@$u_id=@$userDetails["id"];
+
+$name=@$userDetails["name"]." ".@$userDetails["Surname"] ;
+@$cellNumber=@$userDetails["c_phone"];
+
+echo'<div class="row">
 <div class="col-md-6">
         <div class="welcomeTitle">
             <h6>List of Referals</h6>
@@ -148,30 +158,36 @@
                         <th scope="col">Status</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Lionel</td>
-                        <td>Messi</td>
-                        <td>Inactive</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Paul</td>
-                        <td>Pogba</td>
-                        <td>Active</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td>Eden</td>
-                        <td>Hazard</td>
-                        <td>Active</td>
-                        </tr>
+                   <tbody>
+                   if($result->num_rows > 0) 
+                   {
+              
+                      while($row = $result->fetch_assoc()){
+                      @$status=@$userDetails["status"];
+                      if(@$status==0)
+              {
+                  @$status="Inactive";
+              }else{
+                  @$status="Active";
+              }
+                  
+                   }
+                   }
+
                     </tbody>
                 </table>
             </p>
         </form>
-    </div>
+    </div>';
+
+
+?>
+
+
+
+
+
+    
     <div class="col-md-6">
         <div class="welcomeWrapper">
                 <div class="welcomeTitle border-shape">
