@@ -64,7 +64,7 @@
                         <td scope="row">2</td>
                         <td>R1000</td>
                         <td>1mins</td>
-                        <td><input type="button" class="btn button-sm-gold" value="Send"></td>
+                        <td><input type="button" class="btn button-sm-gold" value="Claim"></td>
                         </tr>
                         <tr>
                         <td scope="row">3</td>
@@ -106,7 +106,7 @@
                             <td>R10 000</td>
                             <td>0123456789</td>
                             <td>24 hours</td>
-                            <td><input type="button" class="btn button-sm-gold" value="Claim"></td>
+                            <td><input type="button" class="btn button-sm-gold" value="Send"></td>
                             </tr>
                             <tr>
                             <td scope="row">Cyrill</td>
@@ -115,7 +115,7 @@
                             <td>R5000</td>
                             <td>0896849841</td>
                             <td>10 hours</td>
-                            <td><input type="button" class="btn button-sm-gold" value="Claim"></td>
+                            <td><input type="button" class="btn button-sm-gold" value="Confirm"></td>
                             </tr>
                             <tr>
                             <td scope="row">Bheki</td>
