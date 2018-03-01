@@ -61,6 +61,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 						$sqlCheck="select p_number from users where p_number=\"$refferalNo\" AND status = 1;";
 			
                        $sqlCheckStatus="select p_number from users where p_number=\"$refferalNo\";";
+                        $result=$conn->query($sql);
 						
 						$resultCheck = $conn->query($sqlCheck);
 
