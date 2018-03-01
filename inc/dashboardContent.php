@@ -127,6 +127,7 @@
     </div>
 </div>
 <div class="row">
+<?php include("server/referals.php");?>
 <div class="col-md-6">
         <div class="welcomeTitle">
             <h6>List of Referals</h6>
