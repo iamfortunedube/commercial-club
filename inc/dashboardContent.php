@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="welcomeWrapper">
-                <div class="welcomeTitle border-shape">
+                <div class="welcomeTitle">
                     <h6>Make Donation</h6>
                 </div>
                 <div>  
@@ -25,12 +25,7 @@
                             echo'
                         <p style="padding:5px;margin:5px;">
                           Your order will be allocated within 24 hours - <b>R  '.@$_SESSION['don'].'<br><center> '.@$newDates.'</b><center>
-                        </p>
-                        <div id="countdown"></div>
-
-		                <p id="note"></p>
-                        
-                        ';}
+                        </p>';}
                         ?>
                     </form>
                 </div>
@@ -131,18 +126,7 @@
         </div>
     </div>
 </div>
-
-<?php
-include("conn.php");
-@$sql="select * from referals";
-$result=$conn->query($sql);
-
-@$u_id=@$userDetails["id"];
-
-$name=@$userDetails["name"]." ".@$userDetails["Surname"] ;
-@$cellNumber=@$userDetails["c_phone"];
-
-echo'<div class="row">
+<div class="row">
 <div class="col-md-6">
         <div class="welcomeTitle">
             <h6>List of Referals</h6>
@@ -155,42 +139,44 @@ echo'<div class="row">
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Surname</th>
+                        <th scope="col">Cell Number</th>
                         <th scope="col">Status</th>
                         </tr>
                     </thead>
-                   <tbody>
-                   if($result->num_rows > 0) 
-                   {
-              
-                      while($row = $result->fetch_assoc()){
-                      @$status=@$userDetails["status"];
-                      if(@$status==0)
-              {
-                  @$status="Inactive";
-              }else{
-                  @$status="Active";
-              }
-                  
-                   }
-                   }
+                    <tbody>
+                    <?php
+                        $sql = "select * from referals";
+                        $result = $conn->query($sql);
 
+                        if($result->num_rows > 0){
+                            $count = 0;
+                            while($row = $result ->fetch_assoc()){
+                                $count++;
+                                echo '
+                            
+                                <tr>
+                                <td scope="row">'.$count.'</td>
+                                <td>'.$row['name'].'</td>
+                                <td>'.$row['surname'].'</td>
+                                <td>'.$row['c_phone'].'</td>
+                                <td>'; if($row['status'] == 0 ){ echo "Innactive";}else{ echo "Active";} echo ' </td>
+                                </tr>
+                                
+                                ';
+                            }
+                        }
+
+                        
+                    ?>
+                        
                     </tbody>
                 </table>
             </p>
         </form>
-    </div>';
-
-
-?>
-
-
-
-
-
-    
+    </div>
     <div class="col-md-6">
         <div class="welcomeWrapper">
-                <div class="welcomeTitle border-shape">
+                <div class="welcomeTitle">
                     <h6>Referal Commission</h6>
                 </div>
                 <div>

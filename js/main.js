@@ -28,12 +28,17 @@ $(document).ready(function() {
             document.body.style.background = "black";
         }
     });
+
+
     $(function(){
-	
+
+        var str = document.getElementById("dateDon").innerHTML;
+        var date = new Date(str); 
+        var milliseconds = date.getTime(); 
         var note = $('#note'),
         
     
-         ts = 1519886869166 + 24*60*60*1000;
+         ts =  milliseconds + 24*60*60*1000;
     
             
         $('#countdown').countdown({
