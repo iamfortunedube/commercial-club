@@ -145,7 +145,7 @@
                     </thead>
                     <tbody>
                     <?php
-                        $sql = "select * from referals";
+                        $sql = "select * from referals LIMIT 6";
                         $result = $conn->query($sql);
 
                         if($result->num_rows > 0){
@@ -153,7 +153,7 @@
                             while($row = $result ->fetch_assoc()){
                                 $count++;
                                 echo '
-                            
+
                                 <tr>
                                 <td scope="row">'.$count.'</td>
                                 <td>'.$row['name'].'</td>
@@ -165,8 +165,6 @@
                                 ';
                             }
                         }
-
-                        
                     ?>
                         
                     </tbody>
