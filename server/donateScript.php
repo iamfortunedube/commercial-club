@@ -61,7 +61,7 @@ include("conn.php");
                     $countD = date('Y-m-d H:i:s');
                     $countDown = $countD;
                     
-                    $sql = "insert into donation values('','".$_SESSION['u_username']."','".$dAmount."','".$countD."','".$newDate."',0)";
+                    $sql = "insert into donation values('','".$_SESSION['u_username']."','".$dAmount."','".$countD."','".$newDate."',0,'".$dAmount."')";
                     echo "<span id='dateDon' hidden>".$countDown."</span>";
                     $results = $conn->query($sql);
                     

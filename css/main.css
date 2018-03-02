@@ -4,6 +4,19 @@ body {
     font: 400 13.3333px Arial;
 }
 
+.hideSideBar{
+    color:rgb(218,165,32);
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    border:2px solid rgb(218,165,32);
+    float: right;
+    margin:10px 10px;
+    cursor: pointer;
+    font-size:15pt;
+    font-weight: bolder;
+}
+
 .sidebar-menu ul {
     list-style-type: none;
     margin: 0;
@@ -14,6 +27,10 @@ body {
     overflow: auto;
     border-right: 3px solid rgb(218,165,32);
     margin-right:10px; 
+    margin-right: 10px;
+    width: 210px;
+    left: 0;
+    color:black;
 }
 
 li a {
@@ -25,7 +42,6 @@ li a {
 
 li a.active {
     background-color:rgb(218,165,32);
-    color: white;
     text-decoration: none;
 }
 
@@ -148,7 +164,7 @@ label{
 /*header*/
 
 header{
-    height: 70px;
+    height: 80px;
     border-bottom: 7px solid rgb(218,165,32);
     text-align: center;
     position: fixed;
@@ -164,7 +180,7 @@ header{
 .leftHeader{
     top:0;
     left:0;
-    margin-top:5px;
+    margin-top:10px;
     margin-left: 10px;
     position:fixed;
 }
@@ -180,12 +196,17 @@ header{
 
 #namelogo{
     width:30%;
+    margin-top:5px;
 }
 
 /* end header */
 /*---------------------------------------------------------------*/
 
 /* side bar */
+.sidebar-menu{
+    background-color: #000;
+    color:white;
+}
 
 .imageLeft img{
     border-radius: 50%; 
@@ -224,6 +245,11 @@ th{
     color:rgb(218,165,32);
 }
 
+table{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
 .welcomeTitle{
     background-color: rgb(17, 16, 16);
     border-bottom:5px solid  rgb(218,165,32);
@@ -259,6 +285,7 @@ margin-top:-35px;
 
 .form-control,.btn{
     margin-top:5px;
+    margin-bottom:10px;
 }
 
 
@@ -278,6 +305,7 @@ margin-top:-35px;
     padding:3px;
     font-size:7pt;
     width: 100px;
+    margin-top:-4px;
 }
 
 input.form-control,select.form-control{

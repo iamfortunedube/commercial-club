@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 <div class="sidebar-menu">
 
     <ul>
+=======
+<div class="sidebar-menu" id="sidebar">
+    <ul class="list_itemss">
+>>>>>>> 7a1036f70004bc0533c6300a169140f3acdfa973
     <li>
             <div class="userProfile">
                 <div class="imageLeft">
