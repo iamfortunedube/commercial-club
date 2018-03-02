@@ -48,7 +48,7 @@
                                         <li>Click on "Request" button.</li>
                                         <li>Your old password will be sent to you by sms.</li>
                                         <li>Then Login.</li>
-                                        <li>Click on "Profile" and change your password</li> <li>Your password will be sent to you by sms.</li>
+                                        <li>Click on "Profile" and change your password</li> 
                                      </ol>  
                                 </p>
                         </div>

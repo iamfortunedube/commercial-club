@@ -45,16 +45,17 @@
                         <h6>Password Reset</h6>
                 </div>
                 <p class="welcomeContent">
-                    <ul class="list">
-                        <li>Lorem Ipsum is siummy text of the printing</li>
-                        <li>Lorem Ipsuof the printing</li>
-                        <li>Lorem Ipsum is simply dummy te dut of the printing</li>
-                        <li>Lorem Ipsum is printing</li>
-                        <li>Lorem Ipsum is simply dummy the printing</li>
-                        <li>Lorem Ipsum is simply dummy te dut of the printing</li>
-                        <li>Lorem Ipsum is printing</li>
-                        <li>Lorem Ipsum is simply dummy the printing</li>
-                    </ul>  
+                   
+                    <ol class="list">
+                                    <li>Click on Login.</li>
+                                        <li>Click on "forgot password?" link.</li>
+                                        <li>Enter your Phone Number. </li>
+                                        <li>Click on "Request" button.</li>
+                                        <li>Your old password will be sent to you by sms.</li>
+                                        <li>Then Login.</li>
+                                        <li>Click on "Profile" and change your password</li> 
+                                     </ol>  
+                    
                 </p>
         </div>
     </div>
