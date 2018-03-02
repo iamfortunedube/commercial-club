@@ -4,6 +4,19 @@ body {
     font: 400 13.3333px Arial;
 }
 
+.hideSideBar{
+    color:rgb(218,165,32);
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    border:2px solid rgb(218,165,32);
+    float: right;
+    margin:10px 10px;
+    cursor: pointer;
+    font-size:15pt;
+    font-weight: bolder;
+}
+
 .sidebar-menu ul {
     list-style-type: none;
     margin: 0;
@@ -14,11 +27,15 @@ body {
     overflow: auto;
     border-right: 3px solid rgb(218,165,32);
     margin-right:10px; 
+    margin-right: 10px;
+    background-color: black;
+    width: 210px;
+    left: 0;
 }
 
 li a {
     display: block;
-    color: black;
+    color: white;
     padding: 8px 16px;
     text-decoration: none;
 }
@@ -187,6 +204,10 @@ header{
 /*---------------------------------------------------------------*/
 
 /* side bar */
+.sidebar-menu{
+    background-color: #000;
+    color:white;
+}
 
 .imageLeft{
     float: left;
@@ -260,6 +281,7 @@ margin-top:-35px;
 
 .form-control,.btn{
     margin-top:5px;
+    margin-bottom:10px;
 }
 
 
@@ -279,6 +301,7 @@ margin-top:-35px;
     padding:3px;
     font-size:7pt;
     width: 100px;
+    margin-top:-4px;
 }
 
 input.form-control,select.form-control{

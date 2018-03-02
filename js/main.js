@@ -19,6 +19,12 @@ $(document).ready(function() {
     $("#show").click(function(){
         $("#form").slideToggle();
     });
+    // $("#hideSide").click(function(){
+    //     $("#sidebar").slideToggle("slow", function() {
+            
+    //       });
+    // });
+
 
     $('#switch').click(function(){
         if(document.body.style.background == "black"){

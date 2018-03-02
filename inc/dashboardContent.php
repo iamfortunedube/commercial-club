@@ -24,13 +24,12 @@
                         </div>';}
                         else{
                             echo'
-                            <center>
                         <p style="padding:5px;margin:5px;">
-                          Your order will be allocated within 24 hours - <b>R  '.@$_SESSION['don'].'<br><center> '.@$newDates.'</b><center>
+                          <center>Your order will be allocated within 24 hours - <b>R  '.@$_SESSION['don'].'<br> '.@$newDates.'</b></center>
                           <div id="countdown"></div>
 
                           <p id="note"></p>
-                          </p> </center>';}
+                          </p> ';}
                         ?>
                        
                     </form>
@@ -47,31 +46,40 @@
                 <table class="table table-hover table-dark">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Expected Amount</th>
-                        <th scope="col">Timer</th>
-                        <th scope="col">Status</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Expected Amount</th>
+                            <th scope="col">Timer</th>
+                            <th scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td scope="row">1</td>
-                        <td>R1500</td>
-                        <td>23mins</td>
-                        <td>Pending</td>
-                        </tr>
-                        <tr>
-                        <td scope="row">2</td>
-                        <td>R1000</td>
-                        <td>1mins</td>
-                        <td><input type="button" class="btn button-sm-gold" value="Claim"></td>
-                        </tr>
-                        <tr>
-                        <td scope="row">3</td>
-                        <td>R10 000</td>
-                        <td>10mins</td>
-                        <td><input type="button" class="btn button-sm-gold" value="Claim"></td>
-                        </tr>
+                        <?php
+                            $sqlClaim = "Select * from claims where cellClaim = '".$_SESSION['u_username']."' AND states = 0;";
+                            
+                            $resultsClaim = $conn->query($sqlClaim);
+                            if($resultsClaim->num_rows > 0){
+                                $countt = 0;
+                                while($row = $resultsClaim->fetch_assoc()){
+                                    $countt++;
+                                    echo '
+                                            <tr>
+                                                <td scope="row">'.$countt.'</td>
+                                                <td>R '.$row['amount'].'</td>
+                                                <td>24 hours</td>
+                                                <td>'; 
+
+                                                echo '<input type="button" class="btn button-sm-gold" value="Claim"></td>
+                                            </tr>
+                                        ';
+                                }
+                            }else{
+                                echo '
+                                            <tr>
+                                                <td scope="row" colspan="4"><center>You have no claims available at the moment at the momemnt.</center></td>
+                                             </tr>
+                                        ';
+                            }
+                        ?>
                     </tbody>
                 </table>
             </p>
@@ -170,7 +178,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td scope="row" colspan="7">Your have no allocated Donations  at the moment.</td>
+                                                <td scope="row" colspan="7"><center>Your have no allocated Donations  at the moment.</center></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -251,7 +259,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td scope="row" colspan="5">Your have no allocated Claims  at the moment.</td>
+                                            <td scope="row" colspan="5"> <center>Your have no allocated Claims  at the moment.</center></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -313,7 +321,7 @@
                         else{
                             echo '
                             <tr>
-                                 <td scope="row" colspan="5">You have no referals at the moment. Invite people with your number as a referal number to get your comission</td>
+                                 <td scope="row" colspan="5"><center>You have no referals at the moment. Invite people with your number as a referal number to get your comission</center></td>
                             </tr>
                             ';
                         }
@@ -336,7 +344,7 @@
                         if(!(@$numRef > 0)){
                             echo '
                                     <p style="padding:5px;margin:5px;">
-                                         Total referral amount due to you is not available in the moment until you have referals and they are active users!
+                                    <center> Total referral amount due to you is not available in the moment until you have referals and they are active users!</center>
                                     </p>
                                  ';
                         }else{
@@ -344,11 +352,11 @@
                             if(@$totCom < 500){
                                 echo '
                                         <p style="padding:5px;margin:5px;">
-                                                Total referral amount due to you is <b>R '.@$totCom.' 
+                                        <center>Total referral amount due to you is <b>R '.@$totCom.'</center> 
                                         </b>
 
                                         <hr/>
-                                        You will be able to claim this amount once it is <span style="color:green;font-weight:bolder;">R 500</span>
+                                        <center>You will be able to claim this amount once it is <span style="color:green;font-weight:bolder;">R 500</span></center>
                                         </p>
                                      ';
                             }else{
