@@ -148,7 +148,7 @@ label{
 /*header*/
 
 header{
-    height: 70px;
+    height: 80px;
     border-bottom: 7px solid rgb(218,165,32);
     text-align: center;
     position: fixed;
@@ -164,7 +164,7 @@ header{
 .leftHeader{
     top:0;
     left:0;
-    margin-top:5px;
+    margin-top:10px;
     margin-left: 10px;
     position:fixed;
 }
@@ -180,6 +180,7 @@ header{
 
 #namelogo{
     width:30%;
+    margin-top:5px;
 }
 
 /* end header */
