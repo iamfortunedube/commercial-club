@@ -28,21 +28,20 @@ body {
     border-right: 3px solid rgb(218,165,32);
     margin-right:10px; 
     margin-right: 10px;
-    background-color: black;
     width: 210px;
     left: 0;
+    color:black;
 }
 
 li a {
     display: block;
-    color: white;
+    color: black;
     padding: 8px 16px;
     text-decoration: none;
 }
 
 li a.active {
     background-color:rgb(218,165,32);
-    color: white;
     text-decoration: none;
 }
 
