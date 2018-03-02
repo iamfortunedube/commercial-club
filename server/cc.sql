@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 01, 2018 at 06:04 PM
+-- Generation Time: Mar 02, 2018 at 10:10 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `cc`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_id` int(11) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `surname` varchar(100) NOT NULL,
+  `cellNo` int(13) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `username`, `password`, `name`, `surname`, `cellNo`) VALUES
+(1, 'muzi', '12345', 'Vusumuzi', 'Mngadi', 711986626),
+(2, 'melB', '12345', 'Melusi', 'Maphumulo', 605966231);
 
 -- --------------------------------------------------------
 
@@ -106,18 +129,21 @@ CREATE TABLE `donation` (
   `amount` int(65) NOT NULL,
   `donDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `expDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `status` int(2) DEFAULT NULL
+  `status` int(2) DEFAULT NULL,
+  `remaining_don` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `donation`
 --
 
-INSERT INTO `donation` (`id`, `cellDonator`, `amount`, `donDate`, `expDate`, `status`) VALUES
-(23, '12345', 500, '2018-03-01 15:06:10', '2018-03-02 03:03:10', 0),
-(22, '0623503096', 500, '2018-03-01 14:45:35', '2018-03-02 02:03:35', 0),
-(17, '12345', 500, '2018-03-01 15:07:41', '0000-00-00 00:00:00', 4),
-(24, '0711983349', 500, '2018-03-01 16:28:12', '0000-00-00 00:00:00', 4);
+INSERT INTO `donation` (`id`, `cellDonator`, `amount`, `donDate`, `expDate`, `status`, `remaining_don`) VALUES
+(23, '12345', 500, '2018-03-01 15:06:10', '2018-03-02 03:03:10', 0, 0),
+(22, '0623503096', 500, '2018-03-01 14:45:35', '2018-03-02 02:03:35', 0, 0),
+(17, '12345', 500, '2018-03-01 15:07:41', '0000-00-00 00:00:00', 4, 0),
+(24, '0711983349', 500, '2018-03-01 16:28:12', '0000-00-00 00:00:00', 4, 0),
+(25, '0658707196', 500, '2018-03-01 16:41:30', '2018-03-02 04:03:30', 0, 0),
+(26, '0710731712', 500, '2018-03-01 16:46:08', '2018-03-02 04:03:08', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -137,7 +163,8 @@ CREATE TABLE `referals` (
 
 INSERT INTO `referals` (`id`, `refere`, `redered`) VALUES
 (5, '12345', '0623503096'),
-(6, '12345', '0711983349');
+(6, '12345', '0711983349'),
+(8, '0711983349', '0710731712');
 
 -- --------------------------------------------------------
 
@@ -148,9 +175,9 @@ INSERT INTO `referals` (`id`, `refere`, `redered`) VALUES
 CREATE TABLE `support` (
   `id` int(11) NOT NULL,
   `p_number` varchar(13) NOT NULL,
-  `Surname` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `Message` varchar(255) NOT NULL
+  `surname` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `message` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -182,7 +209,6 @@ CREATE TABLE `users` (
   `p_number` varchar(15) NOT NULL,
   `password` varchar(20) NOT NULL,
   `ref_code` varchar(11) NOT NULL,
-  `vCode` varchar(20) NOT NULL,
   `status` int(11) NOT NULL,
   `bank_name` varchar(100) NOT NULL,
   `universal_code` int(11) NOT NULL,
@@ -195,10 +221,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `fname`, `lname`, `p_number`, `password`, `ref_code`, `vCode`, `status`, `bank_name`, `universal_code`, `bank_branch`, `account_holder`, `account_number`) VALUES
-(1, 'khaye', 'kunene', '12345', 'admin', 'admin', '234567', 1, 'CAPITEC BANK', 470010, 0, 'Khayelihle', '1425364738'),
-(12, 'Melusi', 'Maphumulo', '0623503096', '1234', '12345', '', 0, 'CAPITEC BANK', 470010, 147010, 'MR MB MAPHUMULO', '14765159'),
-(13, 'Nhlanhla', 'Dube', '0711983349', '12345', '12345', '', 1, 'NEDBANK', 198765, 145236, 'MR SNF DUBE', '1059536524');
+INSERT INTO `users` (`id`, `fname`, `lname`, `p_number`, `password`, `ref_code`, `status`, `bank_name`, `universal_code`, `bank_branch`, `account_holder`, `account_number`) VALUES
+(1, 'khaye', 'kunene', '12345', '12345', 'admin', 1, 'CAPITEC BANK', 470010, 0, 'Khayelihle', '1425364738'),
+(12, 'Melusi', 'Maphumulo', '0623503096', '1234', '12345', 0, 'CAPITEC BANK', 470010, 147010, 'MR MB MAPHUMULO', '14765159'),
+(13, 'Nhlanhla', 'Dube', '0711983349', '12345', '12345', 1, 'NEDBANK', 198765, 145236, 'MR SNF DUBE', '1059536524'),
+(14, 'Menzi', 'Ngcobo', '0658707196', '12345', '0711983349', 0, 'NEDBANK', 198765, 150628, 'MR M NGCOBO', '184618984'),
+(15, 'Khaye', 'Kunene', '0710731712', '12345', '0711983349', 0, 'CAPITEC BANK', 470010, 147010, 'MR K KUNENE', '14716151084');
 
 --
 -- Indexes for dumped tables
@@ -279,12 +307,12 @@ ALTER TABLE `claims`
 -- AUTO_INCREMENT for table `donation`
 --
 ALTER TABLE `donation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `referals`
 --
 ALTER TABLE `referals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `support`
 --
@@ -299,7 +327,7 @@ ALTER TABLE `transactionhistory`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
