@@ -3,7 +3,7 @@ include("conn.php");
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
     {
-        if(isset($_POST["submit"]))
+        if($_POST["submit"] =="Update Password")
         {
           @$oldPassword=$_POST["oldPassword"];
           @$newPassword=$_POST["newPassword"];
@@ -23,13 +23,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                 @$errMessage="Enter different password from the old password";
                 
             }else{
-<<<<<<< HEAD
              $sql="update users set password= \"$newPassword\" where p_number=\"$username\";"; 
-             $result=$conn->query($sql);
-=======
-             $sql="update users set password= \"$newPassword\" where p_number=\"$username\";"; //where p_number=\"$_SESSION["u_username"]\";";
             
->>>>>>> ad966e4e0c4224c1652d50e321f278945015bad3
              if($conn->query($sql)){
                     @$errMessage="";
                     @$succMessage="Password updated";
@@ -41,5 +36,32 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             }
           
         }
+
+        if($_POST['submit'] == "Update Picture")
+       { 
+            $target_parth="assets/images/";
+           $target_parth=$target_parth.basename($_FILES['uploadFile']['name']);
+           
+           if (move_uploaded_file($_FILES['uploadFile']['tmp_name'],$target_parth)) {
+               
+              @$username=$_SESSION["u_username"];
+               $sql = "update users set profile_pic= \"$target_parth\" where p_number=\"$username\";";
+      
+               if($conn->query($sql)==TRUE)
+               {
+                   echo"File uploaded ".$target_parth;
+                   
+               }
+              
+               $sql1="select profile_pic from users order by id asc limit 1";
+               $results=$conn->query($sql1);
+               if($results->num_rows>0)
+               {
+                   $row=$results->fetch_assoc();
+                   $_SESSION['u_profile_pic']=$row['profile_pic'];
+                   header("location:profile.php");
+               }
+           }
+      }
     }
 ?>

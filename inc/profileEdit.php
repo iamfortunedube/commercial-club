@@ -28,6 +28,7 @@
                 </form>				
         </div>
         <?php include("server/updatePassword.php");?>
+     
         <div class="welcomeWrapper">
                 <div class="welcomeTitle border-shape">
                     <h6>Password</h6>
@@ -48,6 +49,7 @@
                          </div>
                         </div>  
                     </div>
+                    
                     <input style="width:100%;" class="btn button-gold" type="submit" name="submit"value="Update Password"/>
                     <?php echo "<span style='color:red'>".@$errMessage."</span>";?>
                     <?php echo "<span style='color:green'>".@$succMessage."</span>";?>
@@ -81,3 +83,15 @@
         </div>
     </div>
 </div>
+
+ 
+        <div >
+         
+                <form id="pic" class="welcomeContent" method="post" action="<?php echo $_SERVER["PHP_SELF"];?>" enctype="multipart/form-data">
+               
+                    <input style="width:100%;" type="file" name="uploadFile"value="Update Picture"/>
+                    <input style="width:45%;" class="btn button-gold" type="submit" name="submit"value="Update Picture"/>
+                
+                </form>				
+        </div>
+    

@@ -1,9 +1,25 @@
 <div class="sidebar-menu">
+
     <ul>
     <li>
             <div class="userProfile">
                 <div class="imageLeft">
-                    <img src="assets/avatar.png" width="70" height="70" alt="image" />
+                <?php
+                if(isset($_SESSION['u_id'])){
+                    echo '
+                        <a style="padding:0;" href="profile.php"><img src="'.@$_SESSION['u_profile_pic'].'" width="70" height="70" alt="image" /></a>
+                    ';
+                }else{
+                    echo '
+                             <img src="assets/avatar.png" width="70" height="70" alt="image" />
+                        ';
+                }
+                    
+                
+                ?>
+              
+
+</p>
                 </div>
                 <div class="userWelcome">
                     <p class="welcomeM"><?php if(isset($_SESSION['u_id'])){echo "Hi <b>".@$_SESSION['u_fname'];}else{echo "Welcome <b>Guest";}?></b></p>

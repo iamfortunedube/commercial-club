@@ -187,6 +187,11 @@ header{
 
 /* side bar */
 
+.imageLeft img{
+    border-radius: 50%; 
+    border:2px solid  rgb(218,165,32);
+}
+
 .imageLeft{
     float: left;
     width:70px;

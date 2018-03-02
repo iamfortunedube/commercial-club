@@ -53,7 +53,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                             $_SESSION["u_accHolder"] = $userDetails["account_holder"];
                             $_SESSION["u_accNumber"] = $userDetails["account_number"];
                             $_SESSION["u_pswd"] = $userDetails["password"];
-                            
+                            $_SESSION['u_profile_pic'] =  $userDetails["profile_pic"];
+
                             echo "<script>window.location.href = './dashboard.php';</script>";
                         }else{
                             $errMessage= "Password invalid";
