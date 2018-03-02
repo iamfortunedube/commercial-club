@@ -31,12 +31,19 @@ $(document).ready(function() {
     $(function(){
        
         var str = document.getElementById("dateDon").innerHTML;
+        var timess = 0;
+        if(str == ""){
+            str = new Date();
+            timess = 24*60*60*1000;
+        }else{
+            timess = 25*60*60*1000;
+        }
         var date = new Date(str); 
         var milliseconds = date.getTime(); 
         var note = $('#note'),
         
     
-         ts =  milliseconds + 24*60*60*1000;
+         ts =  milliseconds + timess;
     
             
         $('#countdown').countdown({

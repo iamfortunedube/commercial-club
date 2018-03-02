@@ -219,6 +219,11 @@ th{
     color:rgb(218,165,32);
 }
 
+table{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
 .welcomeTitle{
     background-color: rgb(17, 16, 16);
     border-bottom:5px solid  rgb(218,165,32);

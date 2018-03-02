@@ -9,9 +9,10 @@
                 
                 <?php include("server/donateScript.php");?>
                     <form class="form-control" method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
-                       <center>
-                    <?php if(!isset($_SESSION['don'])){ echo '
-                        <p>Make your donation here:</p>
+                       
+                    <?php if(!isset($_SESSION['don'])){ 
+                        echo '
+                        <p style="padding:5px;margin:5px;">Make your donation here:</p>
                         <div class="row">
                             <div class="col-md-9">
                                 <input class="form-control" maxlength="5" id="donate" type="text" name="donateAmount" placeholder="Enter amount to donate" value="'.@$str1.'"/>
@@ -23,14 +24,15 @@
                         </div>';}
                         else{
                             echo'
+                            <center>
                         <p style="padding:5px;margin:5px;">
                           Your order will be allocated within 24 hours - <b>R  '.@$_SESSION['don'].'<br><center> '.@$newDates.'</b><center>
                           <div id="countdown"></div>
 
                           <p id="note"></p>
-                          </p>';}
+                          </p> </center>';}
                         ?>
-                        </center>
+                       
                     </form>
                 </div>
                 
