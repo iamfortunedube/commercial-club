@@ -33,7 +33,9 @@
            { echo '
             <li><a id="dashboard" href="dashboard.php"><i class="fas fa-credit-card"></i> Dashboard</a></li>
             <li><a id="profile-edit" href="profile.php"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a id="sign-out" href="inc/support.php"><i class="fas fa-sign-out-alt"></i>Support</a></li>
             <li><a id="sign-out" href="server/logOut.php"><i class="fas fa-sign-out-alt"></i> Sign out</a></li>
+            
             ';
          }else{
              echo '
