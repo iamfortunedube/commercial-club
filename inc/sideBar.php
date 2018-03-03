@@ -1,4 +1,4 @@
-<div class="sidebar-menu" id="sidebar">
+<div class="sidebar-menu col-md-2" style="margin-top:80px;background-color:transparent;">
     <ul class="list_itemss">
     <li>
             <div class="userProfile">

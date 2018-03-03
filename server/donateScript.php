@@ -4,22 +4,43 @@ include("conn.php");
 
 
         $ready = true;
-        $sql = "Select * from donation where cellDonator = '".@$_SESSION['u_username']."' and status = 0";
-
-        $results = $conn->query($sql);
-        $donateDetails = $results->fetch_assoc();
-        $expDate = $donateDetails['expDate'];
-        $currDate = $countD = date('Y-m-d H:i:s');
+        $sql = "Select * from donation where cellDonator = '".@$_SESSION['u_username']."' AND NOT status =4 order by donDate LIMIT 1";
+        @$currDate = $countD = date('Y-m-d H:i:s');
         
-        $countDown = $donateDetails['donDate'];
-        if($expDate == $currDate || $donateDetails['status'] == 1){
+        $results = $conn->query($sql);
+        if($results->num_rows > 0){
+            while($donateDetails = $results->fetch_assoc()){
+                $expDate = $donateDetails['expDate'];
+                switch($donateDetails['status']){
+                    case 0:
+                        $currDate = $countD = date('Y-m-d H:i:s');
+                        $countDown = $donateDetails['donDate'];
+                        $_SESSION['don'] = $donateDetails['amount'];
+                        echo "<span id='dateDon' hidden>".$countDown."</span>";
+                        unset($_SESSION['pending']);
+                        break;
+                    case 1:
+                        $_SESSION['pending'] = "You must donate in less then 24 hours";
+                        $_SESSION['don'] = $donateDetails['amount'];
+                        break;
+                    case 2:
+                        $_SESSION['pending'] = "The reciever has not yet confirmed your payment";
+                        $_SESSION['don'] = $donateDetails['amount'];
+                        break;
+                    case 4:
+                        unset($_SESSION["don"]);
+                        unset($_SESSION['pending']);
+                        break;
+                }
+               
+    
+            }
+        }else{
             unset($_SESSION["don"]);
+            unset($_SESSION['pending']);
         }
-        else{
-            $_SESSION['don'] = $donateDetails['amount'];
-            echo "<span id='dateDon' hidden>".$countDown."</span>";
-        }
-
+       
+        
         if(isset($_POST["submit"]) == "Donate") 
         { 
                     

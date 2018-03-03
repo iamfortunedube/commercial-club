@@ -22,7 +22,13 @@
                             </div>
                             <p style="padding:5px;margin:5px;color:red">'.@$errDonation.'</p>
                         </div>';}
-                        else{
+                        else if(isset($_SESSION['pending'])){
+                            echo'
+                              <p style="padding:5px;margin:5px;">
+                                <center> '.@$_SESSION['pending'].'</center>
+                              </p> ';
+                            
+                        } else{
                             echo'
                         <p style="padding:5px;margin:5px;">
                           <center>Your order will be allocated within 24 hours - <b>R  '.@$_SESSION['don'].'<br> '.@$newDates.'</b></center>

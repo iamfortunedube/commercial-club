@@ -210,7 +210,7 @@ header{
 
 .imageLeft img{
     border-radius: 50%; 
-    border:2px solid  rgb(218,165,32);
+    border:2px solid rgb(218,165,32);
 }
 
 .imageLeft{
@@ -256,8 +256,7 @@ table{
     color:rgb(218,165,32);
     font-weight: bolder;
     padding:7px 10px;
-    box-shadow: 5px 5px 5px rgba(17, 16, 16, 0.356);
-    
+    box-shadow: 5px 5px 5px rgba(17, 16, 16, 0.356);   
 }
 
 .border-shape{

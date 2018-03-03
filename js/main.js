@@ -19,11 +19,6 @@ $(document).ready(function() {
     $("#show").click(function(){
         $("#form").slideToggle();
     });
-    // $("#hideSide").click(function(){
-    //     $("#sidebar").slideToggle("slow", function() {
-            
-    //       });
-    // });
 
 
     $('#switch').click(function(){
@@ -35,7 +30,6 @@ $(document).ready(function() {
         }
     });
     $(function(){
-       
         var str = document.getElementById("dateDon").innerHTML;
         var timess = 0;
         if(str == ""){
