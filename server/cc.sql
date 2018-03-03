@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 02, 2018 at 10:10 AM
+-- Generation Time: Mar 03, 2018 at 03:30 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -63,7 +63,7 @@ CREATE TABLE `allocation` (
 --
 
 INSERT INTO `allocation` (`id`, `cellDonator`, `cellReciever`, `status`) VALUES
-(1, '12345', '0711983349', 1);
+(3, '12345', '0711983349', 0);
 
 -- --------------------------------------------------------
 
@@ -107,15 +107,16 @@ CREATE TABLE `claims` (
   `amount` int(11) NOT NULL,
   `donDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `expDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `states` int(2) NOT NULL
+  `states` int(2) NOT NULL,
+  `remaining_claim` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `claims`
 --
 
-INSERT INTO `claims` (`id`, `cellClaim`, `amount`, `donDate`, `expDate`, `states`) VALUES
-(1, '0711983349', 500, '2018-03-01 15:12:07', '0000-00-00 00:00:00', 4);
+INSERT INTO `claims` (`id`, `cellClaim`, `amount`, `donDate`, `expDate`, `states`, `remaining_claim`) VALUES
+(1, '0711983349', 750, '2018-03-03 11:20:27', '2018-03-04 10:03:40', 0, 750);
 
 -- --------------------------------------------------------
 
@@ -138,12 +139,8 @@ CREATE TABLE `donation` (
 --
 
 INSERT INTO `donation` (`id`, `cellDonator`, `amount`, `donDate`, `expDate`, `status`, `remaining_don`) VALUES
-(23, '12345', 500, '2018-03-01 15:06:10', '2018-03-02 03:03:10', 0, 0),
-(22, '0623503096', 500, '2018-03-01 14:45:35', '2018-03-02 02:03:35', 0, 0),
-(17, '12345', 500, '2018-03-01 15:07:41', '0000-00-00 00:00:00', 4, 0),
-(24, '0711983349', 500, '2018-03-01 16:28:12', '0000-00-00 00:00:00', 4, 0),
-(25, '0658707196', 500, '2018-03-01 16:41:30', '2018-03-02 04:03:30', 0, 0),
-(26, '0710731712', 500, '2018-03-01 16:46:08', '2018-03-02 04:03:08', 0, 0);
+(52, '0623503096', 1000, '2018-03-03 11:00:44', '2018-03-04 09:03:08', 4, 1000),
+(53, '12345', 500, '2018-03-03 11:09:25', '2018-03-04 10:03:32', 1, 500);
 
 -- --------------------------------------------------------
 
@@ -214,19 +211,20 @@ CREATE TABLE `users` (
   `universal_code` int(11) NOT NULL,
   `bank_branch` int(11) NOT NULL,
   `account_holder` varchar(100) NOT NULL,
-  `account_number` varchar(20) NOT NULL
+  `account_number` varchar(20) NOT NULL,
+  `profile_pic` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `fname`, `lname`, `p_number`, `password`, `ref_code`, `status`, `bank_name`, `universal_code`, `bank_branch`, `account_holder`, `account_number`) VALUES
-(1, 'khaye', 'kunene', '12345', '12345', 'admin', 1, 'CAPITEC BANK', 470010, 0, 'Khayelihle', '1425364738'),
-(12, 'Melusi', 'Maphumulo', '0623503096', '1234', '12345', 0, 'CAPITEC BANK', 470010, 147010, 'MR MB MAPHUMULO', '14765159'),
-(13, 'Nhlanhla', 'Dube', '0711983349', '12345', '12345', 1, 'NEDBANK', 198765, 145236, 'MR SNF DUBE', '1059536524'),
-(14, 'Menzi', 'Ngcobo', '0658707196', '12345', '0711983349', 0, 'NEDBANK', 198765, 150628, 'MR M NGCOBO', '184618984'),
-(15, 'Khaye', 'Kunene', '0710731712', '12345', '0711983349', 0, 'CAPITEC BANK', 470010, 147010, 'MR K KUNENE', '14716151084');
+INSERT INTO `users` (`id`, `fname`, `lname`, `p_number`, `password`, `ref_code`, `status`, `bank_name`, `universal_code`, `bank_branch`, `account_holder`, `account_number`, `profile_pic`) VALUES
+(1, 'khaye', 'kunene', '12345', '12345', 'admin', 1, 'CAPITEC BANK', 470010, 0, 'Khayelihle', '1425364738', 'assets/avatar.png'),
+(12, 'Melusi', 'Maphumulo', '0623503096', '1234', '12345', 0, 'CAPITEC BANK', 470010, 147010, 'MR MB MAPHUMULO', '14765159', 'assets/avatar.png'),
+(13, 'Nhlanhla', 'Dube', '0711983349', '12345', '12345', 1, 'NEDBANK', 198765, 145236, 'MR SNF DUBE', '1059536524', 'assets/avatar.png'),
+(14, 'Menzi', 'Ngcobo', '0658707196', '12345', '0711983349', 0, 'NEDBANK', 198765, 150628, 'MR M NGCOBO', '184618984', 'assets/avatar.png'),
+(15, 'Khaye', 'Kunene', '0710731712', '12345', '0711983349', 0, 'CAPITEC BANK', 470010, 147010, 'MR K KUNENE', '14716151084', 'assets/avatar.png');
 
 --
 -- Indexes for dumped tables
@@ -292,7 +290,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `allocation`
 --
 ALTER TABLE `allocation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `bankss`
 --
@@ -307,7 +305,7 @@ ALTER TABLE `claims`
 -- AUTO_INCREMENT for table `donation`
 --
 ALTER TABLE `donation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT for table `referals`
 --

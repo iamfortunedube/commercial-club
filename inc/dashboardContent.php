@@ -10,7 +10,7 @@
                 <?php include("server/donateScript.php");?>
                     <form class="form-control" method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
                        
-                    <?php if(!isset($_SESSION['don'])){ 
+                    <?php if(!isset($_SESSION['don']) && @$_SESSION['found'] == false){ 
                         echo '
                         <p style="padding:5px;margin:5px;">Make your donation here:</p>
                         <div class="row">
@@ -30,17 +30,15 @@
                             
                         } else{
                             echo'
-                        <p style="padding:5px;margin:5px;">
-                          <center>Your order will be allocated within 24 hours - <b>R  '.@$_SESSION['don'].'<br> '.@$newDates.'</b></center>
-                          <div id="countdown"></div>
+                            <p style="padding:5px;margin:5px;">
+                            <center>Your order will be allocated within 48 hours - <b>R  '.@$_SESSION['don'].'<br> '.@$newDates.'</b></center>
+                            <div id="countdown"></div>
 
-                          <p id="note"></p>
-                          </p> ';}
+                            <p id="note"></p>
+                            </p> ';}
                         ?>
-                       
                     </form>
                 </div>
-                
         </div>
     </div>
     <div class="col-md-6">
@@ -60,22 +58,58 @@
                     </thead>
                     <tbody>
                         <?php
-                            $sqlClaim = "Select * from claims where cellClaim = '".$_SESSION['u_username']."' AND states = 0;";
+                            $sqlClaim = "Select DATEDIFF(expDate, donDate) AS days,amount,donDate,expDate,states from claims where cellClaim = '".$_SESSION['u_username']."';";
                             
                             $resultsClaim = $conn->query($sqlClaim);
                             if($resultsClaim->num_rows > 0){
                                 $countt = 0;
                                 while($row = $resultsClaim->fetch_assoc()){
                                     $countt++;
-                                    echo '
-                                            <tr>
-                                                <td scope="row">'.$countt.'</td>
-                                                <td>R '.$row['amount'].'</td>
-                                                <td>24 hours</td>
-                                                <td>'; 
+                                    echo '  <form action="'.$_SERVER["PHP_SELF"].'">
+                                                <tr>
+                                            
+                                                    <td scope="row"><input type="text" name="key" value="UVonNbionUVJNIUB6846811yySVYGbniunySVYgvuYTVvuvtvSVYvbubSTYVBubtybuyvbuyvmk59jbb616YBIK734VUBg64DC653dHVBYTUBliubruv67r3d6uivytvu75v438HGFdd76f7tg56f64d67jk5151JH7689ubHwvhjN65151vh"  hidden />'.$countt.'</td>
+                                                    <td><input type="text" name="claimAmount" value="'.$row['amount'].'"  hidden />R '.$row['amount'].'</td>
+                                                    <td><input type="text" name="donDatee" value="'.$row['donDate'].'"  hidden />'; if($row['days'] <= 0){echo "--------";}else{echo $row["days"].' day(s)';} echo '</td>
+                                                    <td><input type="text" name="expDatee" value="'.$row['expDate'].'"  hidden />
+                                                    '; 
+                                                    $time = strtotime($row['expDate']);
 
-                                                echo '<input type="button" class="btn button-sm-gold" value="Claim"></td>
-                                            </tr>
+                                                    $curtime = time();
+
+                                                    $timeCheck = $time - $curtime;
+
+                                                    switch($row['states']){
+                                                        case 10:
+                                                            if($timeCheck <= 0){
+                                                                echo '<input type="submit" name="submit" class="btn button-sm-gold" value="Claim" />';
+                                                                break;
+                                                            }else{
+                                                                echo "Time left : ".date("h:m:s",$timeCheck);
+                                                                break;
+                                                            }
+                                                            break;
+                                                        case 1:
+                                                            echo 'Pending...';
+                                                            break;
+                                                        case 0:
+                                                            echo 'Waiting for allocation';
+                                                            break;
+                                                        case 2:
+                                                            echo 'Waiting for Sender';
+                                                            break;
+                                                        case 3:
+                                                            echo 'Please confirm';
+                                                            break;
+                                                        case 4:
+                                                            echo '<span style="color:green">Complete</span>';
+                                                            break;
+                                                        default:
+                                                            echo 'Testing';
+                                                    }  
+                                                    echo '
+                                                </tr> 
+                                            </form>
                                         ';
                                 }
                             }else{
@@ -99,9 +133,12 @@
                
                     <?php
                     
-                    $sqlDonator = "select account_holder,bank_name,bank_branch,account_number,d.amount,p_number,d.status AS 'donStatus' from allocation a,users u,donation d where a.cellReciever = d.cellDonator
-                                                                                                                                                                            AND   a.cellDonator = '".$_SESSION['u_username']."'
-                                                                                                                                                                            AND   a.cellReciever = u.p_number ;";
+                    $sqlDonator = "select 
+                    account_holder,bank_name,bank_branch,account_number,c.amount,p_number,c.states AS 'donStatus' 
+                    from allocation a,users u,claims c 
+                    where a.cellReciever = c.cellClaim
+                         AND   a.cellDonator = '".$_SESSION['u_username']."'
+                             AND   a.cellReciever = u.p_number;";
                     
                     $resultDonator = $conn->query($sqlDonator);
                     if($resultDonator){
@@ -151,6 +188,8 @@
                                             case 4:
                                                 echo '<span style="color:green;font-weight:bolder;">Process Completed</span>';
                                                 break;
+                                            default:
+                                                echo "Pending...";
                                         }
                                         echo '
                                         
