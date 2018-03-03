@@ -1,6 +1,4 @@
-<?php
-if(isset($_SESSION['u_id'])){
-    echo '
+
     <div style="postion:absolute;top:0;border-bottom:2px solid black;right:-1px;width:50px;height:50px;font-size:20pt;font-weight:bolder;" class="support" >
          <a href="#" id="show"><div  class="header">?</div></a>
     </div>
@@ -15,8 +13,3 @@ if(isset($_SESSION['u_id'])){
             </form>
     </div>
     
-         ';
-}
-
-
-?>
