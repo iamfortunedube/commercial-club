@@ -3,7 +3,7 @@ include("conn.php");
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
     {
-        if($_POST["submit"] =="Update Password")
+        if(@$_POST["submit"] =="Update Password")
         {
           @$oldPassword=$_POST["oldPassword"];
           @$newPassword=$_POST["newPassword"];
@@ -59,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                {
                    $row=$results->fetch_assoc();
                    $_SESSION['u_profile_pic']=$row['profile_pic'];
-                   header("location:profile.php");
+                   echo "<script>window.location.href = 'profile.php';</script>";
                }
            }
       }

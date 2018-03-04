@@ -174,7 +174,7 @@
                                 @$claim_id = $_POST['c_id'];
 
                                 $sqlDon = "update donation set status = 2 where id='".$don_id."';";
-                                $sqlClaim = "update claim set states = 3 where id='".$claim_id."';";
+                                $sqlClaim = "update claims set states = 3 where id='".$claim_id."';";
 
                                 $conn->query($sqlClaim);
                                 $conn->query($sqlDon);
@@ -251,7 +251,7 @@
                             ';
                        } 
      
-                    $sqlReciever = "select d.id AS 'd_iddd',c.id AS 'c_iddd',fname,lname,p_number,c.amount AS 'amount',c.states AS 'claimStatus' from allocation a,users u,claims c, donation d where a.cellReciever = '".$_SESSION['u_username']."'
+                    $sqlReciever = "select a.id AS 'a_iddd',d.id AS 'd_iddd',c.id AS 'c_iddd',fname,lname,p_number,d.amount AS 'amount',c.states AS 'claimStatus' from allocation a,users u,claims c, donation d where a.cellReciever = '".$_SESSION['u_username']."'
                               AND d.cellDonator = a.cellDonator
                               AND a.cellReciever = c.cellClaim
                                AND a.cellDonator = u.p_number";
@@ -278,28 +278,29 @@
 
                                 @$donn_id = (int)$_POST['d_iddd'];
                                 @$claimm_id = (int)$_POST['c_iddd'];
+                                @$allo_id = (int)$_POST['a_iddd'];
                                 @$intAmount=(int)$_POST['amount']; 
 
-                                @$newAmount= @$intAmount*0.5;
+                                @$newAmount= @$intAmount*1.5;
                                 @$cellDonerr=$_POST['p_number'];
                                
                                  $newDate=Date('Y-m-d', strtotime("+10 days")) ." ". date('h:m:s');
                                  $curtime = $countD = date('Y-m-d H:i:s');
-                                 echo "new amount :".@$intAmount."<br>";
-                                 echo "user :".@$cellDonerr."<br>";
-                               // $sqlDonn = "update donation set status = 4 where id=".$donn_id.";";
-                               // $sqlClaimm = "update claims set states = 4 where id=".$claimm_id.";";
-                               // $sqlAlloc = "update allocation set states = 1 where id=".$claimm_id.";";
-                               //$sqlClaimInsert="insert into claims values('',\"$cellDonerr\",\"$newAmount\",\"$curtime\",\"$newDate\",\"10\",\"$newAmount\")";
 
+                               $sqlDonn = "update donation set status = 4,donDate = '------' where id=".$donn_id.";";
+                               $sqlClaimm = "update claims set states = 4,donDate = '------' where id=".$claimm_id.";";
+                               $sqlAlloc = "update allocation set status = 1 where id=".$allo_id.";";
+                               $sqlClaimInsert="insert into claims values('',\"$cellDonerr\",\"$newAmount\",\"$curtime\",\"$newDate\",\"10\",\"$newAmount\")";
 
+                                unset($_SESSION['pending']);
+                                unset($_SESSION['don']);
 
                                 $conn->query($sqlClaimm);
                                 $conn->query($sqlDonn);
                                 $conn->query($sqlAlloc);
                                 $conn->query($sqlClaimInsert);
 
-                                echo "<script>alert(".$donn_id.' '.$claimm_id.");window.location.href = 'dashboard.php';</script>";
+                                echo "<script>window.location.href = 'dashboard.php';</script>";
                               }
 
                        while($row = $resultReciever->fetch_assoc()){
@@ -308,11 +309,12 @@
                                     <form action="" method="POST">
                                     <input type="hidden" name="d_iddd" value="'.$row['d_iddd'].'" />
                                      <input type="hidden" name="c_iddd" value="'.$row['c_iddd'].'" />
+                                     <input type="hidden" name="a_iddd" value="'.$row['a_iddd'].'" />
                                        <tr>
                                        <td scope="row">'.$row['fname'].' '.$row['lname'].'</td>
-                                       <td>'.$row['p_number'].'</td>
+                                       <td><input type="hidden" name="p_number" value="'.$row['p_number'].'" />'.$row['p_number'].'</td>
                                        <td>48 hours</td>
-                                       <td>'.$row['amount'].'</td>
+                                       <td><input type="hidden" name="amount" value="'.$row['amount'].'" />'.$row['amount'].'</td>
                                        <td>';
                                        
                                        switch($row['claimStatus']){
