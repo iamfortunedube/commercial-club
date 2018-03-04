@@ -29,28 +29,7 @@
                                 <p class="welcomeContent">
                                     <ol class="list">
 
-                                     <li>Donation amount start from minimum of R 500 and Maximum R10 000.</li>
-                                      <li>Do not Provide a Donation if you don’t not have money on hand, failure to make donation your account will be blocked.</li> 
-                                         <li>Blocked accounts will be inactive for 10 days due to the following:
-                                         <ul>
-                                         <li>Failure to make payment within allocated time.</li> 
-                                         <li>Failure to confirm payments within given time.</li>
-                                         </ul>
-                                         </li> 
-                                         <li>Each Member may register with one username.</li> 
-                                         <li>Allocation takes place within 48 hrs.</li>
-                                          <li>Please Note queries are to be resolved within 48 hrs such as: 
-
-                                         <ul>
-                                        <li>Order reallocation. </li> 
-                                          <li>Referrals reassigning.</li> 
-                                         <li>Other queries related to Commercial Club.</li> 
-                                         </ul>
-                                             </li>
-                                          <li>Referral commission is 10% on direct members. </li> 
-                                          <li>All withdrawal request will be proceed within 48 hrs.</li> 
-                                          <li>Members can top up their account not more than three times. </li> 
-                                          <li>Referral bonus can be withdrawn once user has the minimum of R500. </li>    
+                                    
                                     </ol>
                                 </p>
                         </div>
