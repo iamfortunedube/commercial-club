@@ -8,7 +8,7 @@
                                 <p class="welcomeContent">
                                 Welcome to the Commercial Club (CC) an online peer to peer community club. CC is a community platform designed to dispense wealth equally among all members. Commercial Clubs offers 50% after 10 Days to its members each time they are assisting or exchanging donations to others.
 
-                                “Justice cannot be for one side alone BUT must be for both”, CC encourages its members to work together and meet each other halfway by inviting new members to the community and be rewarded with 10% in return.  It’s amazing what we can accomplish when are in it together. 
+                                <b>“Justice cannot be for one side alone BUT must be for both”</b>, CC encourages its members to work together and meet each other halfway by inviting new members to the community and be rewarded with 10% in return.  It’s amazing what we can accomplish when are in it together. 
                                 </p>
                         </div>
                     </div>
