@@ -10,7 +10,7 @@
                 <?php include("server/donateScript.php");?>
                     <form class="form-control" method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
                        
-                    <?php if(!isset($_SESSION['don']) && @$_SESSION['found'] == false){ 
+                    <?php if(!isset($_SESSION['don'])){ 
                         echo '
                         <p style="padding:5px;margin:5px;">Make your donation here:</p>
                         <div class="row">
@@ -35,7 +35,8 @@
                             <div id="countdown"></div>
 
                             <p id="note"></p>
-                            </p> ';}
+                            </p> ';
+                        }
                         ?>
                     </form>
                 </div>
@@ -133,10 +134,11 @@
                
                     <?php
                     
-                    $sqlDonator = "select 
-                    account_holder,bank_name,bank_branch,account_number,c.amount,p_number,c.states AS 'donStatus' 
-                    from allocation a,users u,claims c 
+                    $sqlDonator = "select d.id AS 'd_idd',c.id AS 'c_idd',
+                    account_holder,bank_name,bank_branch,account_number,c.amount,p_number,d.status AS 'donStatus' 
+                    from allocation a,users u,claims c,donation d 
                     where a.cellReciever = c.cellClaim
+                        AND d.cellDonator = '".$_SESSION['u_username']."'
                          AND   a.cellDonator = '".$_SESSION['u_username']."'
                              AND   a.cellReciever = u.p_number;";
                     
@@ -165,22 +167,40 @@
                                     </tr>
                                 </thead>
                               ';
+
+                              if(@$_POST['submit']=="Send"){
+
+                                @$don_id = $_POST['d_id'];
+                                @$claim_id = $_POST['c_id'];
+
+                                $sqlDon = "update donation set status = 2 where id='".$don_id."';";
+                                $sqlClaim = "update claim set states = 3 where id='".$claim_id."';";
+
+                                $conn->query($sqlClaim);
+                                $conn->query($sqlDon);
+
+                                echo "<script>window.location.href = 'dashboard.php';</script>";
+                              }
+
+
                         while($row = $resultDonator->fetch_assoc()){
                             echo '
                                     <tbody>
-                                     <form action="" method="">
+                                     <form action="" method="POST">
+                                     <input type="hidden" name="d_id" value="'.$row['d_idd'].'" />
+                                     <input type="hidden" name="c_id" value="'.$row['c_idd'].'" />
                                         <tr>
                                         <td scope="row">'.$row['account_holder'].'</td>
                                         <td>'.$row['bank_name'].' ('.$row['bank_branch'].')</td>
                                         <td>'.$row['account_number'].'</td>
                                         <td>'.$row['amount'].'</td>
                                         <td>'.$row['p_number'].'</td>
-                                        <td>24 hours</td>
+                                        <td>48 hours</td>
                                         <td>';
                                         
                                         switch($row['donStatus']){
                                             case 1:
-                                            echo '<input type="button" class="btn button-sm-gold" value="Send" />';
+                                            echo '<input type="submit" name="submit" class="btn button-sm-gold" value="Send" />';
                                                 break;
                                             case 2:
                                                 echo 'Waiting for confirmation from Reciever...';
@@ -231,9 +251,10 @@
                             ';
                        } 
      
-                    $sqlReciever = "select fname,lname,p_number,c.amount,c.states AS 'claimStatus' from allocation a,users u,claims c where a.cellReciever = '".$_SESSION['u_username']."'
-                                                                                                                                     AND   a.cellDonator = c.cellClaim
-                                                                                                                                     AND   a.cellDonator = u.p_number ;";
+                    $sqlReciever = "select d.id AS 'd_iddd',c.id AS 'c_iddd',fname,lname,p_number,c.amount AS 'amount',c.states AS 'claimStatus' from allocation a,users u,claims c, donation d where a.cellReciever = '".$_SESSION['u_username']."'
+                              AND d.cellDonator = a.cellDonator
+                              AND a.cellReciever = c.cellClaim
+                               AND a.cellDonator = u.p_number";
                     
                     $resultReciever = $conn->query($sqlReciever);
                     if($resultReciever->num_rows > 0){
@@ -252,23 +273,54 @@
                                    </tr>
                                </thead>
                              ';
-                       while($row = $resultDonator->fetch_assoc()){
+                               if(@$_POST['submit']=="Confirm"){
+
+
+                                @$donn_id = (int)$_POST['d_iddd'];
+                                @$claimm_id = (int)$_POST['c_iddd'];
+                                @$intAmount=(int)$_POST['amount']; 
+
+                                @$newAmount= @$intAmount*0.5;
+                                @$cellDonerr=$_POST['p_number'];
+                               
+                                 $newDate=Date('Y-m-d', strtotime("+10 days")) ." ". date('h:m:s');
+                                 $curtime = $countD = date('Y-m-d H:i:s');
+                                 echo "new amount :".@$intAmount."<br>";
+                                 echo "user :".@$cellDonerr."<br>";
+                               // $sqlDonn = "update donation set status = 4 where id=".$donn_id.";";
+                               // $sqlClaimm = "update claims set states = 4 where id=".$claimm_id.";";
+                               // $sqlAlloc = "update allocation set states = 1 where id=".$claimm_id.";";
+                               //$sqlClaimInsert="insert into claims values('',\"$cellDonerr\",\"$newAmount\",\"$curtime\",\"$newDate\",\"10\",\"$newAmount\")";
+
+
+
+                                $conn->query($sqlClaimm);
+                                $conn->query($sqlDonn);
+                                $conn->query($sqlAlloc);
+                                $conn->query($sqlClaimInsert);
+
+                                echo "<script>alert(".$donn_id.' '.$claimm_id.");window.location.href = 'dashboard.php';</script>";
+                              }
+
+                       while($row = $resultReciever->fetch_assoc()){
                            echo '
                                    <tbody>
-                                    <form action="" method="">
+                                    <form action="" method="POST">
+                                    <input type="hidden" name="d_iddd" value="'.$row['d_iddd'].'" />
+                                     <input type="hidden" name="c_iddd" value="'.$row['c_iddd'].'" />
                                        <tr>
                                        <td scope="row">'.$row['fname'].' '.$row['lname'].'</td>
                                        <td>'.$row['p_number'].'</td>
-                                       <td>24 hours</td>
+                                       <td>48 hours</td>
                                        <td>'.$row['amount'].'</td>
                                        <td>';
                                        
                                        switch($row['claimStatus']){
-                                           case 1:
-                                           echo '<input type="button" class="btn button-sm-gold" value="Send" />';
-                                               break;
                                            case 2:
-                                               echo 'Waiting for confirmation from Reciever...';
+                                               echo 'Waiting for confirmation from sender...';
+                                               break;
+                                           case 3:
+                                                echo '<input type="submit" name="submit" class="btn button-sm-gold" value="Confirm" />';
                                                break;
                                            case 4:
                                                echo '<span style="color:green;font-weight:bolder;">Process Completed</span>';
