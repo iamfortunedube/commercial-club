@@ -11,7 +11,7 @@
                                 <b>“Justice cannot be for one side alone BUT must be for both”</b>, CC encourages its members to work together and meet each other halfway by inviting new members to the community and be rewarded with 10% in return.  It’s amazing what we can accomplish when are in it together. 
                                 </p>
                                 <p>
-                                <strong>Commercial Club request to be managers or representatives must be submitted to team support</strong>
+                                <strong>NB: Commercial Club request to be managers or representatives must be submitted to team support</strong>
                                 </p>
                         </div>
                     </div>
@@ -24,20 +24,25 @@
                     <div class="col-md-6">
                         <div class="welcomeWrapper">
                                 <div class="welcomeTitle border-shape">
-                                        <h6>COMMERCIAL CLUB TERMS AND CONDITIONS </h6>
+                                        <h6>Registration Process </h6>
                                 </div>
                                 <p class="welcomeContent">
-                                    <ol class="list">
-
+                                    <ul class="list">
+                                    <li>Click on "Register".</li>
+                                    <li>Fill in all required fields on the registration form.</li>
+                                        <li> Verify Cell Number using varification code.</li>
+                                        <li>Fill in your banking details.</li>
+                                        <li>Your login details will be sent by sms.</li>
+                                        <li>Login using member username and password.</li>
                                     
-                                    </ol>
+                                    </ul>
                                 </p>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="welcomeWrapper">
                                 <div class="welcomeTitle border-shape">
-                                        <h6>Password Reset</h6>
+                                        <h6>Forgot Password?</h6>
                                 </div>
                                 <p class="welcomeContent">
                                     <ol class="list">

@@ -28,7 +28,7 @@
                     
                     <span class="form-group">
                         <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" required value="value1">
-                        <label for="styled-checkbox-1">I Agree to Commercial Club Terms & Conditions <a href="#" id="readT&C"style="color:blue";> Read</a></label>
+                        <label for="styled-checkbox-1">I Agree to Commercial Club Terms & Conditions </label>
                        
                     </span>
             	<?php echo "<span style='color:red'>".@$errAgree."</span>";?></br>

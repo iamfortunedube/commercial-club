@@ -90,18 +90,11 @@
     <div class="col-md-6">
         <div class="welcomeWrapper">
                 <div class="welcomeTitle border-shape">
-                        <h6>Password Reset</h6>
+                        <h6>Varification code</h6>
                 </div>
                 <p class="welcomeContent">
                     <ul class="list">
-                        <li>Lorem Ipsum is siummy text of the printing</li>
-                        <li>Lorem Ipsuof the printing</li>
-                        <li>Lorem Ipsum is simply dummy te dut of the printing</li>
-                        <li>Lorem Ipsum is printing</li>
-                        <li>Lorem Ipsum is simply dummy the printing</li>
-                        <li>Lorem Ipsum is simply dummy te dut of the printing</li>
-                        <li>Lorem Ipsum is printing</li>
-                        <li>Lorem Ipsum is simply dummy the printing</li>
+                        <li>Enter a varification code that is sent to you by SMS with 6 numbers and proceed with your registration process</li>
                     </ul>  
                 </p>
         </div>
