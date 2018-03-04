@@ -42,18 +42,18 @@
     <div class="col-md-6">
         <div class="welcomeWrapper">
                 <div class="welcomeTitle border-shape">
-                        <h6>Password Reset</h6>
+                        <h6>Registration Process</h6>
                 </div>
                 <p class="welcomeContent">
                    
                     <ol class="list">
-                                    <li>Click on Login.</li>
-                                        <li>Click on "forgot password?" link.</li>
-                                        <li>Enter your Phone Number. </li>
-                                        <li>Click on "Request" button.</li>
-                                        <li>Your old password will be sent to you by sms.</li>
-                                        <li>Then Login.</li>
-                                        <li>Click on "Profile" and change your password</li> 
+                                  
+                                    <li>Click on "Rergister".</li>
+                                        <li>Fill in all required fields on the registration form.</li>
+                                        <li> Verify Cell Number using varification code.</li>
+                                        <li>Fill in your banking details.</li>
+                                        <li>Your login details will be sent by sms.</li>
+                                        <li>Login using member username and password.</li>
                                      </ol>  
                     
                 </p>
