@@ -38,7 +38,7 @@
             ';
          }else{
              echo '
-            <li><a id="home" class="active" href="index.php"> <i class="fas fa-home"></i> Home</a></li>
+            <li><a id="home" href="index.php"> <i class="fas fa-home"></i> Home</a></li>
             <li><a id="login" href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
             <li><a id="register" href="register.php"><i class="fas fa-edit"></i> Register</a></li>
         ';
