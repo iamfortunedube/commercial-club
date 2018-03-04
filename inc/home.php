@@ -8,7 +8,10 @@
                                 <p class="welcomeContent">
                                 Welcome to the Commercial Club (CC) an online peer to peer community club. CC is a community platform designed to dispense wealth equally among all members. Commercial Clubs offers 50% after 10 Days to its members each time they are assisting or exchanging donations to others.
 
-                                “Justice cannot be for one side alone BUT must be for both”, CC encourages its members to work together and meet each other halfway by inviting new members to the community and be rewarded with 10% in return.  It’s amazing what we can accomplish when are in it together. 
+                                <b>“Justice cannot be for one side alone BUT must be for both”</b>, CC encourages its members to work together and meet each other halfway by inviting new members to the community and be rewarded with 10% in return.  It’s amazing what we can accomplish when are in it together. 
+                                </p>
+                                <p>
+                                <strong>Commercial Club request to be managers or representatives must be submitted to team support</strong>
                                 </p>
                         </div>
                     </div>
@@ -21,16 +24,33 @@
                     <div class="col-md-6">
                         <div class="welcomeWrapper">
                                 <div class="welcomeTitle border-shape">
-                                        <h6>Registration & Login</h6>
+                                        <h6>COMMERCIAL CLUB TERMS AND CONDITIONS </h6>
                                 </div>
                                 <p class="welcomeContent">
                                     <ol class="list">
-                                        <li>Click on "Rergister".</li>
-                                        <li>Fill in all required fields on the registration form.</li>
-                                        <li> Verify Cell Number using varification code.</li>
-                                        <li>Fill in your banking details.</li>
-                                        <li>Your login details will be sent by sms.</li>
-                                        <li>Login using member username and password.</li>
+
+                                     <li>Donation amount start from minimum of R 500 and Maximum R10 000.</li>
+                                      <li>Do not Provide a Donation if you don’t not have money on hand, failure to make donation your account will be blocked.</li> 
+                                         <li>Blocked accounts will be inactive for 10 days due to the following:
+                                         <ul>
+                                         <li>Failure to make payment within allocated time.</li> 
+                                         <li>Failure to confirm payments within given time.</li>
+                                         </ul>
+                                         </li> 
+                                         <li>Each Member may register with one username.</li> 
+                                         <li>Allocation takes place within 48 hrs.</li>
+                                          <li>Please Note queries are to be resolved within 48 hrs such as: 
+
+                                         <ul>
+                                        <li>Order reallocation. </li> 
+                                          <li>Referrals reassigning.</li> 
+                                         <li>Other queries related to Commercial Club.</li> 
+                                         </ul>
+                                             </li>
+                                          <li>Referral commission is 10% on direct members. </li> 
+                                          <li>All withdrawal request will be proceed within 48 hrs.</li> 
+                                          <li>Members can top up their account not more than three times. </li> 
+                                          <li>Referral bonus can be withdrawn once user has the minimum of R500. </li>    
                                     </ol>
                                 </p>
                         </div>

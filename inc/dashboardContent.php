@@ -275,7 +275,6 @@
                              ';
                                if(@$_POST['submit']=="Confirm"){
 
-
                                 @$donn_id = (int)$_POST['d_iddd'];
                                 @$claimm_id = (int)$_POST['c_iddd'];
                                 @$allo_id = (int)$_POST['a_iddd'];
