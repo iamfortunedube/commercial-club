@@ -55,7 +55,7 @@
                 $row = $getResults->fetch_assoc();
                 
                 $uniCode = $row['universal_code'];
-                $sql = "insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$refferalNo\",0,\"$bank_name\",\"$uniCode\",\"$bank_branch\",\"$account_holder\",\"$accNum\");"; 
+                $sql = "insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$refferalNo\",0,\"$bank_name\",\"$uniCode\",\"$bank_branch\",\"$account_holder\",\"$accNum\",'assets/avatar.png');"; 
                 $sqlRef = "insert into referals values('',\"$refferalNo\",\"$cellNo\")";
                 $conn->query($sqlRef);
                 if($conn->query($sql)){
@@ -71,8 +71,8 @@
                             
                                     $numbersp = "&Numbers=";
                             
-                                    $username = "qinisozwane11@gmail.com";
-                                    $password = "Mangethe91";
+                                    $username = "rovissm@gmail.com";
+                                    $password = "Asekhona*03";
                                     $message = "Hi ".$firstname." ".$surname."\n\nWelcome to Commercial Club\nYour Login Details are as follows:\n\nUsername : ".$cellNo."\nPassword : ".$_SESSION['pswd']." \nThank you for joining us.\n-----------------------------\nFrom Commercial Club.";
                                     $numbers = $cellNo;
                             
@@ -104,6 +104,7 @@
                         $_SESSION["u_accHolder"] = $userDetails["account_holder"];
                         $_SESSION["u_accNumber"] = $userDetails["account_number"];
                         $_SESSION["u_pswd"] = $userDetails["password"];
+                        $_SESSION['u_profile_pic'] =  $userDetails["profile_pic"];
                         echo "<script>window.location.href = './dashboard.php';</script>";
                 }
                 else{

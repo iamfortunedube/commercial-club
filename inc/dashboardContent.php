@@ -31,7 +31,7 @@
                         } else{
                             echo'
                             <p style="padding:5px;margin:5px;">
-                            <center>Your order will be allocated within 48 hours - <b>R  '.@$_SESSION['don'].'<br> '.@$newDates.'</b></center>
+                            <center>Your order will be allocated within 24 hours - <b>R  '.@$_SESSION['don'].'<br> '.@$newDates.'</b></center>
                             <div id="countdown"></div>
 
                             <p id="note"></p>
@@ -86,7 +86,7 @@
                                                                 echo '<input type="submit" name="submit" class="btn button-sm-gold" value="Claim" />';
                                                                 break;
                                                             }else{
-                                                                echo "Time left : ".date("h:m:s",$timeCheck);
+                                                                echo "Time left : ".date("H:i:s",$timeCheck);
                                                                 break;
                                                             }
                                                             break;
@@ -283,7 +283,7 @@
                                 @$newAmount= @$intAmount*1.5;
                                 @$cellDonerr=$_POST['p_number'];
                                
-                                 $newDate=Date('Y-m-d', strtotime("+10 days")) ." ". date('h:m:s');
+                                 $newDate=Date('Y-m-d', strtotime("+10 days")) ." ". date('H:i:s');
                                  $curtime = $countD = date('Y-m-d H:i:s');
 
                                $sqlDonn = "update donation set status = 4,donDate = '------' where id=".$donn_id.";";
@@ -300,13 +300,14 @@
                                 $conn->query($sqlClaimInsert);
 
                                 echo "<script>window.location.href = 'dashboard.php';</script>";
+                                 echo "<script>window.location.href = 'dashboard.php';</script>";
                               }
 
                        while($row = $resultReciever->fetch_assoc()){
                            echo '
                                    <tbody>
-                                    <form action="" method="POST">
-                                    <input type="hidden" name="d_iddd" value="'.$row['d_iddd'].'" />
+                                     <form action="" method="POST">
+                                     <input type="hidden" name="d_iddd" value="'.$row['d_iddd'].'" />
                                      <input type="hidden" name="c_iddd" value="'.$row['c_iddd'].'" />
                                      <input type="hidden" name="a_iddd" value="'.$row['a_iddd'].'" />
                                        <tr>
@@ -393,7 +394,7 @@
 
                         $sql = "select * from referals r, users u,donation d where r.refere = '".$_SESSION['u_username']."' 
                                                                                AND r.redered = u.p_number 
-                                                                               AND r.redered = d.cellDonator;";
+                                                                               AND r.redered = d.cellDonator LIMIT 3;";
                         $result = $conn->query($sql);
                         @$numRef = $result->num_rows;
                         @$totCom = 0; 

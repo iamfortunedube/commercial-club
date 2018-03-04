@@ -95,8 +95,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 					
 							$numbersp = "&Numbers=";
 					
-							$username = "qinisozwane11@gmail.com";
-							$password = "Mangethe91";
+							$username = "rovissm@gmail.com";
+							$password = "Asekhona*03";
 							$message = "Activation code : ".$vCode."\n-----------------------------\nFrom Commercial Club.";
 							$numbers = $cellNo;
 					

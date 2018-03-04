@@ -73,7 +73,7 @@ include("conn.php");
                 { 
                     @$_SESSION['don'] = @$_POST["donateAmount"]; 
                    
-                    $newDate=Date('Y-m-d', strtotime("+1 days")) ." ". date('h:m:s');
+                    $newDate=Date('Y-m-d', strtotime("+1 days")) ." ". date('H:i:s');
                     $countD = date('Y-m-d H:i:s');
                     $countDown = $countD;
                     
