@@ -4,7 +4,7 @@ include("conn.php");
 
 /*------------------donation-----------------*/
         $ready = true;
-        $sql = "Select * from donation where cellDonator = '".@$_SESSION['u_username']."' AND NOT status = 4 order by donDate LIMIT 1";
+        $sql = "Select * from donation where cellDonator = '".@$_SESSION['u_username']."' order by donDate LIMIT 1";
         
         @$currDate = $countD = date('Y-m-d H:i:s');
         $results = $conn->query($sql);
@@ -89,7 +89,7 @@ include("conn.php");
         /*------------------donation ends-----------------*/
         /*------------------claims-----------------*/
         $ready = true;
-        $sqlClaim = "Select * from claims where cellClaim = '".@$_SESSION['u_username']."' AND NOT states = 4 order by donDate LIMIT 1";
+        $sqlClaim = "Select * from claims where cellClaim = '".@$_SESSION['u_username']."' order by donDate LIMIT 1";
         
         @$currDate = $countD = date('Y-m-d H:i:s');
         $resultsClaim = $conn->query($sqlClaim);
