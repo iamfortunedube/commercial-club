@@ -14,18 +14,19 @@ include("conn.php");
                 $expDate = $donateDetails['expDate'];
                 switch($donateDetails['status']){
                     case 0:
+                    unset($_SESSION['pending']);
                         $currDate = $countD = date('Y-m-d H:i:s');
                         $countDown = $donateDetails['donDate'];
-                        $_SESSION['don'] = $donateDetails['amount'];
+                        $_SESSION['don'] = $donateDetails['remaining_don'];
                         echo "<span id='dateDon' hidden>".$countDown."</span>";
                         break;
                     case 1:
                         $_SESSION['pending'] = "You must donate in less then 48 hours";
-                        $_SESSION['don'] = $donateDetails['amount'];
+                        $_SESSION['don'] = $donateDetails['remaining_don'];
                         break;
                     case 2:
                         $_SESSION['pending'] = "The reciever has not yet confirmed your payment";
-                        $_SESSION['don'] = $donateDetails['amount'];
+                        $_SESSION['don'] = $donateDetails['remaining_don'];
                         break;
                     case 4:
                         unset($_SESSION["don"]);
@@ -100,16 +101,16 @@ include("conn.php");
                     case 0:
                         $currDate = $countD = date('Y-m-d H:i:s');
                         $countDown = $claimDetails['donDate'];
-                        $_SESSION['don'] = $claimDetails['amount'];
+                        $_SESSION['don'] = $claimDetails['remaining_claim'];
                         echo "<span id='dateDon' hidden>".$countDown."</span>";
                         break;
                     case 2:
                         $_SESSION['pending'] = "Wiating for sender (48 hours)";
-                        $_SESSION['don'] = $claimDetails['amount'];
+                        $_SESSION['don'] = $claimDetails['remaining_claim'];
                         break;
                     case 3:
                         $_SESSION['pending'] = "Please confirm the payment";
-                        $_SESSION['don'] = $claimDetails['amount'];
+                        $_SESSION['don'] = $claimDetails['remaining_claim'];
                         break;
                     case 4:
                         unset($_SESSION["don"]);

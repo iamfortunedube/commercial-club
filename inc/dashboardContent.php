@@ -301,6 +301,7 @@
                                 $sqlClaimm = "update claims set states = 4,donDate = '------' where id=".$claimm_id.";";
                                 $sqlDonn = "update donation set status = 4,donDate = '------' where id=".$donn_id.";";
                                 $sqlAlloc = "update allocation set status = 1 where id=".$allo_id.";";
+                                $sqlUsers = "update users set status = 1 where id='".$cellDonerr."';";
 
                                $sqlGetDon = "Select * from donation where id=".$donn_id.";";
                                $resultsDon = $conn->query($sqlGetDon);
@@ -341,17 +342,24 @@
                                     $conn->query($sqlClaimmInComplete);
                                     $conn->query($sqlDonn);
                                     $conn->query($sqlClaimInsert);
+                                    $conn->query($sqlUsers);
+                                    unset($_SESSION['pending']);
+                                      $conn->query($sqlAlloc);
                                 }else if(($remaing_don_amount > 0) &&  ($remaining_claim_amount == 0)){
                                     
                                     $conn->query($sqlDonnInComplete);
                                     $conn->query($sqlClaimm);
+
+                                     unset($_SESSION['pending']);
+                                   
+                                     $conn->query($sqlAlloc);
                                 }else{
                                     
                                      $conn->query($sqlClaimm);
                                      $conn->query($sqlAlloc);
                                      $conn->query($sqlDonn);
                                      unset($_SESSION['pending']);
-                                     unset($_SESSION['don']);
+                                   
                                 }
                                 echo "<script>window.location.href = 'dashboard.php';</script>";
                               }
