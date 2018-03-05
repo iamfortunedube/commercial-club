@@ -135,20 +135,21 @@
                     <?php
                     
                     $sqlDonator = "select d.id AS 'd_idd',c.id AS 'c_idd',
-                    account_holder,bank_name,bank_branch,account_number,c.amount,p_number,d.status AS 'donStatus' 
+                    account_holder,bank_name,bank_branch,account_number,c.amount,p_number,d.status AS 'donStatus',c.states AS 'claimStatuss',d.donDate AS 'donDate'
                     from allocation a,users u,claims c,donation d 
                     where a.cellReciever = c.cellClaim
                         AND d.cellDonator = '".$_SESSION['u_username']."'
                          AND   a.cellDonator = '".$_SESSION['u_username']."'
                              AND   a.cellReciever = u.p_number;";
                     
-                    $resultDonator = $conn->query($sqlDonator);
-                    if($resultDonator){
+                     // if($resultDonator){
 
-                    }
-                    else{
-                        echo '<p class="welcomeContent">We are currently having some technical issues. Please contact us to continue with you request. Thank you for understaing!</p>';
-                    }
+                    // }
+                    // else{
+                    //     echo '<p class="welcomeContent">We are currently having some technical issues. Please contact us to continue with you request. Thank you for understaing!</p>';
+                    // }
+                    $resultDonator = $conn->query($sqlDonator);
+                   
                     if($resultDonator->num_rows > 0){
                          echo ' <div class="welcomeTitle">
                                 <h6><span style="color:rgb(218,165,32);font-size:15pt;">Transactions <span style="position:absolute;right:30px;">(for donations)</span></span></h6>
@@ -197,19 +198,26 @@
                                         <td>'.$row['p_number'].'</td>
                                         <td>48 hours</td>
                                         <td>';
-                                        
+                                       
                                         switch($row['donStatus']){
-                                            case 1:
-                                            echo '<input type="submit" name="submit" class="btn button-sm-gold" value="Send" />';
+                                            case 0:
+                                                if($row['claimStatuss'] == 2){
+                                                    echo '<input type="submit" name="submit" class="btn button-sm-gold" value="Send" />';
+                                                    break;
+                                                }else if($row['claimStatuss'] == 4){
+                                                    echo '<span style="color:green;font-weight:bolder;">Process Completed</span>';
+                                                    break;
+                                                }else{
+                                                    $currDate = $countD = date('Y-m-d H:i:s');
+                                                    $countDown = $donateDetails['donDate'];
+                                                    $_SESSION['don'] = $donateDetails['amount'];
+                                                    echo "<span id='dateDon' hidden>".$countDown."</span>";
+                                                    break;                                    
+                                                }
                                                 break;
                                             case 2:
                                                 echo 'Waiting for confirmation from Reciever...';
                                                 break;
-                                            case 4:
-                                                echo '<span style="color:green;font-weight:bolder;">Process Completed</span>';
-                                                break;
-                                            default:
-                                                echo "Pending...";
                                         }
                                         echo '
                                         
@@ -251,7 +259,7 @@
                             ';
                        } 
      
-                    $sqlReciever = "select a.id AS 'a_iddd',d.id AS 'd_iddd',c.id AS 'c_iddd',fname,lname,p_number,d.amount AS 'amount',c.states AS 'claimStatus' from allocation a,users u,claims c, donation d where a.cellReciever = '".$_SESSION['u_username']."'
+                    $sqlReciever = "select a.id AS 'a_iddd',d.id AS 'd_iddd',c.id AS 'c_iddd',fname,lname,p_number,d.amount AS 'amount',c.amount AS 'amount_claim',remaining_claim,remaining_don,c.states AS 'claimStatus' from allocation a,users u,claims c, donation d where a.cellReciever = '".$_SESSION['u_username']."'
                               AND d.cellDonator = a.cellDonator
                               AND a.cellReciever = c.cellClaim
                                AND a.cellDonator = u.p_number";
@@ -279,28 +287,62 @@
                                 @$claimm_id = (int)$_POST['c_iddd'];
                                 @$allo_id = (int)$_POST['a_iddd'];
                                 @$intAmount=(int)$_POST['amount']; 
-
-                                @$newAmount= @$intAmount*1.5;
                                 @$cellDonerr=$_POST['p_number'];
+                                @$don_remain=$_POST['d_remaining_don'];
+                                @$clain_remain=$_POST['c_remaining_claim'];
+
+   
+                                $newDate10=Date('Y-m-d', strtotime("+10 days")) ." ". date('H:i:s');
+                                $curtime = $countD = date('Y-m-d H:i:s');
+
+
+                                $sqlClaimmInComplete = "update claims set states = 0, where id=".$claimm_id.";";
+                                $sqlDonnInComplete = "update donation set status = 0 where id=".$donn_id.";";
+                                $sqlClaimm = "update claims set states = 4,donDate = '------' where id=".$claimm_id.";";
+                                $sqlDonn = "update donation set status = 4,donDate = '------' where id=".$donn_id.";";
+                                $sqlAlloc = "update allocation set status = 1 where id=".$allo_id.";";
+
+                               $sqlGetDon = "Select * from donation where id=".$donn_id.";";
+                               $resultsDon = $conn->query($sqlGetDon);
+                               $sqlGetClaim = "Select * from claims where id=".$claimm_id.";";
+                               $resultsClaim = $conn->query($sqlGetClaim);
+
+                               $donDetails = $resultsDon->fetch_assoc();
+                               $claimDetails = $resultsClaim->fetch_assoc();
+
+                                $sqlClaimInsert="insert into claims values('',\"$cellDonerr\",\"$newAmount\",\"$curtime\",\"$newDate\",\"10\",\"$newAmount\")";
+
+                               $remaing_don_amount = (int)$donDetails['remaining_don']; 
+                               $remaining_claim_amount = (int)$claimDetails['remaining_claim'];
+
+                                @$newAmount = @$intAmount*1.5;
                                
-                                 $newDate=Date('Y-m-d', strtotime("+10 days")) ." ". date('H:i:s');
-                                 $curtime = $countD = date('Y-m-d H:i:s');
+                                                
+                                if(($remaing_don_amount == 0) && ($remaining_claim_amount > 0)){
+                                    $conn->query($sqlClaimmInComplete);
+                                    $conn->query($sqlDonn);
+                                    $conn->query($sqlClaimInsert);
+                                }else if(($remaing_don_amount > 0) &&  ($remaining_claim_amount == 0)){
+                                    //don status = 0 // claims status = 4
+                                    $conn->query($sqlDonnInComplete);
+                                    $conn->query($sqlClaimm);
+                                }else{
+                                    // don status = 4  // claim status = 4
 
-                               $sqlDonn = "update donation set status = 4,donDate = '------' where id=".$donn_id.";";
-                               $sqlClaimm = "update claims set states = 4,donDate = '------' where id=".$claimm_id.";";
-                               $sqlAlloc = "update allocation set status = 1 where id=".$allo_id.";";
-                               $sqlClaimInsert="insert into claims values('',\"$cellDonerr\",\"$newAmount\",\"$curtime\",\"$newDate\",\"10\",\"$newAmount\")";
 
+
+
+                                     $conn->query($sqlClaimm);
+                                     $conn->query($sqlAlloc);
+                                     $conn->query($sqlDonn);
+                                }
+                                
+
+
+                            
                                 unset($_SESSION['pending']);
                                 unset($_SESSION['don']);
-
-                                $conn->query($sqlClaimm);
-                                $conn->query($sqlDonn);
-                                $conn->query($sqlAlloc);
-                                $conn->query($sqlClaimInsert);
-
                                 echo "<script>window.location.href = 'dashboard.php';</script>";
-                                 echo "<script>window.location.href = 'dashboard.php';</script>";
                               }
 
                        while($row = $resultReciever->fetch_assoc()){
@@ -310,11 +352,23 @@
                                      <input type="hidden" name="d_iddd" value="'.$row['d_iddd'].'" />
                                      <input type="hidden" name="c_iddd" value="'.$row['c_iddd'].'" />
                                      <input type="hidden" name="a_iddd" value="'.$row['a_iddd'].'" />
+                                     <input type="hidden" name="c_remaining_claim" value="'.$row['remaining_claim'].'" />
+                                     <input type="hidden" name="d_remaining_don" value="'.$row['remaining_don'].'" />
+                                     <input type="hidden" name="amount_claim" value="'.$row['amount_claim'].'" />
                                        <tr>
                                        <td scope="row">'.$row['fname'].' '.$row['lname'].'</td>
                                        <td><input type="hidden" name="p_number" value="'.$row['p_number'].'" />'.$row['p_number'].'</td>
                                        <td>48 hours</td>
-                                       <td><input type="hidden" name="amount" value="'.$row['amount'].'" />'.$row['amount'].'</td>
+                                       <td>';
+                                       if($row['amount_claim'] < $row['amount']){
+                                        echo '<input type="hidden" name="" value="'.$row['amount_claim'].'" />'.$row['amount_claim'];
+                                       }else if($row['amount_claim'] > $row['amount']){
+                                        echo '<input type="hidden" name="amount" value="'.$row['amount'].'" />'.$row['amount'];
+                                       }else{
+                                        echo '<input type="hidden" name="amount" value="'.$row['amount'].'" />'.$row['amount'];
+                                       }
+
+                                       echo'</td>
                                        <td>';
                                        
                                        switch($row['claimStatus']){
@@ -420,7 +474,7 @@
                         else{
                             echo '
                             <tr>
-                                 <td scope="row" colspan="5"><center>You have no referals at the moment. Invite people with your number as a referal number to get your comission</center></td>
+                                 <td scope="row" colspan="6"><center>You have no referals at the moment. Invite people with your number as a referal number to get your comission</center></td>
                             </tr>
                             ';
                         }
