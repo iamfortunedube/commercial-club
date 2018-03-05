@@ -290,8 +290,8 @@
                                 @$cellDonerr=$_POST['p_number'];
                                 @$don_remain=$_POST['d_remaining_don'];
                                 @$clain_remain=$_POST['c_remaining_claim'];
-
-   
+                               
+                                   
                                 $newDate10=Date('Y-m-d', strtotime("+10 days")) ." ". date('H:i:s');
                                 $curtime = $countD = date('Y-m-d H:i:s');
 
@@ -310,7 +310,13 @@
                                $donDetails = $resultsDon->fetch_assoc();
                                $claimDetails = $resultsClaim->fetch_assoc();
 
+                               @$cellClaimerr=$claimDetails['cellClaim'];
                                 $sqlClaimInsert="insert into claims values('',\"$cellDonerr\",\"$newAmount\",\"$curtime\",\"$newDate\",\"10\",\"$newAmount\")";
+                                
+                                
+                                @$sqlCommission="insert into commission values('',\"$cellClaimerr\",\"$cellDonerr\",0); ";
+
+
 
                                $remaing_don_amount = (int)$donDetails['remaining_don']; 
                                $remaining_claim_amount = (int)$claimDetails['remaining_claim'];
@@ -328,18 +334,12 @@
                                     $conn->query($sqlClaimm);
                                 }else{
                                     // don status = 4  // claim status = 4
-
-
-
-
-                                     $conn->query($sqlClaimm);
-                                     $conn->query($sqlAlloc);
-                                     $conn->query($sqlDonn);
+                                    $conn->query($sqlCommission);
+                                    $conn->query($sqlClaimm);
+                                    $conn->query($sqlAlloc);
+                                    $conn->query($sqlDonn);
                                 }
-                                
-
-
-                            
+                    
                                 unset($_SESSION['pending']);
                                 unset($_SESSION['don']);
                                 echo "<script>window.location.href = 'dashboard.php';</script>";
@@ -525,9 +525,20 @@
                        ?>
                         
                     </form>
-                </div>
-                
+                </div>     
         </div>
     </div>
-
 </div>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5a9d7d434b401e45400d6b7e/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
