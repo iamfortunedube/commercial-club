@@ -316,32 +316,38 @@
                                $remaining_claim_amount = (int)$claimDetails['remaining_claim'];
 
                                 @$newAmount = @$intAmount*1.5;
-                               
-                                                
+                                /*-------------referals-------------
+
+                                $sqlGetReferal = "select * from users u,referals r where redered = '".$_SESSION['u_username']."' AND refere = u.p_number AND r.status = 0;";
+                                $sqlGetDetals = $conn->query($sqlGetReferal);
+                                $getDetails = $sqlGetDetals->fetch_assoc();
+                                $referallNo =   $getDetails['ref_code'];
+                                $comm_amount = (int)$getDetails['commission_amount'];
+                                @$comInterest = @$intAmount*0.1;
+                                $newCommAmt = $comInterest + $$comm_amount;
+
+                                $sqlAddCom = "update users set commission_amount='".$newCommAmt."' where redered = '".$_SESSION['u_username']."' AND refere = '".."'"
+
+
+                                /*-------------referals ends-------------*/
+                              
                                 if(($remaing_don_amount == 0) && ($remaining_claim_amount > 0)){
                                     $conn->query($sqlClaimmInComplete);
                                     $conn->query($sqlDonn);
                                     $conn->query($sqlClaimInsert);
                                 }else if(($remaing_don_amount > 0) &&  ($remaining_claim_amount == 0)){
-                                    //don status = 0 // claims status = 4
+                                    
                                     $conn->query($sqlDonnInComplete);
                                     $conn->query($sqlClaimm);
                                 }else{
-                                    // don status = 4  // claim status = 4
-
-
-
-
+                                    
                                      $conn->query($sqlClaimm);
                                      $conn->query($sqlAlloc);
                                      $conn->query($sqlDonn);
+                                     unset($_SESSION['pending']);
+                                     unset($_SESSION['don']);
                                 }
                                 
-
-
-                            
-                                unset($_SESSION['pending']);
-                                unset($_SESSION['don']);
                                 echo "<script>window.location.href = 'dashboard.php';</script>";
                               }
 

@@ -60,16 +60,18 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 						$sql="select p_number from users where p_number=\"$cellNo\";";
 						$sqlCheck="select p_number from users where p_number=\"$refferalNo\" AND status = 1;";
 			
-                       $sqlCheckStatus="select p_number from users where p_number=\"$refferalNo\";";
+                       $sqlCheckReferals="select p_number from users where p_number=\"$refferalNo\";";
                         $result=$conn->query($sql);
 						
 						$resultCheck = $conn->query($sqlCheck);
 
-						$resultCheckStatus=$conn->query($sqlCheckStatus);
+						$resultCheckStatus=$conn->query($sqlCheckReferals);
 						@$userDetails = $result->fetch_assoc();
 
-						if($resultCheck->num_rows<=0){
-							$errMessage = "Referal number doesn't exist";
+						if($resultCheck->num_rows <= 0){
+							$errMessage = "Referal number is not active";
+						}else if($resultCheckStatus->num_rows <= 0){
+							$errMessage = "Referal number does not exits";
 						}else if($result->num_rows>0){
 							$errCellNumber = $errCnumber = $errCpassword = $errMessage = $errName = $errPassword = $errSurname = "";
 							$errMessage="user already have an account.Please <a href='login.php'> Login </a> or change number";
