@@ -177,8 +177,85 @@
                                 $sqlDon = "update donation set status = 2 where id='".$don_id."';";
                                 $sqlClaim = "update claims set states = 3 where id='".$claim_id."';";
 
-                                $conn->query($sqlClaim);
-                                $conn->query($sqlDon);
+                                $getInfo = $resultDonator->fetch_assoc();
+                            /*-------------------------SMS------------------*/
+                                $sqlDoon = "select * from users where p_number = '".$getInfo['cellDonator']."';";
+                                $donResults = mysqli_query($conn,$sqlDoon);
+                                $getDonDetails = mysqli_fetch_assoc($donResults);
+                            /*-------------------------SMS ends------------------*/
+
+                            /*-------------------------SMS------------------*/
+                                $sqlClaimc = "select * from users where p_number = '".$getInfo['cellReciever']."';";
+                                $claimResults = mysqli_query($conn,$sqlClaimc);
+                                $getClaimDetails = mysqli_fetch_assoc($claimResults);
+                            /*-------------------------SMS ends------------------*/
+
+                                if($conn->query($sqlClaim)){
+                                    /*-------------------------SMS ends------------------*/
+                                                $url = "https://www.winsms.co.za/api/batchmessage.asp?";
+                          
+                                                $userp = "user=";
+                                            
+                                                $passwordp = "&password=";
+                                            
+                                                $messagep = "&message=";
+                                            
+                                                $numbersp = "&Numbers=";
+                                            
+                                                $username = "rovissm@gmail.com";
+                                                $password = "Asekhona*03";
+                                                $message = "Hi,".$getClaimDetails['fname']." ".$getClaimDetails['lname']."\n\nKindly confirm the payment which has been sent to you.\n\n Thank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $getClaimDetails['p_number'];
+                                            
+                                                $encmessage = urlencode(utf8_encode($message));
+                                            
+                                                $all = $url.$userp.$username.$passwordp.$password.$messagep.$encmessage.$numbersp.$numbers;
+                                            
+                                                $fp = fopen($all, 'r');
+                                                while(!feof($fp)){
+                                                $line = fgets($fp, 4000);
+                                                echo "<br>";
+                                                echo "Responce";
+                                                echo "<br>";
+                                                print($line);
+                                                echo "<br>";
+                                                }
+                                                fclose($fp);
+                                                 /*-------------------------SMS ends------------------*/
+                                }
+                                if($conn->query($sqlDon)){
+                                    /*-------------------------SMS ends------------------*/
+                                                $url = "https://www.winsms.co.za/api/batchmessage.asp?";
+                          
+                                                $userp = "user=";
+                                            
+                                                $passwordp = "&password=";
+                                            
+                                                $messagep = "&message=";
+                                            
+                                                $numbersp = "&Numbers=";
+                                            
+                                                $username = "rovissm@gmail.com";
+                                                $password = "Asekhona*03";
+                                                $message = "Hi,".$getDonDetails['fname']." ".$getDonDetails['lname']."\n\nPlease waiting for confirmation of your payment from the Reciever you have just send the amount too.\n\nThank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $getDonDetails['p_number'];
+                                            
+                                                $encmessage = urlencode(utf8_encode($message));
+                                            
+                                                $all = $url.$userp.$username.$passwordp.$password.$messagep.$encmessage.$numbersp.$numbers;
+                                            
+                                                $fp = fopen($all, 'r');
+                                                while(!feof($fp)){
+                                                $line = fgets($fp, 4000);
+                                                echo "<br>";
+                                                echo "Responce";
+                                                echo "<br>";
+                                                print($line);
+                                                echo "<br>";
+                                                }
+                                                fclose($fp);
+                                                 /*-------------------------SMS ends------------------*/
+                                }
 
                                 echo "<script>window.location.href = 'dashboard.php';</script>";
                               }
@@ -301,7 +378,7 @@
                                 $sqlClaimm = "update claims set states = 4,donDate = '------' where id=".$claimm_id.";";
                                 $sqlDonn = "update donation set status = 4,donDate = '------' where id=".$donn_id.";";
                                 $sqlAlloc = "update allocation set status = 1 where id=".$allo_id.";";
-                                $sqlUsers = "update users set status = 1 where id='".$cellDonerr."';";
+                                $sqlUsers = "update users set status = 1 where p_number='".$cellDonerr."';";
 
                                $sqlGetDon = "Select * from donation where id=".$donn_id.";";
                                $resultsDon = $conn->query($sqlGetDon);
@@ -311,11 +388,22 @@
                                $donDetails = $resultsDon->fetch_assoc();
                                $claimDetails = $resultsClaim->fetch_assoc();
 
+                               
                                @$cellClaimerr=$claimDetails['cellClaim'];
                                 $sqlClaimInsert="insert into claims values('',\"$cellDonerr\",\"$newAmount\",\"$curtime\",\"$newDate\",\"10\",\"$newAmount\")";
                                 
                                 
                                 @$sqlCommission="insert into commission values('',\"$cellClaimerr\",\"$cellDonerr\",0); ";
+                        /*-------------------------SMS------------------*/
+                            $sqlDoon = "select * from users where p_number = '".$cellDonerr."';";
+                            $donResults = mysqli_query($conn,$sqlDoon);
+                            $getDonDetails = mysqli_fetch_assoc($donResults);
+                        /*-------------------------SMS ends------------------*/
+
+                        /*-------------------------SMS------------------*/
+                            $sqlClaim = "select * from users where p_number = '".$cellClaimerr."';";
+                            $claimResults = mysqli_query($conn,$sqlClaim);
+                            $getClaimDetails = mysqli_fetch_assoc($claimResults);
 
 
 
@@ -339,8 +427,6 @@
                                 /*-------------referals ends-------------*/
                               
                                 if(($remaing_don_amount == 0) && ($remaining_claim_amount > 0)){
-                                    $conn->query($sqlClaimmInComplete);
-                                    
                                     $conn->query($sqlClaimInsert);
                                     $conn->query($sqlUsers);
                                     unset($_SESSION['pending']);
@@ -360,10 +446,8 @@
                                             
                                                 $username = "rovissm@gmail.com";
                                                 $password = "Asekhona*03";
-                                                $message = "Hi,".$donDetails['fname']." ".$donDetails['lname']."\n\n
-                                                Your donation has been confirmed\n Kindly wait for the period of 10 days then you will be about to claim your amount with interest. You are now an Active Member. You may start refering people using your phone number as the *Referal Number* and get your commission their first donation.\n\n
-                                                NB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will see you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
-                                                $numbers = $donDetails['p_number'];
+                                                $message = "Hi,".$getDonDetails['fname']." ".$getDonDetails['lname']."\n\nYour donation has been confirmed.\n\nKindly wait for a period of 10 days then you will be about to claim your amount with interest. You are now an Active Member. You may start refering people using your phone number as the *Referal Number* and get your commission their first donation.\n\nNB: You can claim your commission once it is +R500.\n\nThank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $getDonDetails['p_number'];
                                             
                                                 $encmessage = urlencode(utf8_encode($message));
                                             
@@ -396,10 +480,8 @@
                                             
                                                 $username = "rovissm@gmail.com";
                                                 $password = "Asekhona*03";
-                                                $message = "Hi,".$resultsClaim['fname']." ".$resultsClaim['lname']."\n\n
-                                                As you have confrimed the Transactionsa ad you still waiting for your remaining balance. Kindly wiating as we will allocate you and you will recieve the remaining amount from another sender.\n\n
-                                                Thank you for your co-operation. Hope to see you soon. Enjoy the rest of your day!!!\n-----------------------------\nFrom Commercial Club.";
-                                                $numbers = $resultsClaim['p_number'];
+                                                $message = "Hi,".$getClaimDetails['fname']." ".$getClaimDetails['lname']."\n\nAs you have confirmed the Transaction and you still waiting for your remaining balance. Kindly waiting as we will allocate you and you will recieve the remaining amount from another sender.\n\nThank you for your co-operation. Hope to hear from you soon. Enjoy the rest of your day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $getClaimDetails['p_number'];
                                             
                                                 $encmessage = urlencode(utf8_encode($message));
                                             
@@ -434,10 +516,8 @@
                                             
                                                 $username = "rovissm@gmail.com";
                                                 $password = "Asekhona*03";
-                                                $message = "Hi,".$donDetails['fname']." ".$donDetails['lname']."\n\n
-                                                As you have sent the required amount and you still have a remaining balance. Kindly waiting as we will allocate you and you will pay the remaining amount to another Reciever.\n\n
-                                                Thank you for your co-operation. Hope to see you soon. Enjoy the rest of your day!!!\n-----------------------------\nFrom Commercial Club.";
-                                                $numbers = $$donDetails['p_number'];
+                                                $message = "Hi,".$getDonDetails['fname']." ".$getDonDetails['lname']."\n\nAs you have sent the required amount and you still have a remaining balance.\n\nKindly waiting as we will allocate you and you will pay the remaining amount to another Reciever.\n\nThank you for your co-operation. Hope to hear from you soon. Enjoy the rest of your day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $$getDonDetails['p_number'];
                                             
                                                 $encmessage = urlencode(utf8_encode($message));
                                             
@@ -471,10 +551,8 @@
                                             
                                                 $username = "rovissm@gmail.com";
                                                 $password = "Asekhona*03";
-                                                $message = "Hi,".$resultsClaim['fname']." ".$resultsClaim['lname']."\n\n
-                                               As you have confirmed the payment the Transactions complete.\n You may now start donating again.\n\n
-                                                NB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will see you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
-                                                $numbers = $claimer_cell;
+                                                $message = "Hi,".$getClaimDetails['fname']." ".$getClaimDetails['lname']."\n\nAs you have confirmed the payment of the Transaction complete.\n\nYou may now start donating again.\n\nNB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $getClaimDetails['p_number'];
                                             
                                                 $encmessage = urlencode(utf8_encode($message));
                                             
@@ -512,10 +590,8 @@
                                             
                                                 $username = "rovissm@gmail.com";
                                                 $password = "Asekhona*03";
-                                                $message = "Hi,".$resultsClaim['fname']." ".$resultsClaim['lname']."\n\n
-                                               As you have confirmed the payment the Transactions complete.\n You may now start donating again.\n\n
-                                                NB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will see you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
-                                                $numbers = $claimer_cell;
+                                                $message = "Hi,".$getClaimDetails['fname']." ".$getClaimDetails['lname']."\n\nAs you have confirmed the payment of the Transaction complete.\n\nYou may now start donating again.\n\nNB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $getClaimDetails['p_number'];
                                             
                                                 $encmessage = urlencode(utf8_encode($message));
                                             
@@ -548,10 +624,8 @@
                                             
                                                 $username = "rovissm@gmail.com";
                                                 $password = "Asekhona*03";
-                                                $message = "Hi,".$donDetails['fname']." ".$donDetails['lname']."\n\n
-                                                Your donation has been confirmed\n Kindly wait for the period of 10 days then you will be about to claim your amount with interest. You are now an Active Member. You may start refering people using your phone number as the *Referal Number* and get your commission their first donation.\n\n
-                                                NB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will see you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
-                                                $numbers = $donDetails['p_number'];
+                                                $message = "Hi,".$getDonDetails['fname']." ".$getDonDetails['lname']."\n\nYour donation has been confirmed.Kindly wait for a period of 10 days then you will be about to claim your amount with interest. You are now an Active Member. You may start refering people using your phone number as the *Referal Number* and get your commission their first donation.\n\nNB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $getDonDetails['p_number'];
                                             
                                                 $encmessage = urlencode(utf8_encode($message));
                                             
