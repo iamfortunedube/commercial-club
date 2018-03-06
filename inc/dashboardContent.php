@@ -135,7 +135,7 @@
                     <?php
                     
                     $sqlDonator = "select d.id AS 'd_idd',c.id AS 'c_idd',
-                    account_holder,bank_name,bank_branch,account_number,c.amount,p_number,d.status AS 'donStatus',c.states AS 'claimStatuss',d.donDate AS 'donDate'
+                    account_holder,bank_name,bank_branch,account_number,c.amount AS 'claimAmountt',d.amount AS 'donAmount',p_number,d.status AS 'donStatus',c.states AS 'claimStatuss',d.donDate AS 'donDate'
                     from allocation a,users u,claims c,donation d 
                     where a.cellReciever = c.cellClaim
                         AND d.cellDonator = '".$_SESSION['u_username']."'
@@ -271,7 +271,16 @@
                                         <td scope="row">'.$row['account_holder'].'</td>
                                         <td>'.$row['bank_name'].' ('.$row['bank_branch'].')</td>
                                         <td>'.$row['account_number'].'</td>
-                                        <td>'.$row['amount'].'</td>
+                                        <td>';
+                                       if($row['claimAmountt'] < $row['donAmount']){
+                                        echo '<input type="hidden" name="" value="'.$row['claimAmountt'].'" />'.$row['claimAmountt'];
+                                       }else if($row['claimAmountt'] > $row['donAmount']){
+                                        echo '<input type="hidden" name="donAmount" value="'.$row['donAmount'].'" />'.$row['donAmount'];
+                                       }else{
+                                        echo '<input type="hidden" name="donAmount" value="'.$row['donAmount'].'" />'.$row['donAmount'];
+                                       }
+
+                                       echo'</td>
                                         <td>'.$row['p_number'].'</td>
                                         <td>48 hours</td>
                                         <td>';
@@ -295,6 +304,9 @@
                                             case 2:
                                                 echo 'Waiting for confirmation from Reciever...';
                                                 break;
+                                            case 4:
+                                              echo '<span style="color:green;font-weight:bolder;">Process Completed</span>';
+                                                    break;
                                         }
                                         echo '
                                         
@@ -369,11 +381,11 @@
                                 @$clain_remain=$_POST['c_remaining_claim'];
                                
                                    
-                                $newDate10=Date('Y-m-d', strtotime("+10 days")) ." ". date('H:i:s');
+                                $newDateTen=Date('Y-m-d', strtotime("+10 days")) ." ". date('H:i:s');
                                 $curtime = $countD = date('Y-m-d H:i:s');
 
 
-                                $sqlClaimmInComplete = "update claims set states = 0, where id=".$claimm_id.";";
+                                $sqlClaimmInComplete = "update claims set states = 0 where id=".$claimm_id.";";
                                 $sqlDonnInComplete = "update donation set status = 0 where id=".$donn_id.";";
                                 $sqlClaimm = "update claims set states = 4,donDate = '------' where id=".$claimm_id.";";
                                 $sqlDonn = "update donation set status = 4,donDate = '------' where id=".$donn_id.";";
@@ -387,10 +399,10 @@
 
                                $donDetails = $resultsDon->fetch_assoc();
                                $claimDetails = $resultsClaim->fetch_assoc();
-
+                                @$newAmount = @$intAmount*1.5;
                                
                                @$cellClaimerr=$claimDetails['cellClaim'];
-                                $sqlClaimInsert="insert into claims values('',\"$cellDonerr\",\"$newAmount\",\"$curtime\",\"$newDate\",\"10\",\"$newAmount\")";
+                                $sqlClaimInsert="insert into claims values('',\"$cellDonerr\",\"$newAmount\",\"$curtime\",\"$newDateTen\",\"10\",\"$newAmount\")";
                                 
                                 
                                 @$sqlCommission="insert into commission values('',\"$cellClaimerr\",\"$cellDonerr\",0); ";
@@ -410,7 +422,7 @@
                                $remaing_don_amount = (int)$donDetails['remaining_don']; 
                                $remaining_claim_amount = (int)$claimDetails['remaining_claim'];
 
-                                @$newAmount = @$intAmount*1.5;
+                               
                                 /*-------------referals-------------
 
                                 $sqlGetReferal = "select * from users u,referals r where redered = '".$_SESSION['u_username']."' AND refere = u.p_number AND r.status = 0;";
@@ -446,7 +458,7 @@
                                             
                                                 $username = "rovissm@gmail.com";
                                                 $password = "Asekhona*03";
-                                                $message = "Hi,".$getDonDetails['fname']." ".$getDonDetails['lname']."\n\nYour donation has been confirmed.\n\nKindly wait for a period of 10 days then you will be about to claim your amount with interest. You are now an Active Member. You may start refering people using your phone number as the *Referal Number* and get your commission their first donation.\n\nNB: You can claim your commission once it is +R500.\n\nThank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $message = "Hi,".$getDonDetails['fname']." ".$getDonDetails['lname']."\n\nYour donation has been confirmed.\n\nKindly wait for a period of 10 days then you will be able to claim your initial amount. You are now an Active Member. You may start refering people using your phone number as the *Referal Number* and get your commission.\n\nNB: You can claim your commission once it is +R500.\n\nThank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
                                                 $numbers = $getDonDetails['p_number'];
                                             
                                                 $encmessage = urlencode(utf8_encode($message));
@@ -480,7 +492,7 @@
                                             
                                                 $username = "rovissm@gmail.com";
                                                 $password = "Asekhona*03";
-                                                $message = "Hi,".$getClaimDetails['fname']." ".$getClaimDetails['lname']."\n\nAs you have confirmed the Transaction and you still waiting for your remaining balance. Kindly waiting as we will allocate you and you will recieve the remaining amount from another sender.\n\nThank you for your co-operation. Hope to hear from you soon. Enjoy the rest of your day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $message = "Hi,".$getClaimDetails['fname']." ".$getClaimDetails['lname']."\n\nAs you have confirmed the Transaction and you still waiting for your remaining balance. Kindly wait as we will allocate you and you will receive the remaining balance from other members.\n\nThank you for your co-operation. Hope to hear from you soon. Enjoy the rest of your day!!!\n-----------------------------\nFrom Commercial Club.";
                                                 $numbers = $getClaimDetails['p_number'];
                                             
                                                 $encmessage = urlencode(utf8_encode($message));
@@ -516,7 +528,7 @@
                                             
                                                 $username = "rovissm@gmail.com";
                                                 $password = "Asekhona*03";
-                                                $message = "Hi,".$getDonDetails['fname']." ".$getDonDetails['lname']."\n\nAs you have sent the required amount and you still have a remaining balance.\n\nKindly waiting as we will allocate you and you will pay the remaining amount to another Reciever.\n\nThank you for your co-operation. Hope to hear from you soon. Enjoy the rest of your day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $message = "Hi,".$getDonDetails['fname']." ".$getDonDetails['lname']."\n\nAs you have sent the required amount and you still have a remaining balance.\n\nKindly wait as we will allocate you and you will pay the remaining amount to another Receiver.\n\nThank you for your co-operation. Hope to hear from you soon. Enjoy the rest of your day!!!\n-----------------------------\nFrom Commercial Club.";
                                                 $numbers = $$getDonDetails['p_number'];
                                             
                                                 $encmessage = urlencode(utf8_encode($message));
@@ -590,7 +602,7 @@
                                             
                                                 $username = "rovissm@gmail.com";
                                                 $password = "Asekhona*03";
-                                                $message = "Hi,".$getClaimDetails['fname']." ".$getClaimDetails['lname']."\n\nAs you have confirmed the payment of the Transaction complete.\n\nYou may now start donating again.\n\nNB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $message = "Hi,".$getClaimDetails['fname']." ".$getClaimDetails['lname']."\n\nAs you have confirmed the payment.\n\nYou may now start donating again.\n\nNB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
                                                 $numbers = $getClaimDetails['p_number'];
                                             
                                                 $encmessage = urlencode(utf8_encode($message));
