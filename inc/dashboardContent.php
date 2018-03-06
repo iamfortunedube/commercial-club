@@ -340,24 +340,235 @@
                               
                                 if(($remaing_don_amount == 0) && ($remaining_claim_amount > 0)){
                                     $conn->query($sqlClaimmInComplete);
-                                    $conn->query($sqlDonn);
+                                    
                                     $conn->query($sqlClaimInsert);
                                     $conn->query($sqlUsers);
                                     unset($_SESSION['pending']);
                                       $conn->query($sqlAlloc);
+
+                                      if($conn->query($sqlDonn)){
+                                        /*-------------------------SMS ends------------------*/
+                                                $url = "https://www.winsms.co.za/api/batchmessage.asp?";
+                          
+                                                $userp = "user=";
+                                            
+                                                $passwordp = "&password=";
+                                            
+                                                $messagep = "&message=";
+                                            
+                                                $numbersp = "&Numbers=";
+                                            
+                                                $username = "rovissm@gmail.com";
+                                                $password = "Asekhona*03";
+                                                $message = "Hi,".$donDetails['fname']." ".$donDetails['lname']."\n\n
+                                                Your donation has been confirmed\n Kindly wait for the period of 10 days then you will be about to claim your amount with interest. You are now an Active Member. You may start refering people using your phone number as the *Referal Number* and get your commission their first donation.\n\n
+                                                NB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will see you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $donDetails['p_number'];
+                                            
+                                                $encmessage = urlencode(utf8_encode($message));
+                                            
+                                                $all = $url.$userp.$username.$passwordp.$password.$messagep.$encmessage.$numbersp.$numbers;
+                                            
+                                                $fp = fopen($all, 'r');
+                                                while(!feof($fp)){
+                                                $line = fgets($fp, 4000);
+                                                echo "<br>";
+                                                echo "Responce";
+                                                echo "<br>";
+                                                print($line);
+                                                echo "<br>";
+                                                }
+                                                fclose($fp);
+                                                 /*-------------------------SMS ends------------------*/
+                                      }
+
+                                      if($conn->query($sqlClaimmInComplete)){
+                                        /*-------------------------SMS ends------------------*/
+                                                $url = "https://www.winsms.co.za/api/batchmessage.asp?";
+                          
+                                                $userp = "user=";
+                                            
+                                                $passwordp = "&password=";
+                                            
+                                                $messagep = "&message=";
+                                            
+                                                $numbersp = "&Numbers=";
+                                            
+                                                $username = "rovissm@gmail.com";
+                                                $password = "Asekhona*03";
+                                                $message = "Hi,".$resultsClaim['fname']." ".$resultsClaim['lname']."\n\n
+                                                As you have confrimed the Transactionsa ad you still waiting for your remaining balance. Kindly wiating as we will allocate you and you will recieve the remaining amount from another sender.\n\n
+                                                Thank you for your co-operation. Hope to see you soon. Enjoy the rest of your day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $resultsClaim['p_number'];
+                                            
+                                                $encmessage = urlencode(utf8_encode($message));
+                                            
+                                                $all = $url.$userp.$username.$passwordp.$password.$messagep.$encmessage.$numbersp.$numbers;
+                                            
+                                                $fp = fopen($all, 'r');
+                                                while(!feof($fp)){
+                                                $line = fgets($fp, 4000);
+                                                echo "<br>";
+                                                echo "Responce";
+                                                echo "<br>";
+                                                print($line);
+                                                echo "<br>";
+                                                }
+                                                fclose($fp);
+                                                 /*-------------------------SMS ends------------------*/
+                                      }
+                                      
                                 }else if(($remaing_don_amount > 0) &&  ($remaining_claim_amount == 0)){
                                     
-                                    $conn->query($sqlDonnInComplete);
-                                    $conn->query($sqlClaimm);
+                                    if($conn->query($sqlDonnInComplete)){
+                                         /*-------------------------SMS ends------------------*/
+                                                $url = "https://www.winsms.co.za/api/batchmessage.asp?";
+                          
+                                                $userp = "user=";
+                                            
+                                                $passwordp = "&password=";
+                                            
+                                                $messagep = "&message=";
+                                            
+                                                $numbersp = "&Numbers=";
+                                            
+                                                $username = "rovissm@gmail.com";
+                                                $password = "Asekhona*03";
+                                                $message = "Hi,".$donDetails['fname']." ".$donDetails['lname']."\n\n
+                                                As you have sent the required amount and you still have a remaining balance. Kindly waiting as we will allocate you and you will pay the remaining amount to another Reciever.\n\n
+                                                Thank you for your co-operation. Hope to see you soon. Enjoy the rest of your day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $$donDetails['p_number'];
+                                            
+                                                $encmessage = urlencode(utf8_encode($message));
+                                            
+                                                $all = $url.$userp.$username.$passwordp.$password.$messagep.$encmessage.$numbersp.$numbers;
+                                            
+                                                $fp = fopen($all, 'r');
+                                                while(!feof($fp)){
+                                                $line = fgets($fp, 4000);
+                                                echo "<br>";
+                                                echo "Responce";
+                                                echo "<br>";
+                                                print($line);
+                                                echo "<br>";
+                                                }
+                                                fclose($fp);
+                                                 /*-------------------------SMS ends------------------*/
+
+                                    }
+
+                                    if($conn->query($sqlClaimm)){
+                                              /*-------------------------SMS ends------------------*/
+                                                $url = "https://www.winsms.co.za/api/batchmessage.asp?";
+                          
+                                                $userp = "user=";
+                                            
+                                                $passwordp = "&password=";
+                                            
+                                                $messagep = "&message=";
+                                            
+                                                $numbersp = "&Numbers=";
+                                            
+                                                $username = "rovissm@gmail.com";
+                                                $password = "Asekhona*03";
+                                                $message = "Hi,".$resultsClaim['fname']." ".$resultsClaim['lname']."\n\n
+                                               As you have confirmed the payment the Transactions complete.\n You may now start donating again.\n\n
+                                                NB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will see you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $claimer_cell;
+                                            
+                                                $encmessage = urlencode(utf8_encode($message));
+                                            
+                                                $all = $url.$userp.$username.$passwordp.$password.$messagep.$encmessage.$numbersp.$numbers;
+                                            
+                                                $fp = fopen($all, 'r');
+                                                while(!feof($fp)){
+                                                $line = fgets($fp, 4000);
+                                                echo "<br>";
+                                                echo "Responce";
+                                                echo "<br>";
+                                                print($line);
+                                                echo "<br>";
+                                                }
+                                                fclose($fp);
+                                                 /*-------------------------SMS ends------------------*/
+                                        }
 
                                      unset($_SESSION['pending']);
                                    
                                      $conn->query($sqlAlloc);
                                 }else{
                                     
-                                     $conn->query($sqlClaimm);
+                                     if($conn->query($sqlClaimm)){
+                                        /*-------------------------SMS ends------------------*/
+                                                $url = "https://www.winsms.co.za/api/batchmessage.asp?";
+                          
+                                                $userp = "user=";
+                                            
+                                                $passwordp = "&password=";
+                                            
+                                                $messagep = "&message=";
+                                            
+                                                $numbersp = "&Numbers=";
+                                            
+                                                $username = "rovissm@gmail.com";
+                                                $password = "Asekhona*03";
+                                                $message = "Hi,".$resultsClaim['fname']." ".$resultsClaim['lname']."\n\n
+                                               As you have confirmed the payment the Transactions complete.\n You may now start donating again.\n\n
+                                                NB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will see you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $claimer_cell;
+                                            
+                                                $encmessage = urlencode(utf8_encode($message));
+                                            
+                                                $all = $url.$userp.$username.$passwordp.$password.$messagep.$encmessage.$numbersp.$numbers;
+                                            
+                                                $fp = fopen($all, 'r');
+                                                while(!feof($fp)){
+                                                $line = fgets($fp, 4000);
+                                                echo "<br>";
+                                                echo "Responce";
+                                                echo "<br>";
+                                                print($line);
+                                                echo "<br>";
+                                                }
+                                                fclose($fp);
+                                                 /*-------------------------SMS ends------------------*/
+                                      }
                                      $conn->query($sqlAlloc);
-                                     $conn->query($sqlDonn);
+                                     if($conn->query($sqlDonn)){
+                                        /*-------------------------SMS ends------------------*/
+                                                $url = "https://www.winsms.co.za/api/batchmessage.asp?";
+                          
+                                                $userp = "user=";
+                                            
+                                                $passwordp = "&password=";
+                                            
+                                                $messagep = "&message=";
+                                            
+                                                $numbersp = "&Numbers=";
+                                            
+                                                $username = "rovissm@gmail.com";
+                                                $password = "Asekhona*03";
+                                                $message = "Hi,".$donDetails['fname']." ".$donDetails['lname']."\n\n
+                                                Your donation has been confirmed\n Kindly wait for the period of 10 days then you will be about to claim your amount with interest. You are now an Active Member. You may start refering people using your phone number as the *Referal Number* and get your commission their first donation.\n\n
+                                                NB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will see you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
+                                                $numbers = $donDetails['p_number'];
+                                            
+                                                $encmessage = urlencode(utf8_encode($message));
+                                            
+                                                $all = $url.$userp.$username.$passwordp.$password.$messagep.$encmessage.$numbersp.$numbers;
+                                            
+                                                $fp = fopen($all, 'r');
+                                                while(!feof($fp)){
+                                                $line = fgets($fp, 4000);
+                                                echo "<br>";
+                                                echo "Responce";
+                                                echo "<br>";
+                                                print($line);
+                                                echo "<br>";
+                                                }
+                                                fclose($fp);
+                                                 /*-------------------------SMS ends------------------*/
+                                      }
                                      unset($_SESSION['pending']);
                                    
                                 }
