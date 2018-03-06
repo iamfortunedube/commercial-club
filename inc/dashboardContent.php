@@ -174,8 +174,8 @@
                                 @$don_id = $_POST['d_id'];
                                 @$claim_id = $_POST['c_id'];
 
-                                $sqlDon = "update donation set status = 2 where id='".$don_id."';";
-                                $sqlClaim = "update claims set states = 3 where id='".$claim_id."';";
+                                $sqlDon = "update donation set status = 2 where id=".$don_id.";";
+                                $sqlClaim = "update claims set states = 3 where id=".$claim_id.";";
 
                                 $getInfo = $resultDonator->fetch_assoc();
                             /*-------------------------SMS------------------*/
@@ -302,8 +302,14 @@
                                                 }
                                                 break;
                                             case 2:
+											if(($row['claimStatuss'] == 3)){
                                                 echo 'Waiting for confirmation from Reciever...';
                                                 break;
+											}else{
+												 echo '<input type="submit" name="submit" class="btn button-sm-gold" value="Send" />';
+												break;
+											}
+											break;
                                             case 4:
                                               echo '<span style="color:green;font-weight:bolder;">Process Completed</span>';
                                                     break;
