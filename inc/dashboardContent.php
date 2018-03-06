@@ -202,8 +202,8 @@
                                             
                                                 $numbersp = "&Numbers=";
                                             
-                                                $username = "rovissm@gmail.com";
-                                                $password = "Asekhona*03";
+                                                $username = "cyalongo@gmail.com";
+                                                $password = "Asekhona*911121";
                                                 $message = "Hi,".$getClaimDetails['fname']." ".$getClaimDetails['lname']."\n\nKindly confirm the payment which has been sent to you.\n\n Thank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
                                                 $numbers = $getClaimDetails['p_number'];
                                             
@@ -235,8 +235,8 @@
                                             
                                                 $numbersp = "&Numbers=";
                                             
-                                                $username = "rovissm@gmail.com";
-                                                $password = "Asekhona*03";
+                                                $username = "cyalongo@gmail.com";
+                                                $password = "Asekhona*911121";
                                                 $message = "Hi,".$getDonDetails['fname']." ".$getDonDetails['lname']."\n\nPlease waiting for confirmation of your payment from the Reciever you have just send the amount too.\n\nThank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
                                                 $numbers = $getDonDetails['p_number'];
                                             
@@ -464,8 +464,8 @@
                                             
                                                 $numbersp = "&Numbers=";
                                             
-                                                $username = "rovissm@gmail.com";
-                                                $password = "Asekhona*03";
+                                                $username = "cyalongo@gmail.com";
+                                                $password = "Asekhona*911121";
                                                 $message = "Hi,".$getDonDetails['fname']." ".$getDonDetails['lname']."\n\nYour donation has been confirmed.\n\nKindly wait for a period of 10 days then you will be able to claim your initial amount. You are now an Active Member. You may start refering people using your phone number as the *Referal Number* and get your commission.\n\nNB: You can claim your commission once it is +R500.\n\nThank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
                                                 $numbers = $getDonDetails['p_number'];
                                             
@@ -498,8 +498,8 @@
                                             
                                                 $numbersp = "&Numbers=";
                                             
-                                                $username = "rovissm@gmail.com";
-                                                $password = "Asekhona*03";
+                                                $username = "cyalongo@gmail.com";
+                                                $password = "Asekhona*911121";
                                                 $message = "Hi,".$getClaimDetails['fname']." ".$getClaimDetails['lname']."\n\nAs you have confirmed the Transaction and you still waiting for your remaining balance. Kindly wait as we will allocate you and you will receive the remaining balance from other members.\n\nThank you for your co-operation. Hope to hear from you soon. Enjoy the rest of your day!!!\n-----------------------------\nFrom Commercial Club.";
                                                 $numbers = $getClaimDetails['p_number'];
                                             
@@ -534,8 +534,8 @@
                                             
                                                 $numbersp = "&Numbers=";
                                             
-                                                $username = "rovissm@gmail.com";
-                                                $password = "Asekhona*03";
+                                                $username = "cyalongo@gmail.com";
+                                                $password = "Asekhona*911121";
                                                 $message = "Hi,".$getDonDetails['fname']." ".$getDonDetails['lname']."\n\nAs you have sent the required amount and you still have a remaining balance.\n\nKindly wait as we will allocate you and you will pay the remaining amount to another Receiver.\n\nThank you for your co-operation. Hope to hear from you soon. Enjoy the rest of your day!!!\n-----------------------------\nFrom Commercial Club.";
                                                 $numbers = $$getDonDetails['p_number'];
                                             
@@ -569,8 +569,8 @@
                                             
                                                 $numbersp = "&Numbers=";
                                             
-                                                $username = "rovissm@gmail.com";
-                                                $password = "Asekhona*03";
+                                                $username = "cyalongo@gmail.com";
+                                                $password = "Asekhona*911121";
                                                 $message = "Hi,".$getClaimDetails['fname']." ".$getClaimDetails['lname']."\n\nAs you have confirmed the payment of the Transaction complete.\n\nYou may now start donating again.\n\nNB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
                                                 $numbers = $getClaimDetails['p_number'];
                                             
@@ -608,8 +608,8 @@
                                             
                                                 $numbersp = "&Numbers=";
                                             
-                                                $username = "rovissm@gmail.com";
-                                                $password = "Asekhona*03";
+                                                $username = "cyalongo@gmail.com";
+                                                $password = "Asekhona*911121";
                                                 $message = "Hi,".$getClaimDetails['fname']." ".$getClaimDetails['lname']."\n\nAs you have confirmed the payment.\n\nYou may now start donating again.\n\nNB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
                                                 $numbers = $getClaimDetails['p_number'];
                                             
@@ -642,8 +642,8 @@
                                             
                                                 $numbersp = "&Numbers=";
                                             
-                                                $username = "rovissm@gmail.com";
-                                                $password = "Asekhona*03";
+                                                $username = "cyalongo@gmail.com";
+                                                $password = "Asekhona*911121";
                                                 $message = "Hi,".$getDonDetails['fname']." ".$getDonDetails['lname']."\n\nYour donation has been confirmed.Kindly wait for a period of 10 days then you will be about to claim your amount with interest. You are now an Active Member. You may start refering people using your phone number as the *Referal Number* and get your commission their first donation.\n\nNB: You can claim your commission once it is +R500.\n\n Thank you for your co-operation. Hope will hear from you soon. Enjoy the rest of our day!!!\n-----------------------------\nFrom Commercial Club.";
                                                 $numbers = $getDonDetails['p_number'];
                                             

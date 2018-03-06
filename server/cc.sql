@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 03, 2018 at 03:30 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Host: 127.0.0.1
+-- Generation Time: Mar 06, 2018 at 03:03 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -55,15 +55,17 @@ CREATE TABLE `allocation` (
   `id` int(11) NOT NULL,
   `cellDonator` varchar(13) NOT NULL,
   `cellReciever` varchar(13) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL,
+  `allocated_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `allocation`
 --
 
-INSERT INTO `allocation` (`id`, `cellDonator`, `cellReciever`, `status`) VALUES
-(3, '12345', '0711983349', 0);
+INSERT INTO `allocation` (`id`, `cellDonator`, `cellReciever`, `status`, `allocated_time`) VALUES
+(34, '0623503096', '0711983349', 1, '2018-03-06 12:16:31.450923'),
+(35, '0623503096', '12345', 1, '2018-03-06 12:17:47.625548');
 
 -- --------------------------------------------------------
 
@@ -116,7 +118,8 @@ CREATE TABLE `claims` (
 --
 
 INSERT INTO `claims` (`id`, `cellClaim`, `amount`, `donDate`, `expDate`, `states`, `remaining_claim`) VALUES
-(1, '0711983349', 750, '2018-03-03 11:20:27', '2018-03-04 10:03:40', 0, 750);
+(15, '12345', 1500, '0000-00-00 00:00:00', '2018-03-05 11:38:13', 4, 0),
+(18, '0711983349', 5500, '0000-00-00 00:00:00', '2018-03-16 04:47:00', 4, 0);
 
 -- --------------------------------------------------------
 
@@ -139,8 +142,7 @@ CREATE TABLE `donation` (
 --
 
 INSERT INTO `donation` (`id`, `cellDonator`, `amount`, `donDate`, `expDate`, `status`, `remaining_don`) VALUES
-(52, '0623503096', 1000, '2018-03-03 11:00:44', '2018-03-04 09:03:08', 4, 1000),
-(53, '12345', 500, '2018-03-03 11:09:25', '2018-03-04 10:03:32', 1, 500);
+(79, '0623503096', 10000, '2018-03-06 12:17:47', '2018-03-07 09:58:11', 0, 3000);
 
 -- --------------------------------------------------------
 
@@ -161,7 +163,7 @@ CREATE TABLE `referals` (
 INSERT INTO `referals` (`id`, `refere`, `redered`) VALUES
 (5, '12345', '0623503096'),
 (6, '12345', '0711983349'),
-(8, '0711983349', '0710731712');
+(17, '0711983349', '0658707196');
 
 -- --------------------------------------------------------
 
@@ -212,19 +214,19 @@ CREATE TABLE `users` (
   `bank_branch` int(11) NOT NULL,
   `account_holder` varchar(100) NOT NULL,
   `account_number` varchar(20) NOT NULL,
-  `profile_pic` varchar(100) NOT NULL
+  `profile_pic` varchar(100) NOT NULL,
+  `comm_amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `fname`, `lname`, `p_number`, `password`, `ref_code`, `status`, `bank_name`, `universal_code`, `bank_branch`, `account_holder`, `account_number`, `profile_pic`) VALUES
-(1, 'khaye', 'kunene', '12345', '12345', 'admin', 1, 'CAPITEC BANK', 470010, 0, 'Khayelihle', '1425364738', 'assets/avatar.png'),
-(12, 'Melusi', 'Maphumulo', '0623503096', '1234', '12345', 0, 'CAPITEC BANK', 470010, 147010, 'MR MB MAPHUMULO', '14765159', 'assets/avatar.png'),
-(13, 'Nhlanhla', 'Dube', '0711983349', '12345', '12345', 1, 'NEDBANK', 198765, 145236, 'MR SNF DUBE', '1059536524', 'assets/avatar.png'),
-(14, 'Menzi', 'Ngcobo', '0658707196', '12345', '0711983349', 0, 'NEDBANK', 198765, 150628, 'MR M NGCOBO', '184618984', 'assets/avatar.png'),
-(15, 'Khaye', 'Kunene', '0710731712', '12345', '0711983349', 0, 'CAPITEC BANK', 470010, 147010, 'MR K KUNENE', '14716151084', 'assets/avatar.png');
+INSERT INTO `users` (`id`, `fname`, `lname`, `p_number`, `password`, `ref_code`, `status`, `bank_name`, `universal_code`, `bank_branch`, `account_holder`, `account_number`, `profile_pic`, `comm_amount`) VALUES
+(1, 'khaye', 'kunene', '12345', '12345', 'admin', 1, 'CAPITEC BANK', 470010, 0, 'Khayelihle', '1425364738', 'assets/images/Screenshot (7).png', 0),
+(12, 'Melusi', 'Maphumulo', '0623503096', '1234', '12345', 1, 'CAPITEC BANK', 470010, 147010, 'MR MB MAPHUMULO', '14765159', 'assets/avatar.png', 1000),
+(13, 'Nhlanhla', 'Dube', '0711983349', '12345', '12345', 1, 'NEDBANK', 198765, 145236, 'MR SNF DUBE', '1059536524', 'assets/images/Screenshot (7).png', 50),
+(20, 'Fortune', 'Dube', '0658707196', 'Sph@1994', '0711983349', 1, 'NEDBANK', 198765, 145066, 'MR F DUBE', '10567894564', 'assets/avatar.png', 100);
 
 --
 -- Indexes for dumped tables
@@ -290,42 +292,50 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `allocation`
 --
 ALTER TABLE `allocation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
 --
 -- AUTO_INCREMENT for table `bankss`
 --
 ALTER TABLE `bankss`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `claims`
 --
 ALTER TABLE `claims`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
 --
 -- AUTO_INCREMENT for table `donation`
 --
 ALTER TABLE `donation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+
 --
 -- AUTO_INCREMENT for table `referals`
 --
 ALTER TABLE `referals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `support`
 --
 ALTER TABLE `support`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `transactionhistory`
 --
 ALTER TABLE `transactionhistory`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
