@@ -305,6 +305,8 @@
 											if(($row['claimStatuss'] == 3)){
                                                 echo 'Waiting for confirmation from Reciever...';
                                                 break;
+											}if(($row['claimStatuss'] == 4)){
+												 echo '<span style="color:green;font-weight:bolder;">Process Completed</span>';
 											}else{
 												 echo '<input type="submit" name="submit" class="btn button-sm-gold" value="Send" />';
 												break;
