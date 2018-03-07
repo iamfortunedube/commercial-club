@@ -431,24 +431,36 @@
                                $remaining_claim_amount = (int)$claimDetails['remaining_claim'];
 
                                
-                                /*-------------referals-------------
-
-                                $sqlGetReferal = "select * from users u,referals r where redered = '".$_SESSION['u_username']."' AND refere = u.p_number AND r.status = 0;";
-                                $sqlGetDetals = $conn->query($sqlGetReferal);
+                                /*-------------referals-------------*/
+                                $sqlGetReferal = "select * from users u,referals r where r.redered = '".$_SESSION['u_username']."' AND r.refere = u.p_number AND  r.status=0;";
+                             //   $resultCheck=$conn->query($sqlGetReferal);
+                                $conn->query($sqlGetReferal);
+                               $sqlGetDetals = $conn->query($sqlGetReferal);
                                 $getDetails = $sqlGetDetals->fetch_assoc();
                                 $referallNo =   $getDetails['ref_code'];
                                 $comm_amount = (int)$getDetails['commission_amount'];
                                 @$comInterest = @$intAmount*0.1;
-                                $newCommAmt = $comInterest + $$comm_amount;
+                                $newCommAmt = $comInterest + $comm_amount;
+                             //   $sqlUser="update users set status=1 where users.p_number=referals.redered and referals.redered = '".$_SESSION['u_username']."';";
 
-                                $sqlAddCom = "update users set commission_amount='".$newCommAmt."' where redered = '".$_SESSION['u_username']."' AND refere = '".."'"
+                                if($sqlGetDetals->num_rows >0) {
+                                $sqlAddCom = "update users set commission_amount='".$newCommAmt."',status=1 where p_number = '".$_SESSION['u_username']."';";
+                                $sqlUpRef="update referals set status=1, commission_amount='".$comInterest."' where referals.redered = '".$_SESSION['u_username']."';";
+                                  
+                                $conn->query($sqlAddCom);
+                                $conn->query($sqlUpRef);
 
-
+                                } 
                                 /*-------------referals ends-------------*/
                               
                                 if(($remaing_don_amount == 0) && ($remaining_claim_amount > 0)){
                                     $conn->query($sqlClaimInsert);
                                     $conn->query($sqlUsers);
+                                if($conn->query($sqlGetReferal)){
+                                    $conn->query($sqlAddCom);
+                                    $conn->query($sqlUpRef); 
+                                }
+
                                     unset($_SESSION['pending']);
                                       $conn->query($sqlAlloc);
 
@@ -770,9 +782,10 @@
                     <tbody>
                     <?php
 
-                        $sql = "select * from referals r, users u,donation d where r.refere = '".$_SESSION['u_username']."' 
-                                                                               AND r.redered = u.p_number 
-                                                                               AND r.redered = d.cellDonator LIMIT 3;";
+                        $sql = "select u.fname AS'fname', u.lname AS'lname', u.p_number AS'p_number', r.status AS'status', r.commission_amount AS'commission_amount' from referals r, users u where r.refere = '".$_SESSION['u_username']."' 
+                                                                               AND r.redered = u.p_number order by r.id desc  LIMIT 3;";
+
+                                                                               
                         $result = $conn->query($sql);
                         @$numRef = $result->num_rows;
                         @$totCom = 0; 
@@ -780,15 +793,27 @@
                             $count = 0;
                             while($row = $result ->fetch_assoc()){
                                 $count++;
+                               
                                 echo '
-
+                               
                                 <tr>
                                 <td scope="row">'.$count.'</td>
                                 <td>'.$row['fname'].'</td>
                                 <td>'.$row['lname'].'</td>
                                 <td>'.$row['p_number'].'</td>
-                                <td>'; if($row['status'] == 0 ){ echo "Innactive"; @$com = 0;}else{ echo "Active"; @$amount = (int)$row['amount']; $com = @$amount * 0.1;  } echo ' </td>
-                                <td>'.@$com.'</td>
+                               
+                                <td>'; if($row['status'] ==0 ){
+                                   echo "Innactive";
+                                  
+                                     @$amount = 0;
+                                    }else{ 
+                                        echo "Active";
+
+                                         @$amount = (int)$row['commission_amount'];  
+                                      }
+                                        
+                                        echo ' </td>
+                                <td>'.@$amount.'</td>
                                 </tr>
                                 
                                 ';
