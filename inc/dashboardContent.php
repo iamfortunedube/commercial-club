@@ -793,7 +793,7 @@
                             $count = 0;
                             while($row = $result ->fetch_assoc()){
                                 $count++;
-                               
+                                @$totCom+=(int)$row['commission_amount'];
                                 echo '
                                
                                 <tr>
@@ -817,7 +817,7 @@
                                 </tr>
                                 
                                 ';
-                                @$totCom = $totCom + $com;
+                             //   @$totCom = $totCom + $com;
                             }
                         }
                         else{
