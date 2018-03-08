@@ -452,10 +452,14 @@
 
                                 } 
                                 /*-------------referals ends-------------*/
+                             
+                                
+                                
                               
                                 if(($remaing_don_amount == 0) && ($remaining_claim_amount > 0)){
                                     $conn->query($sqlClaimInsert);
                                     $conn->query($sqlUsers);
+                                  
                                 if($conn->query($sqlGetReferal)){
                                     $conn->query($sqlAddCom);
                                     $conn->query($sqlUpRef); 
@@ -782,7 +786,7 @@
                     <tbody>
                     <?php
 
-                        $sql = "select u.fname AS'fname', u.lname AS'lname', u.p_number AS'p_number', r.status AS'status', r.commission_amount AS'commission_amount' from referals r, users u where r.refere = '".$_SESSION['u_username']."' 
+                        $sql = "select u.fname AS'fname', u.lname AS'lname', u.p_number AS'p_number', r.status AS'status', r.commission_amount AS'commission_amount',u.commission_amount AS'ucommission_amount' from referals r, users u where r.refere = '".$_SESSION['u_username']."' 
                                                                                AND r.redered = u.p_number order by r.id desc  LIMIT 3;";
 
                                                                                
