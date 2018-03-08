@@ -64,7 +64,11 @@
                                                         <ol class="list">
                     
                                                          <li>Donation amount start from minimum of R 500 and Maximum R10 000.</li>
-                                                          <li>Do not Provide a Donation if you don’t not have money on hand, failure to make donation your account will be blocked.</li> 
+                                                          <li>Do not Provide a Donation if you don’t not have money on hand, failure to make donation your account will be blocked.
+                                                          <ul>
+                                                          <b><li>NOTE: if your account is not active within 72 hours will be automatically removed from the system</li></b>
+                                                          </ul>
+                                                          </li> 
                                                              <li>Blocked accounts will be inactive for 10 days due to the following:
                                                              <ul>
                                                              <li>Failure to make payment within allocated time.</li> 
