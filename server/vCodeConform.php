@@ -55,8 +55,8 @@
                 $row = $getResults->fetch_assoc();
                 $currDate  = date('Y-m-d H:i:s');
                 $uniCode = $row['universal_code'];
-                $sql = "insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$refferalNo\",0,\"$bank_name\",\"$uniCode\",\"$bank_branch\",\"$account_holder\",\"$accNum\",'assets/avatar.png',\"$currDate \");"; 
-                $sqlRef = "insert into referals values('',\"$refferalNo\",\"$cellNo\")";
+                $sql = "insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$refferalNo\",0,\"$bank_name\",\"$uniCode\",\"$bank_branch\",\"$account_holder\",\"$accNum\",'assets/avatar.png',0);"; 
+                $sqlRef = "insert into referals values('',\"$refferalNo\",\"$cellNo\",0,0)";
                 $conn->query($sqlRef);
                 if($conn->query($sql)){
 

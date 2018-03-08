@@ -393,12 +393,18 @@
                                 $curtime = $countD = date('Y-m-d H:i:s');
 
 
+/*------------------------- don = 0 -----------------*/
+
+                                $sqlUsers = "update users set status = 1 where p_number='".$cellDonerr."';";
+                                $sqlClaimInsert="insert into claims values('',\"$cellDonerr\",\"$newAmount\",\"$curtime\",\"$newDateTen\",\"10\",\"$newAmount\")";
+                                $sqlDonn = "update donation set status = 4,donDate = '------' where id=".$donn_id.";";
+/*------------------------- don = 0 -----------------*/
                                 $sqlClaimmInComplete = "update claims set states = 0 where id=".$claimm_id.";";
                                 $sqlDonnInComplete = "update donation set status = 0 where id=".$donn_id.";";
                                 $sqlClaimm = "update claims set states = 4,donDate = '------' where id=".$claimm_id.";";
-                                $sqlDonn = "update donation set status = 4,donDate = '------' where id=".$donn_id.";";
+                                
                                 $sqlAlloc = "update allocation set status = 1 where id=".$allo_id.";";
-                                $sqlUsers = "update users set status = 1 where p_number='".$cellDonerr."';";
+                                
 
                                $sqlGetDon = "Select * from donation where id=".$donn_id.";";
                                $resultsDon = $conn->query($sqlGetDon);
@@ -410,10 +416,10 @@
                                 @$newAmount = @$intAmount*1.5;
                                
                                @$cellClaimerr=$claimDetails['cellClaim'];
-                                $sqlClaimInsert="insert into claims values('',\"$cellDonerr\",\"$newAmount\",\"$curtime\",\"$newDateTen\",\"10\",\"$newAmount\")";
+                               
                                 
                                 
-                                @$sqlCommission="insert into commission values('',\"$cellClaimerr\",\"$cellDonerr\",0); ";
+                               // @$sqlCommission="insert into commission values('',\"$cellClaimerr\",\"$cellDonerr\",0); ";
                         /*-------------------------SMS------------------*/
                             $sqlDoon = "select * from users where p_number = '".$cellDonerr."';";
                             $donResults = mysqli_query($conn,$sqlDoon);
@@ -429,41 +435,38 @@
 
                                $remaing_don_amount = (int)$donDetails['remaining_don']; 
                                $remaining_claim_amount = (int)$claimDetails['remaining_claim'];
-
+                           
                                
                                 /*-------------referals-------------*/
+                                 
                                 $sqlGetReferal = "select * from users u,referals r where r.redered = '".$_SESSION['u_username']."' AND r.refere = u.p_number AND  r.status=0;";
-                             //   $resultCheck=$conn->query($sqlGetReferal);
-                                $conn->query($sqlGetReferal);
+                           
                                $sqlGetDetals = $conn->query($sqlGetReferal);
                                 $getDetails = $sqlGetDetals->fetch_assoc();
                                 $referallNo =   $getDetails['ref_code'];
-                                $comm_amount = (int)$getDetails['commission_amount'];
+                               $comm_amount = (int)$getDetails['commission_amount'];
                                 @$comInterest = @$intAmount*0.1;
                                 $newCommAmt = $comInterest + $comm_amount;
-                             //   $sqlUser="update users set status=1 where users.p_number=referals.redered and referals.redered = '".$_SESSION['u_username']."';";
+                             // $sqlUser="update users set status=1 where users.p_number=referals.redered and referals.redered = '".$_SESSION['u_username']."';";
 
-                                if($sqlGetDetals->num_rows >0) {
-                                $sqlAddCom = "update users set commission_amount='".$newCommAmt."',status=1 where p_number = '".$_SESSION['u_username']."';";
+                              $sqlAddCom = "update users set commission_amount='".$newCommAmt."' where p_number = '".$referallNo."';";
                                 $sqlUpRef="update referals set status=1, commission_amount='".$comInterest."' where referals.redered = '".$_SESSION['u_username']."';";
-                                  
-                                $conn->query($sqlAddCom);
-                                $conn->query($sqlUpRef);
-
-                                } 
+                                
                                 /*-------------referals ends-------------*/
                              
                                 
                                 
                               
                                 if(($remaing_don_amount == 0) && ($remaining_claim_amount > 0)){
-                                    $conn->query($sqlClaimInsert);
-                                    $conn->query($sqlUsers);
-                                  
-                                if($conn->query($sqlGetReferal)){
-                                    $conn->query($sqlAddCom);
-                                    $conn->query($sqlUpRef); 
-                                }
+                                    $conn->query($sqlClaimInsert);// add expected amount to
+                                    $conn->query($sqlUsers);//active user to be active
+
+                                        if($sqlGetDetals->num_rows >0) {
+                               
+                                            $conn->query($sqlAddCom);
+                                            $conn->query($sqlUpRef);
+
+                                        } 
 
                                     unset($_SESSION['pending']);
                                       $conn->query($sqlAlloc);
@@ -786,8 +789,13 @@
                     <tbody>
                     <?php
 
+<<<<<<< HEAD
                         $sql = "select u.fname AS'fname', u.lname AS'lname', u.p_number AS'p_number', r.status AS'status', r.commission_amount AS'commission_amount',u.commission_amount AS'ucommission_amount' from referals r, users u where r.refere = '".$_SESSION['u_username']."' 
                                                                                AND r.redered = u.p_number order by r.id desc  LIMIT 3;";
+=======
+                        $sql = "select u.fname AS'fname', u.lname AS'lname', u.p_number AS'p_number', r.status AS'status', r.commission_amount AS'commission_amount' from referals r, users u where r.refere = '".$_SESSION['u_username']."' 
+                              AND r.redered = u.p_number order by r.id desc  LIMIT 3;";
+>>>>>>> a6b424ab898e9c3c9bd7cc13195c2d8af851c157
 
                                                                                
                         $result = $conn->query($sql);
