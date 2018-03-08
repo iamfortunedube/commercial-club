@@ -147,8 +147,16 @@
                     </div>
                 </div>
                 <!--third row ends-->
-
-                    <p>Notice that this div element has a left margin of 25%. This is because the side navigation is set to 25% width. If you remove the margin, the sidenav will overlay/sit on top of this div.</p>
-
             </div>
-        </div>      
+        </div>
+         <!--Delete in-active users--> 
+        <?php
+        include("server/conn.php");
+
+        $sql="select id, regDate from users";
+        $results= $conn->query($sql);
+        $details= $resultsClaim->fetch_assoc();
+        $currDate  = date('Y-m-d H:i:s');
+      $currDate = $currDate*60*60*1000;
+    
+        ?>    
