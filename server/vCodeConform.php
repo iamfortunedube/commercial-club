@@ -53,7 +53,7 @@
             
             if($getResults->num_rows > 0){
                 $row = $getResults->fetch_assoc();
-                
+                $currDate  = date('Y-m-d H:i:s');
                 $uniCode = $row['universal_code'];
                 $sql = "insert into users values('',\"$firstname\",\"$surname\",\"$cellNo\",\"$password\",\"$refferalNo\",0,\"$bank_name\",\"$uniCode\",\"$bank_branch\",\"$account_holder\",\"$accNum\",'assets/avatar.png',0);"; 
                 $sqlRef = "insert into referals values('',\"$refferalNo\",\"$cellNo\",0,0)";
@@ -71,8 +71,8 @@
                             
                                     $numbersp = "&Numbers=";
                             
-                                    $username = "rovissm@gmail.com";
-                                    $password = "Asekhona*03";
+                                    $username = "cyalongo@gmail.com";
+                                    $password = "Asekhona*911121";
                                     $message = "Hi ".$firstname." ".$surname."\n\nWelcome to Commercial Club\nYour Login Details are as follows:\n\nUsername : ".$cellNo."\nPassword : ".$_SESSION['pswd']." \nThank you for joining us.\n-----------------------------\nFrom Commercial Club.";
                                     $numbers = $cellNo;
                             

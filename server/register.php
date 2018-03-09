@@ -97,8 +97,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 					
 							$numbersp = "&Numbers=";
 					
-							$username = "rovissm@gmail.com";
-							$password = "Asekhona*03";
+							$username = "cyalongo@gmail.com";
+							$password = "Asekhona*911121";
 							$message = "Activation code : ".$vCode."\n-----------------------------\nFrom Commercial Club.";
 							$numbers = $cellNo;
 					
@@ -107,16 +107,19 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 							$all = $url.$userp.$username.$passwordp.$password.$messagep.$encmessage.$numbersp.$numbers;
 					
 							$fp = fopen($all, 'r');
+
 							while(!feof($fp)){
-							$line = fgets($fp, 4000);
-							echo "<br>";
-							echo "Responce";
-							echo "<br>";
-							print($line);
-							echo "<br>";
+								$line = fgets($fp, 4000);
+								echo "<br>";
+								echo "Responce";
+								echo "<br>";
+								print($line);
+								echo "<br>";
 							}
+							
 							fclose($fp);
-						  header("location:vCode.php");
+						   //header("location:vCode.php");
+						   echo "<script>window.location.href = 'vCode.php';</script>";
 	
 					}
 				   }
@@ -124,4 +127,20 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
         }
     }
+
+
+
+//23-03-2018 01:34:59
+
+
+//23-03-2018 01:34:54  
+
+    //str = date['currntTime'];
+
+    //date = substr(0,10);
+
+    //if(date == date(d-m-yy))
+
+
+
 ?>

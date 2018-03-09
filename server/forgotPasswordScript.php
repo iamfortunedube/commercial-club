@@ -28,8 +28,8 @@ if(@$_POST['submit'] == "Request"){
         
                 $numbersp = "&Numbers=";
         
-                $username = "qinisozwane11@gmail.com";
-                $password = "Mangethe91";
+                $username = "cyalongo@gmail.com";
+                $password = "Asekhona*911121";
                 $message = "Hi ".$firstname." ".$surname."\n\nWelcome Back to Commercial Club\nYour Login Details are as follows:\n\nUsername : ".$cellNo."\nPassword : ".$pwsd." \n\nThank you for joining us.\n-----------------------------\nFrom Commercial Club.";
                 $numbers = $cellNo;
         

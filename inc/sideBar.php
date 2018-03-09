@@ -45,7 +45,7 @@
         }
         ?>
          </b>
-        <li style="position:fixed;bottom:0;left:0;"><img src="assets/logoCC.png" width="200" height="200" alt="logo"/></li>
+        <li style="position:absolute;bottom:0;left:0;"><img src="assets/logoCC.png" width="200" height="200" alt="logo"/></li>
         
     </ul>    
 </div>

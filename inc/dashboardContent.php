@@ -453,6 +453,9 @@
                                 $sqlUpRef="update referals set status=1, commission_amount='".$comInterest."' where referals.redered = '".$_SESSION['u_username']."';";
                                 
                                 /*-------------referals ends-------------*/
+                             
+                                
+                                
                               
                                 if(($remaing_don_amount == 0) && ($remaining_claim_amount > 0)){
                                     $conn->query($sqlClaimInsert);// add expected amount to
@@ -786,8 +789,13 @@
                     <tbody>
                     <?php
 
+<<<<<<< HEAD
+                        $sql = "select u.fname AS'fname', u.lname AS'lname', u.p_number AS'p_number', r.status AS'status', r.commission_amount AS'commission_amount',u.commission_amount AS'ucommission_amount' from referals r, users u where r.refere = '".$_SESSION['u_username']."' 
+                                                                               AND r.redered = u.p_number order by r.id desc  LIMIT 3;";
+=======
                         $sql = "select u.fname AS'fname', u.lname AS'lname', u.p_number AS'p_number', r.status AS'status', r.commission_amount AS'commission_amount' from referals r, users u where r.refere = '".$_SESSION['u_username']."' 
                               AND r.redered = u.p_number order by r.id desc  LIMIT 3;";
+>>>>>>> a6b424ab898e9c3c9bd7cc13195c2d8af851c157
 
                                                                                
                         $result = $conn->query($sql);
