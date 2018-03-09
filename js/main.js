@@ -20,6 +20,9 @@ $(document).ready(function() {
         $("#form").slideToggle();
     });
 
+    $("#hideSide").click(function(){
+        $(".sidebar-menu").slideToggle();
+    });
 
     $('#switch').click(function(){
         if(document.body.style.background == "black"){
@@ -29,6 +32,7 @@ $(document).ready(function() {
             document.body.style.background = "black";
         }
     });
+
     $(function(){
         var str = document.getElementById("dateDon").innerHTML;
         var timess = 0;

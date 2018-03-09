@@ -5,16 +5,18 @@ body {
 }
 
 .hideSideBar{
+    display: none;
     color:rgb(218,165,32);
-    border-radius: 50%;
-    width:30px;
-    height:30px;
+    border-radius: 10px;
+    width:40px;
+    height:40px;
     border:2px solid rgb(218,165,32);
-    float: right;
-    margin:10px 10px;
+    margin:15px 15px;
     cursor: pointer;
     font-size:15pt;
     font-weight: bolder;
+    right: 0;
+    position: absolute;
 }
 
 .sidebar-menu ul {
@@ -479,3 +481,55 @@ input.form-control,select.form-control{
 	top:0.9em;
 }
 /*-----------countDown end----------------*/
+
+@media only screen and (max-width: 800px) {
+    .hideSideBar{
+      display: block;
+      padding: 7px;
+    }
+
+    body{
+        width:100vh;
+    }
+
+    .sidebar-menu{
+        display: none;
+        z-index: 999;
+        position: absolute;
+        top:-60px;
+    }
+
+    .sidebar-menu ul{
+
+        background-color: white;
+    }
+
+    #leftContent{
+        margin-top:50px;
+    }
+
+    .row {
+        margin-right: -33px;
+        margin-left: -12px;
+    }
+
+    .marginn{
+        display: block;
+        margin-top: 60px;
+    }
+
+    #namelogo{
+        width: 300px;
+        margin-top: 15px;
+    }
+
+    #row2{
+        width: 105.5%;
+    }
+
+    #headerWelcome{
+        width:104%;
+    }
+}
+
+

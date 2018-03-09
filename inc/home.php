@@ -1,6 +1,6 @@
-              <!--first row starts-->
+             
               <div class="welcomeWrapper">
-                    <div class="welcomeTitle">
+                    <div class="welcomeTitle" id="headerWelcome">
                             <h6>Weclome to <span class="">Commercial<span style="color:rgb(218,165,32);font-size:15pt;"> Club</span></span></h6>
                     </div>
                     <div class="row">
