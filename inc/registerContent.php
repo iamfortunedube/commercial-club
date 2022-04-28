@@ -48,14 +48,6 @@
                 </div>
                 <p class="welcomeContent">
                     <ol class="list">
-<<<<<<< HEAD
-                        <li>Fill in all required fields on the registration form.</li>
-                        <li> Verify Cell Number using varification code.</li>
-                        <li>Fill in your banking details.</li>
-                        <li>Your login details will be sent by sms.</li>
-                        <li>Login using member username and password.</li>
-                     </ol>          
-=======
                                         <li>Fill in all required fields on the registration form.</li>
                                         <li> Verify Cell Number using varification code.</li>
                                         <li>Fill in your banking details.</li>
@@ -102,7 +94,6 @@
                                             </div>
                                         </div>
                             </div>
->>>>>>> bf736bab8f3ff36a3386e4212ca480e2017104eb
                 </p>
           </div> 
           <div class="welcomeWrapper">

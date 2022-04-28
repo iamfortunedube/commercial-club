@@ -301,17 +301,17 @@
                                                     break;                                    
                                                 }
                                                 break;
-                                            case 2:
-											if(($row['claimStatuss'] == 3)){
-                                                echo 'Waiting for confirmation from Reciever...';
+                                            case 1 :
+                                                echo '<input type="submit" name="submit" class="btn button-sm-gold" value="Send" />';
                                                 break;
-											}if(($row['claimStatuss'] == 4)){
-												 echo '<span style="color:green;font-weight:bolder;">Process Completed</span>';
-											}else{
-												 echo '<input type="submit" name="submit" class="btn button-sm-gold" value="Send" />';
-												break;
-											}
-											break;
+                                            case 2:
+                                                if(($row['claimStatuss'] == 3)){
+                                                    echo 'Waiting for confirmation from Reciever...';
+                                                    
+                                                }if(($row['claimStatuss'] == 4)){
+                                                    echo '<span style="color:green;font-weight:bolder;">Process Completed</span>';
+                                                }
+                                                break;
                                             case 4:
                                               echo '<span style="color:green;font-weight:bolder;">Process Completed</span>';
                                                     break;
@@ -789,13 +789,13 @@
                     <tbody>
                     <?php
 
-<<<<<<< HEAD
-                        $sql = "select u.fname AS'fname', u.lname AS'lname', u.p_number AS'p_number', r.status AS'status', r.commission_amount AS'commission_amount',u.commission_amount AS'ucommission_amount' from referals r, users u where r.refere = '".$_SESSION['u_username']."' 
-                                                                               AND r.redered = u.p_number order by r.id desc  LIMIT 3;";
-=======
+// <<<<<<< HEAD
+//                         $sql = "select u.fname AS'fname', u.lname AS'lname', u.p_number AS'p_number', r.status AS'status', r.commission_amount AS'commission_amount',u.commission_amount AS'ucommission_amount' from referals r, users u where r.refere = '".$_SESSION['u_username']."' 
+//                                                                                AND r.redered = u.p_number order by r.id desc  LIMIT 3;";
+// =======
                         $sql = "select u.fname AS'fname', u.lname AS'lname', u.p_number AS'p_number', r.status AS'status', r.commission_amount AS'commission_amount' from referals r, users u where r.refere = '".$_SESSION['u_username']."' 
                               AND r.redered = u.p_number order by r.id desc  LIMIT 3;";
->>>>>>> a6b424ab898e9c3c9bd7cc13195c2d8af851c157
+// >>>>>>> a6b424ab898e9c3c9bd7cc13195c2d8af851c157
 
                                                                                
                         $result = $conn->query($sql);

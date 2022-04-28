@@ -155,8 +155,9 @@
 
         $sql="select id, regDate from users";
         $results= $conn->query($sql);
-        $details= $resultsClaim->fetch_assoc();
+        // print_r($results);
+        $details= $results->fetch_assoc();
         $currDate  = date('Y-m-d H:i:s');
-      $currDate = $currDate*60*60*1000;
+        // $currDate = $currDate*60*60*1000;
     
         ?>    
